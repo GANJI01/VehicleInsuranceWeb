@@ -1,0 +1,29 @@
+@ABZAgentWebApi_HostAddress = http://localhost:5147
+
+GET {{ABZAgentWebApi_HostAddress}}/api/agent
+Accept: application/json
+
+###
+POST {{ABZAgentWebApi_HostAddress}}/api/agent
+Content-Type: application/json
+{
+  "agentID": "8974637292",
+  "agentName": "Vikky",
+  "agentPhone": "1234567864",
+  "agentEmail": "stak@gmail.com",
+  "licenseCode": "4023456747"
+}
+###
+Delete {{ABZAgentWebApi_HostAddress}}/api/agent/1234567890
+Accept: application/json
+
+###
+PUT {{ABZAgentWebApi_HostAddress}}/api/agent/8974637292
+Content-Type: application/json
+{
+  "agentID": "8974637292",
+  "agentName": "V",
+  "agentPhone": "1234567864",
+  "agentEmail": "stak@gmail.com",
+  "licenseCode": "4023456747"
+}

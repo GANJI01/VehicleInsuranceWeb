@@ -1,0 +1,57 @@
+@ABZVehicleWebApi_HostAddress = http://localhost:5083
+
+GET {{ABZVehicleWebApi_HostAddress}}/api/Vehicle
+Accept: application/json
+
+###
+POST {{ABZVehicleWebApi_HostAddress}}/api/Vehicle
+Content-Type:application/json
+{
+  "regNo": "string",
+  "regAuthority": "string",
+  "make": "string",
+  "model": "string",
+  "fuelType": "P",
+  "variant": "string",
+  "engineNo": "string",
+  "chassisNo": "string",
+  "engineCapacity": 0,
+  "seatingCapacity": 0,
+  "mfgYear": "2020",
+  "regDate": "2024-12-19T09:58:15.438Z",
+  "bodyType": "string",
+  "leasedBy": "string",
+  "ownerId": "C1234"
+}
+###
+
+GET {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/string
+Accept: application/json
+###
+PUT {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/string
+Content-Type:application/json
+{
+  "regNo": "string",
+  "regAuthority": "string",
+  "make": "stringman",
+  "model": "string",
+  "fuelType": "P",
+  "variant": "string",
+  "engineNo": "string",
+  "chassisNo": "string",
+  "engineCapacity": 0,
+  "seatingCapacity": 0,
+  "mfgYear": "2020",
+  "regDate": "2024-12-19T09:58:15.438Z",
+  "bodyType": "string",
+  "leasedBy": "string",
+  "ownerId": "C1234"
+}
+###
+
+DELETE {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/string
+Accept: application/json
+
+###
+GET {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/ByCustomer/C1234
+Accept: application/json

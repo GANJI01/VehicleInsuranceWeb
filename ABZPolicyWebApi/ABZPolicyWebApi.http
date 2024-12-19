@@ -1,0 +1,72 @@
+@ABZPolicyWebApi_HostAddress = http://localhost:5007
+
+GET {{ABZPolicyWebApi_HostAddress}}/api/policy/
+Accept: application/json
+
+###
+GET {{ABZPolicyWebApi_HostAddress}}/api/policy/
+Content-Type: application/json
+{
+  "policyNo": "12345678UT",
+  "prososalNo": "12345678SR",
+  "noClaimBonus": 100,
+  "receiptNo": "12345",
+  "receiptDate": "2024-12-19T10:15:47.247Z",
+  "paymentMode": "C",
+  "amount": 500
+  
+}
+###
+POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
+Content-Type: application/json
+{
+  "policyNo": "12345678UT",
+  "prososalNo": "12345678SR",
+  "noClaimBonus": 100,
+  "receiptNo": "12345",
+  "receiptDate": "2024-12-19T10:15:47.247Z",
+  "paymentMode": "C",
+  "amount": 500
+  
+}
+###
+GET {{ABZPolicyWebApi_HostAddress}}/api/policy/
+Accept: application/json
+###
+PUT {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UT
+Content-Type: application/json
+{
+  "policyNo": "12345678UH",
+  "prososalNo": "12345678SR",
+  "noClaimBonus": 200,
+  "receiptNo": "12345",
+  "receiptDate": "2024-12-19T10:15:47.247Z",
+  "paymentMode": "C",
+  "amount": 500
+  
+}
+###
+DELETE {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UT
+Accept: application/json
+###
+GET {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/
+Accept: application/json
+###
+POST {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/Add2
+Content-Type: application/json
+{
+  "addonID": "Add2",
+  "policyNo": "12345678UT",
+  "amount": 100
+}
+###
+PUT {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UT/Add2
+Content-Type: application/json
+{
+  "addonID": "Add2",
+  "policyNo": "12345678UT",
+  "amount": 300
+}
+###
+DELETE {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UT/Add2
+Accept: application/json

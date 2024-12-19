@@ -1,0 +1,53 @@
+@ABZClaimWebApi_HostAddress = http://localhost:5189
+
+GET {{ABZClaimWebApi_HostAddress}}/api/Claim/
+Accept: application/json
+
+
+###
+POST {{ABZClaimWebApi_HostAddress}}/api/Claim/bce
+Content-Type:application/json
+{
+  "claimNo": "CL4",
+  "claimDate": "2024-12-19T09:59:53.448Z",
+  "policyNo": "13",
+  "incidentDate": "2024-12-19T09:59:53.448Z",
+  "incidentLocation": "Bang",
+  "incidentDescription": "Descriptions",
+  "claimAmount": 10000,
+  "surveyorName": "Suresh",
+  "surveyorPhone": "789456123",
+  "surveyDate": "2024-12-19T09:59:53.448Z",
+  "surveyDescription": "Hi",
+  "claimStatus": "S"
+
+}
+
+###
+GET {{ABZClaimWebApi_HostAddress}}/api/Claim/CL1
+Accept: application/json
+###
+DELETE {{ABZClaimWebApi_HostAddress}}/api/Claim/CL2
+Accept: application/json
+###
+PUT {{ABZClaimWebApi_HostAddress}}/api/Claim/CL1
+Content-Type:application/json
+{
+ 
+  "claimNo": "CL1",
+  "claimDate": "2024-12-19T09:59:53.448Z",
+  "policyNo": "10",
+  "incidentDate": "2024-12-19T09:59:53.448Z",
+  "incidentLocation": "Bang1",
+  "incidentDescription": "Descriptions",
+  "claimAmount": 10000,
+  "surveyorName": "Suresh Reddy",
+  "surveyorPhone": "789456123",
+  "surveyDate": "2024-12-19T09:59:53.448Z",
+  "surveyDescription": "Hi",
+  "claimStatus": "S"
+}
+###
+GET {{ABZClaimWebApi_HostAddress}}/api/Claim/Policy/10
+Accept: application/json
+###

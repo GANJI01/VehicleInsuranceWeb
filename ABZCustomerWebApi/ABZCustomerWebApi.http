@@ -1,0 +1,32 @@
+@ABZCustomerWebApi_HostAddress = http://localhost:5151
+
+GET {{ABZCustomerWebApi_HostAddress}}/api/Customer
+Accept: application/json
+
+###
+POST {{ABZCustomerWebApi_HostAddress}}/api/Customer/101
+Content-Type:application/json
+{
+  "customerID": "C101",
+  "customerName": "Praveen",
+  "customerPhone": "1234567890",
+  "customerEmail": "praveen@gmail.com",
+  "customerAddress": "Andhra"
+}
+###
+GET {{ABZCustomerWebApi_HostAddress}}/api/Customer/C101
+Accept: application/json
+###
+DELETE {{ABZCustomerWebApi_HostAddress}}/api/Customer/C101
+Accept: application/json
+###
+PUT {{ABZCustomerWebApi_HostAddress}}/api/Customer/C101
+Content-Type:application/json
+{
+  "customerID": "C101",
+  "customerName": "Chandana",
+  "customerPhone": "1234567890",
+  "customerEmail": "praveen@gmail.com",
+  "customerAddress": "Andhra"
+}
+###

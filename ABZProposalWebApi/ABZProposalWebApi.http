@@ -1,0 +1,22 @@
+@ABZProposalWebApi_HostAddress = http://localhost:5273
+
+GET {{ABZProposalWebApi_HostAddress}}/api/Proposal
+Accept: application/json
+
+
+
+###
+POST {{ABZProposalWebApi_HostAddress}}/api/Proposal
+Content-Type:application/json
+{
+  "proposalID": "string1",
+  "regNo": "V1234",
+  "productID": "P1234",
+  "customerID": "C1234",
+  "fromDate": "2024-12-19",
+  "toDate": "2024-12-19",
+  "idv": 0,
+  "agentID": "A1234",
+  "basicAmount": 0,
+  "totalAmount": 0
+}

@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Product]
+(
+	ProductID CHAR(10) NOT NULL PRIMARY KEY
+)

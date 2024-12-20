@@ -33,14 +33,17 @@ namespace ABZCustomerWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPost("{token}")]
-        public async Task<ActionResult> Insert(string token,Customer customer)
+        [HttpPost]
+        public async Task<ActionResult> Insert(Customer customer)
         {
             try
             {
                 await custRepo.InsertCustomerAsync(customer);
-              //HttpClient client = new HttpClient();
-              // await client.PostAsJsonAsync("", new {customerId=customer.CustomerID});
+                HttpClient client = new HttpClient();
+                HttpClient client2 = new HttpClient();
+               await client2.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { customerId = customer.CustomerID });
+                
+                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { customerId = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }

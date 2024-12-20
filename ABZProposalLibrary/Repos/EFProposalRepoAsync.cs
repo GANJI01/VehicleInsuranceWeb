@@ -55,6 +55,19 @@ namespace ABZProposalLibrary.RepoAsync
             return proposals;
         }
 
+        public async Task InsertAgentAsync(Agent agent)
+        {
+            await ctx.Agents.AddAsync(agent);
+            await ctx.SaveChangesAsync();
+        }
+        
+
+        public async Task InsertCustomerAsync(Customer customer)
+        {
+            await ctx.Customers.AddAsync(customer);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertProposalAsync(Proposal proposal)
         {
             await ctx.Proposals.AddAsync(proposal);

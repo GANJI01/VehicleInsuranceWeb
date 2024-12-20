@@ -14,6 +14,8 @@ namespace ABZPolicyLibrary.Repos
         Task<List<PolicyAddon>> GetAllPolicyAddonAsync();
         Task<PolicyAddon> GetPolicyAddonAsync(string policyNo,string addonId);
         Task UpdatePolicyAddonAsync(string policyNo,string addonId,PolicyAddon policyAddon);
+        //Task InsertPolicyAsync(Policy policy);
+        Task<List<PolicyAddon>> GetPolicyAddonBYPolicy(string policyNo);
 
     }
 }

@@ -10,9 +10,9 @@ namespace ABZProposalLibrary.RepoAsync
     public interface IProposalRepoAsync
     {
         Task InsertProposalAsync(Proposal proposal);
-        Task UpdateProposalAsync(string proposalId,Proposal proposal);
-        Task DeleteProposalAsync(string proposalId);
-        Task<Proposal> GetProposalByIdAsync(string proposalId);
+        Task UpdateProposalAsync(string proposalNo,Proposal proposal);
+        Task DeleteProposalAsync(string proposalNo);
+        Task<Proposal> GetProposalByIdAsync(string proposalNo);
         Task<List<Proposal>> GetProposalByAgentAsync(string agentId);
         Task<List<Proposal>> GetProposalByCustomerAsync(string customerId);
         Task<List<Proposal>> GetProposalByProductAsync(string productId);
@@ -20,6 +20,7 @@ namespace ABZProposalLibrary.RepoAsync
         Task<List<Proposal>> GetAllProposalsAsync();
         Task InsertCustomerAsync(Customer customer);
         Task InsertAgentAsync(Agent agent);
+        Task InsertVehicleAsync(Vehicle vehicle);
 
     }
 }

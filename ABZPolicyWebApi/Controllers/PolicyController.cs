@@ -82,5 +82,37 @@ namespace ABZPolicyWebApi.Controllers
             }
         }
 
+        [HttpGet("ByProposal/{proposalNo}")]
+        public async Task<ActionResult> GetByProposalAsync(string proposalNo)
+        {
+            try
+            {
+                List<Policy> polycies = await policyRepo.GetPolicyByProposalAsync(proposalNo);
+                return Ok(polycies);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
+            //[HttpPost("{proposalNo}")]
+            //public async Task<ActionResult> Insert(Proposal proposal)
+            //{
+            //    try
+            //    {
+            //        await policyRepo.InsertProposalAsync(proposal);
+            //        HttpClient client = new HttpClient();
+            //        await client.PostAsJsonAsync("", new {ProposalNo = proposal.ProposalNo});
+            //        return Created($"api/Policy/{proposal.ProposalNo}",proposal);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        return BadRequest(ex.Message);
+            //    }
+
+            //}
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[Policy]
 (
 	PolicyNo char(10) PRIMARY KEY,
-	PrososalNo char(10) references Proposal(ProposalID),
+	ProposalNo char(10) references Proposal(ProposalNo),
 	NoClaimBonus money,
 	ReceiptNo char(5) not null,
 	ReceiptDate Datetime not null,

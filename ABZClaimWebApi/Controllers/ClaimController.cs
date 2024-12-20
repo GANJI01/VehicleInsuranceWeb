@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZClaimsLibrary.Models;
 using ABZClaimsLibrary.RepoAsync;
+    
+using Microsoft.AspNetCore.Routing.Matching;
 
 namespace ABZClaimWebApi.Controllers
 {
@@ -34,12 +36,12 @@ namespace ABZClaimWebApi.Controllers
             }
         }
         [HttpPost("{token}")]
-        public async Task<ActionResult> Insert(string token,Claim claim)
+        public async Task<ActionResult> Insert(string token, Claim claim)
         {
             try
             {
                 await claimRepo.InsertClaimAsync(claim);
-                return Created($"api/Claim/{claim.ClaimNo}",claim);
+                return Created($"api/Claim/{claim.ClaimNo}", claim);
             }
             catch (Exception ex)
             {
@@ -85,11 +87,27 @@ namespace ABZClaimWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpPost]
+        public async Task<ActionResult> Insert(Policy policy)
+        {
+            try
+            {
+                await claimRepo.InsertPolicyAsync(policy);
+                // HttpClient client = new HttpClient();
+                //await client.PostAsJsonAsync("http://localhost:5189/api/Claim", new { PolicyNo = policy.PolicyNo });
+                return Created($"api/Claim/{policy.PolicyNo}", policy);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
+        }
     }
+}
 
         
        
-    
-}
+ 
+
 

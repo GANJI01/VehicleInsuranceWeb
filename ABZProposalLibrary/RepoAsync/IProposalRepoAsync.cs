@@ -18,6 +18,7 @@ namespace ABZProposalLibrary.RepoAsync
         Task<List<Proposal>> GetProposalByProductAsync(string productId);
         Task<List<Proposal>> GetProposalByVehicleAsync(string regNo);
         Task<List<Proposal>> GetAllProposalsAsync();
+        
 
     }
 }

@@ -20,8 +20,8 @@ Content-Type: application/json
 POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
 Content-Type: application/json
 {
-  "policyNo": "12345678UA",
-  "prososalNo": "12345678SR",
+  "policyNo": "12345678CD",
+  "proposalNo": "12345678AB",
   "noClaimBonus": 100,
   "receiptNo": "12345",
   "receiptDate": "2024-12-19T10:15:47.247Z",

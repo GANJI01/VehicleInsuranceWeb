@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Proposal]
 (
-	ProposalID CHAR(10) NOT NULL PRIMARY KEY,
+	ProposalNo CHAR(10) NOT NULL PRIMARY KEY,
     RegNo CHAR(10) NOT NULL,          
     ProductID CHAR(10) NOT NULL,      
     CustomerID CHAR(10) NOT NULL,    

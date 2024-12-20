@@ -7,7 +7,7 @@ public partial class Policy
 {
     public string PolicyNo { get; set; } = null!;
 
-    public string? PrososalNo { get; set; }
+    public string? ProposalNo { get; set; }
 
     public decimal? NoClaimBonus { get; set; }
 

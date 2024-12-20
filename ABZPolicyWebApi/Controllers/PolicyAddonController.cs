@@ -74,5 +74,33 @@ namespace ABZPolicyWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("ByPolicy/{policyNo}")]
+        public async Task<ActionResult> GetPolicyAddonBYPolicy(string policyNo)
+        {
+            try
+            {
+                List<PolicyAddon> policyAddons = await poliaddRepo.GetPolicyAddonBYPolicy(policyNo);
+                return Ok(policyAddons);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
+        //[HttpPost("Policy")]
+        //public async Task<ActionResult> Insert(Policy policy)
+        //{
+        //    try
+        //    {
+        //        await poliaddRepo.InsertPolicyAsync(policy);
+        //        HttpClient client = new HttpClient();
+        //        await client.PostAsJsonAsync("",new  { PolicyNo=policy.PolicyNo });
+        //        return Created($"api/Policy{policy.PolicyNo}",policy);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
     }
 }

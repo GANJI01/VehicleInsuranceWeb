@@ -40,10 +40,7 @@ namespace ABZPolicyLibrary.Repos
         {
             await ctx.Policies.AddAsync(policy);
             await ctx.SaveChangesAsync();
-
         }
-
-        
         public async Task UpdatePolicyAsync(string policyNo, Policy policy)
         {
             Policy policy1 = await GetPolicyAsync(policyNo);
@@ -63,6 +60,12 @@ namespace ABZPolicyLibrary.Repos
                 throw new Exception("No such proposalNo");
             else
                 return policies;
+        }
+
+        public async Task InsertProposalAsync(Proposal proposal)
+        {
+            await ctx.Proposals.AddAsync(proposal);
+            await ctx.SaveChangesAsync();
         }
     }
 }

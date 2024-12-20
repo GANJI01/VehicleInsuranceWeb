@@ -43,7 +43,7 @@ public partial class ABZPolicyDBContext : DbContext
                 .HasMaxLength(1)
                 .IsUnicode(false)
                 .IsFixedLength();
-            entity.Property(e => e.PrososalNo)
+            entity.Property(e => e.ProposalNo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();
@@ -54,8 +54,8 @@ public partial class ABZPolicyDBContext : DbContext
                 .IsFixedLength();
 
             entity.HasOne(d => d.PrososalNoNavigation).WithMany(p => p.Policies)
-                .HasForeignKey(d => d.PrososalNo)
-                .HasConstraintName("FK__Policy__Prososal__3A81B327");
+                .HasForeignKey(d => d.ProposalNo)
+                .HasConstraintName("FK__Policy__Proposal__3A81B327");
         });
 
         modelBuilder.Entity<PolicyAddon>(entity =>
@@ -82,11 +82,11 @@ public partial class ABZPolicyDBContext : DbContext
 
         modelBuilder.Entity<Proposal>(entity =>
         {
-            entity.HasKey(e => e.ProposalID).HasName("PK__Proposal__6F39E100EF5A4ABC");
+            entity.HasKey(e => e.ProposalNo).HasName("PK__Proposal__6F39E100EF5A4ABC");
 
             entity.ToTable("Proposal");
 
-            entity.Property(e => e.ProposalID)
+            entity.Property(e => e.ProposalNo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();

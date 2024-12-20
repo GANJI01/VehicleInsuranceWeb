@@ -5,7 +5,7 @@ namespace ABZProposalLibrary.Models;
 
 public partial class Proposal
 {
-    public string ProposalID { get; set; } = null!;
+    public string ProposalNo { get; set; } = null!;
 
     public string RegNo { get; set; } = null!;
 

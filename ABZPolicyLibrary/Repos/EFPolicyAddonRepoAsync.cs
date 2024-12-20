@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ABZPolicyLibrary.Models;
@@ -38,11 +39,31 @@ namespace ABZPolicyLibrary.Repos
 
         }
 
+        public async Task<List<PolicyAddon>> GetPolicyAddonBYPolicy(string policyNo)
+        {
+
+            List<PolicyAddon> policyAddons=await(from pa in ctx.PolicyAddons where pa.PolicyNo==policyNo select pa).ToListAsync();
+            if(policyAddons.Count==0)
+            {
+                throw new Exception("No such Policy");
+            }
+            else
+            {
+                return policyAddons;
+            }
+        }
+
         public async Task InsertPolicyAddonAsync(PolicyAddon policyAddon)
         {
             await ctx.PolicyAddons.AddAsync(policyAddon);
             await ctx.SaveChangesAsync();
         }
+
+        //public async Task InsertPolicyAsync(Policy policy)
+        //{
+        //    await ctx.Policies.AddAsync(policy);
+        //    await ctx.SaveChangesAsync();
+        //}
 
         public async Task UpdatePolicyAddonAsync(string policyNo, string addonId, PolicyAddon policyAddon)
         {

@@ -36,12 +36,10 @@ namespace ABZPolicyLibrary.Repos
                 throw new Exception("Invalid PolicyNo");
             }
         }
-
         public async Task InsertPolicyAsync(Policy policy)
         {
             await ctx.Policies.AddAsync(policy);
             await ctx.SaveChangesAsync();
-
         }
         public async Task UpdatePolicyAsync(string policyNo, Policy policy)
         {
@@ -53,6 +51,21 @@ namespace ABZPolicyLibrary.Repos
             policy1.Amount = policy.Amount;
             await ctx.SaveChangesAsync();
 
+        }
+
+        public async Task<List<Policy>> GetPolicyByProposalAsync(string proposalNo)
+        {
+            List<Policy> policies = await(from p in ctx.Policies where p.ProposalNo==proposalNo select p).ToListAsync();
+            if (policies.Count == 0)
+                throw new Exception("No such proposalNo");
+            else
+                return policies;
+        }
+
+        public async Task InsertProposalAsync(Proposal proposal)
+        {
+            await ctx.Proposals.AddAsync(proposal);
+            await ctx.SaveChangesAsync();
         }
     }
 }

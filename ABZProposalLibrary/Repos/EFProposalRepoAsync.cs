@@ -12,9 +12,9 @@ namespace ABZProposalLibrary.RepoAsync
     public class EFProposalRepoAsync : IProposalRepoAsync
     {
         ABZProposalDBContext ctx = new ABZProposalDBContext();
-        public async Task DeleteProposalAsync(string proposalId)
+        public async Task DeleteProposalAsync(string proposalNo)
         {
-            Proposal proposal = await GetProposalByIdAsync(proposalId);
+            Proposal proposal = await GetProposalByIdAsync(proposalNo);
             ctx.Proposals.Remove(proposal);
             await ctx.SaveChangesAsync();
         }
@@ -37,16 +37,16 @@ namespace ABZProposalLibrary.RepoAsync
             return proposals;
         }
 
-        public async Task<Proposal> GetProposalByIdAsync(string proposalId)
+        public async Task<Proposal> GetProposalByIdAsync(string proposalNo)
         {
-            Proposal proposals = await (from pro in ctx.Proposals where pro.ProposalID==proposalId select pro).FirstAsync();
+            Proposal proposals = await (from pro in ctx.Proposals where pro.ProposalNo==proposalNo select pro).FirstAsync();
             return proposals;
         }
 
         public async Task<List<Proposal>> GetProposalByProductAsync(string productId)
         {
            List<Proposal> proposals = await(from pro in ctx.Proposals where pro.ProductID == productId select pro).ToListAsync();
-            return proposals;
+            return proposals; 
         }
 
         public async Task<List<Proposal>> GetProposalByVehicleAsync(string regNo)
@@ -82,7 +82,7 @@ namespace ABZProposalLibrary.RepoAsync
 
         public async Task UpdateProposalAsync(string proposalId, Proposal updatedProposal)
         {
-            Proposal existingProposal = await GetProposalByIdAsync(proposalId);
+            Proposal existingProposal = await GetProposalByIdAsync(proposalNo);
             existingProposal.RegNo = updatedProposal.RegNo;
             existingProposal.ProductID = updatedProposal.ProductID;
             existingProposal.CustomerID = updatedProposal.CustomerID;

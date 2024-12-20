@@ -41,6 +41,8 @@ namespace ABZPolicyWebApi.Controllers
             try
             {
                 await policyRepo.InsertPolicyAsync(policy);
+                HttpClient client = new HttpClient();
+                await client.PostAsJsonAsync("http://localhost:5189/api/Policy/Claim", new { PolicyNo = policy.PolicyNo });
                 return Created($"api/Policy/{policy.PolicyNo}", policy);
 
             }
@@ -80,5 +82,36 @@ namespace ABZPolicyWebApi.Controllers
             }
         }
 
+        [HttpGet("ByProposal/{proposalNo}")]
+        public async Task<ActionResult> GetByProposalAsync(string proposalNo)
+        {
+            try
+            {
+                List<Policy> polycies = await policyRepo.GetPolicyByProposalAsync(proposalNo);
+                return Ok(polycies);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+        }
+
+             [HttpPost("proposal")]
+            public async Task<ActionResult> InsertProposalAsync(Proposal proposal)
+            {
+                try
+                {
+                    await policyRepo.InsertProposalAsync(proposal);
+                    //HttpClient client = new HttpClient();
+                    //await client.PostAsJsonAsync("http://localhost:5007/api/PolicyAddon/Policy", new {ProposalNo = proposal.ProposalNo});
+                    return Created();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+
+            }
     }
 }

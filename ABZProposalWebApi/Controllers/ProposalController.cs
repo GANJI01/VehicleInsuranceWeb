@@ -139,12 +139,25 @@ namespace ABZProposalWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPost("Agent")]
         public async Task<ActionResult> InsertAgent(Agent agent)
         {
             try
             {
                 await proRepo.InsertAgentAsync(agent);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("Vehicle")]
+        public async Task<ActionResult> InsertVehicle(Vehicle vehicle)
+        {
+            try
+            {
+                await proRepo.InsertVehicleAsync(vehicle);
                 return Created();
             }
             catch (Exception ex)

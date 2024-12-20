@@ -74,6 +74,12 @@ namespace ABZProposalLibrary.RepoAsync
             await ctx.SaveChangesAsync();
         }
 
+        public async Task InsertVehicleAsync(Vehicle vehicle)
+        {
+            await ctx.Vehicles.AddAsync(vehicle);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task UpdateProposalAsync(string proposalId, Proposal updatedProposal)
         {
             Proposal existingProposal = await GetProposalByIdAsync(proposalId);

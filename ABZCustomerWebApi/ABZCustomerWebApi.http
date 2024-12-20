@@ -4,7 +4,7 @@ GET {{ABZCustomerWebApi_HostAddress}}/api/Customer
 Accept: application/json
 
 ###
-POST {{ABZCustomerWebApi_HostAddress}}/api/Customer/102
+POST {{ABZCustomerWebApi_HostAddress}}/api/Customer
 Content-Type:application/json
 {
   "customerID": "C102",

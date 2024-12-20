@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using ABZVehicleLibrary.Models;
@@ -43,6 +44,13 @@ namespace ABZVehicleLibrary.Repos
             else
                 return vehicles;
         }
+
+        public async Task InsertCustomerAsync(Customer customer)
+        {
+            await ctx.Customers.AddAsync(customer);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertVehicleAsync(Vehicle vehicle)
         {
             await ctx.Vehicles.AddAsync(vehicle);

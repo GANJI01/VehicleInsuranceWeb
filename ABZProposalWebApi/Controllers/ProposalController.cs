@@ -65,7 +65,9 @@ namespace ABZProposalWebApi.Controllers
             try
             {
                 await proRepo.InsertProposalAsync(proposal);
-                return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
+                HttpClient client = new HttpClient();
+                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new {proposal= proposal.ProposalID });
+                return Created($"api/Proposal/{proposal.ProposalID}",proposal);
             }
             catch (Exception ex)
             {
@@ -122,6 +124,45 @@ namespace ABZProposalWebApi.Controllers
             catch (Exception ex)
             {
                 return NotFound(ex.Message);
+            }
+        }
+        [HttpPost("Customer")]
+        public async Task<ActionResult> InsertCustomer(Customer customer)
+        {
+            try
+            {
+                await proRepo.InsertCustomerAsync(customer);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("Agent")]
+        public async Task<ActionResult> InsertAgent(Agent agent)
+        {
+            try
+            {
+                await proRepo.InsertAgentAsync(agent);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("Vehicle")]
+        public async Task<ActionResult> InsertVehicle(Vehicle vehicle)
+        {
+            try
+            {
+                await proRepo.InsertVehicleAsync(vehicle);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -15,6 +15,7 @@ namespace ABZVehicleLibrary.Repos
         Task<Vehicle> GetVehicleAsync(string regNo);
         Task<List<Vehicle>> GetAllVehiclesAsync();
         Task<List<Vehicle>> GetVehiclesByCustomerAsync(string customerId);
+        Task InsertCustomerAsync(Customer customer);
 
     }
 }

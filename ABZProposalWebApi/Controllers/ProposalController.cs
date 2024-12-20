@@ -124,6 +124,19 @@ namespace ABZProposalWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpPost("Customer")]
+        public async Task<ActionResult> InsertCustomer(Customer customer)
+        {
+            try
+            {
+                await proRepo.InsertCustomerAsync(customer);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
 

@@ -10,17 +10,17 @@ namespace ABZPolicyLibrary.Repos
 {
     public class EFPolicyAddonRepoAsync : IPolicyAddonRepoAsync
     {
-        ABZPolicyDBContext ctx=new ABZPolicyDBContext();
+        ABZPolicyDBContext ctx = new ABZPolicyDBContext();
         public async Task DeletePolicyAddonAsync(string policyNo, string addonId)
         {
-            PolicyAddon policyAddon=await GetPolicyAddonAsync(policyNo, addonId);
-            ctx.Remove(policyAddon);
+            PolicyAddon policyAddon = await GetPolicyAddonAsync(policyNo, addonId);
+            ctx.PolicyAddons.Remove(policyAddon);
             await ctx.SaveChangesAsync();
         }
 
         public async Task<List<PolicyAddon>> GetAllPolicyAddonAsync()
         {
-            List<PolicyAddon> policyAddons=await ctx.PolicyAddons.ToListAsync();
+            List<PolicyAddon> policyAddons = await ctx.PolicyAddons.ToListAsync();
             return policyAddons;
         }
 
@@ -35,7 +35,7 @@ namespace ABZPolicyLibrary.Repos
             {
                 throw new Exception("Invalid PolicyNo or AddonID");
             }
-            
+
         }
 
         public async Task InsertPolicyAddonAsync(PolicyAddon policyAddon)
@@ -46,7 +46,7 @@ namespace ABZPolicyLibrary.Repos
 
         public async Task UpdatePolicyAddonAsync(string policyNo, string addonId, PolicyAddon policyAddon)
         {
-            PolicyAddon policyAddon1=await GetPolicyAddonAsync(policyNo,addonId);
+            PolicyAddon policyAddon1 = await GetPolicyAddonAsync(policyNo, addonId);
             policyAddon1.Amount = policyAddon.Amount;
             await ctx.SaveChangesAsync();
         }

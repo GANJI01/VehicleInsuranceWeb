@@ -18,8 +18,8 @@ namespace ABZPolicyWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            List<Policy>policy=await policyRepo.GetAllPoliciesAsync();
-            return Ok(policy);
+            List<Policy> policies = await policyRepo.GetAllPoliciesAsync();
+            return Ok(policies);
         }
         [HttpGet("{policyNo}")]
         public async Task<ActionResult> GetOne(string policyNo)
@@ -51,9 +51,9 @@ namespace ABZPolicyWebApi.Controllers
                 }
             }
         }
-        
+
         [HttpPut("{policyNo}")]
-        public async Task<ActionResult> Update(string policyNo,Policy policy)
+        public async Task<ActionResult> Update(string policyNo, Policy policy)
         {
             try
             {

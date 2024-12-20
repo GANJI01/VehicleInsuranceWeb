@@ -20,7 +20,7 @@ Content-Type: application/json
 POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
 Content-Type: application/json
 {
-  "policyNo": "12345678UT",
+  "policyNo": "12345678UA",
   "prososalNo": "12345678SR",
   "noClaimBonus": 100,
   "receiptNo": "12345",
@@ -30,43 +30,43 @@ Content-Type: application/json
   
 }
 ###
-GET {{ABZPolicyWebApi_HostAddress}}/api/policy/
+GET {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI
 Accept: application/json
 ###
-PUT {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UT
+PUT {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI
 Content-Type: application/json
 {
-  "policyNo": "12345678UH",
+  "policyNo": "12345678UI",
   "prososalNo": "12345678SR",
-  "noClaimBonus": 200,
-  "receiptNo": "12345",
+  "noClaimBonus": 1000,
+  "receiptNo": "12347",
   "receiptDate": "2024-12-19T10:15:47.247Z",
   "paymentMode": "C",
-  "amount": 500
+  "amount": 600
   
 }
 ###
-DELETE {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UT
+DELETE {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UA
 Accept: application/json
 ###
 GET {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/
 Accept: application/json
 ###
-POST {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/Add2
+POST {{ABZPolicyWebApi_HostAddress}}/api/policyAddon
 Content-Type: application/json
 {
-  "addonID": "Add2",
-  "policyNo": "12345678UT",
+  "addonID": "Add3",
+  "policyNo": "12345678UI",
   "amount": 100
 }
 ###
-PUT {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UT/Add2
+PUT {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UI/Add3
 Content-Type: application/json
 {
-  "addonID": "Add2",
-  "policyNo": "12345678UT",
-  "amount": 300
+  "addonID": "Add3",
+  "policyNo": "12345678UI",
+  "amount": 600
 }
 ###
-DELETE {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UT/Add2
+DELETE {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/12345678UI/Add3
 Accept: application/json

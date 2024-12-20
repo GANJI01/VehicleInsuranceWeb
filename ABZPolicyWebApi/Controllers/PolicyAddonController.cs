@@ -16,24 +16,22 @@ namespace ABZPolicyWebApi.Controllers
             poliaddRepo = repo;
         }
         [HttpGet]
-        public async Task <ActionResult> GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            List<PolicyAddon> policyAddons=await poliaddRepo.GetAllPolicyAddonAsync();
+            List<PolicyAddon> policyAddons = await poliaddRepo.GetAllPolicyAddonAsync();
             return Ok(policyAddons);
         }
         [HttpGet("{policyNo}/{addonId}")]
-        public async Task<ActionResult> GetOne(string policyNo,string addonId)
+        public async Task<ActionResult> GetOne(string policyNo, string addonId)
         {
             try
             {
                 PolicyAddon policyAddon = await poliaddRepo.GetPolicyAddonAsync(policyNo, addonId);
                 return Ok(policyAddon);
-
-
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return NotFound(ex.Message);
             }
         }
         [HttpPost]
@@ -42,20 +40,20 @@ namespace ABZPolicyWebApi.Controllers
             try
             {
                 await poliaddRepo.InsertPolicyAddonAsync(policyAddon);
-                return Created($"api/PolicyAddon{policyAddon.PolicyNo}",policyAddon);
+                return Created($"api/PolicyAddon{policyAddon.PolicyNo}", policyAddon);
             }
             catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex.Message);
             }
         }
         [HttpPut("{policyNo}/{addonId}")]
-        public async Task <ActionResult> Update(string policyNo,string addonId,PolicyAddon policyAddon)
+        public async Task<ActionResult> Update(string policyNo, string addonId, PolicyAddon policyAddon)
         {
             try
             {
                 await poliaddRepo.UpdatePolicyAddonAsync(policyNo, addonId, policyAddon);
-                return Ok();
+                return Ok(policyAddon);
             }
             catch (Exception ex)
             {

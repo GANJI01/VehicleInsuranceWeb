@@ -45,7 +45,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZProposalWebApi", "ABZPro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZVehicleWebApi", "ABZVehicleWebApi\ABZVehicleWebApi.csproj", "{E7092FB8-3040-4C36-AAA9-83801F941C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZMVCApp", "ABZAgentMVCApp\ABZMVCApp.csproj", "{58B63B32-9095-4D64-8E24-CA2BDB74C05D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZInsuranceMVCAPP", "ABZAgentMVCApp\ABZInsuranceMVCAPP.csproj", "{58B63B32-9095-4D64-8E24-CA2BDB74C05D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -70,7 +70,7 @@ namespace ABZVehicleWebApi.Controllers
             {
                 await vehRepo.InsertVehicleAsync(vehicle);
                 HttpClient client = new HttpClient();
-                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {Vehicle=vehicle.RegNo});
+                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
                 return Created($"api/Vehicle/{vehicle.RegNo}",vehicle);
             }
             catch (Exception ex)

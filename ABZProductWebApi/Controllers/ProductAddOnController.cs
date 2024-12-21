@@ -24,7 +24,7 @@ namespace ABZProductWebApi.Controllers
         {
             try
             {
-                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addonId);
+                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addId);
                 return Ok(productAddon);
             }
             catch (Exception ex)

@@ -42,7 +42,7 @@ namespace ABZCustomerWebApi.Controllers
                 HttpClient client = new HttpClient();
                 HttpClient client2 = new HttpClient();
                 await client2.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { customerId = customer.CustomerID });
-                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { customerId = customer.CustomerID });
+                await client.PostAsJsonAsync("http\"claimNo\": \"CL9\",\r\n\"claimDate\": \"2024-12-19T09:59:53.448Z\",\r\n\"policyNo\": \"19\",\r\n\"incidentDate\": \"2024-12-19T09:59:53.448Z\",\r\n\"incidentLocation\": \"Banglore\",\r\n\"incidentDescription\": \"Descriptions\",\r\n\"claimAmount\": 10001,\r\n\"surveyorName\": \"SureshReddy\",\r\n\"surveyorPhone\": \"7894561320\",\r\n\"surveyDate\": \"2024-12-19T09:59:53.448Z\",\r\n\"surveyDescription\": \"Hii\",\r\n\"claimStatus\": \"A\"://localhost:5273/api/Proposal/Customer/", new { customerId = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }

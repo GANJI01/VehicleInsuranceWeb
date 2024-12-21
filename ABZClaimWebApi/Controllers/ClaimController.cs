@@ -87,20 +87,12 @@ namespace ABZClaimWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPost("Policy")]
         public async Task<ActionResult> Insert(Policy policy)
         {
-            try
-            {
-                await claimRepo.InsertPolicyAsync(policy);
-                // HttpClient client = new HttpClient();
-                //await client.PostAsJsonAsync("http://localhost:5189/api/Claim", new { PolicyNo = policy.PolicyNo });
-                return Created();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await claimRepo.InsertPolicyAsync(policy);
+            
+            return Created();
 
         }
     }

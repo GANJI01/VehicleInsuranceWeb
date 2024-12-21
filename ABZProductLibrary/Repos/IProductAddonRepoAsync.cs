@@ -10,10 +10,11 @@ namespace ABZProductLibrary.Repos
     public interface IProductAddonRepoAsync
     {
         Task InsertProductAddonAsync(ProductAddon productAddon);
+        Task UpdateProductAddonAsync(string productID, string addonId, ProductAddon productAddon);
         Task DeleteProductAddonAsync(string productID, string addonId);
         Task<List<ProductAddon>> GetAllProductAddonAsync();
         Task<ProductAddon> GetProductAddonAsync(string productId, string addonId);
-        Task UpdateProductAddonAsync(string productID, string addonId, ProductAddon productAddon);
+        
 
     }
 }

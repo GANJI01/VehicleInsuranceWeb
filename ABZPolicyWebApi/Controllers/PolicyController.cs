@@ -97,21 +97,11 @@ namespace ABZPolicyWebApi.Controllers
             }
         }
 
-             [HttpPost("proposal")]
-            public async Task<ActionResult> InsertProposalAsync(Proposal proposal)
-            {
-                try
-                {
-                    await policyRepo.InsertProposalAsync(proposal);
-                    //HttpClient client = new HttpClient();
-                    //await client.PostAsJsonAsync("http://localhost:5007/api/PolicyAddon/Policy", new {ProposalNo = proposal.ProposalNo});
-                    return Created();
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(ex.Message);
-                }
-
-            }
+        [HttpPost("Proposal")]
+        public async Task<ActionResult> InsertProposalAsync(Proposal proposal)
+        {
+            await policyRepo.InsertProposalAsync(proposal);
+            return Created();
+        }
     }
 }

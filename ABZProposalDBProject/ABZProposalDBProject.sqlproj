@@ -6,7 +6,7 @@
     <Name>ABZProposalDBProject</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{fd1bb71e-0545-4480-b344-4a77f80a8fa9}</ProjectGuid>
+    <ProjectGuid>{71554a16-ea37-4db2-b3bf-f37741090ecb}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -22,7 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <GenerateCreateScript>False</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -59,8 +58,8 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Proposal.sql" />
     <Build Include="Product.sql" />
+    <Build Include="Proposal.sql" />
     <Build Include="Vehicle.sql" />
     <Build Include="Customer.sql" />
     <Build Include="Agent.sql" />

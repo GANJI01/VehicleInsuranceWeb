@@ -1,1 +1,1 @@
-﻿EXEC sp_rename 'Proposal.ProposalID', 'ProposalNo', 'COLUMN';
+﻿CREATE DATABASE ABZProposalDB;

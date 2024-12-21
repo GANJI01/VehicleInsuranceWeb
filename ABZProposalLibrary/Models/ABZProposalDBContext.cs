@@ -33,7 +33,7 @@ public partial class ABZProposalDBContext : DbContext
     {
         modelBuilder.Entity<Agent>(entity =>
         {
-            entity.HasKey(e => e.AgentID).HasName("PK__Agent__9AC3BFD19698DB6B");
+            entity.HasKey(e => e.AgentID).HasName("PK_Agent_9AC3BFD19698DB6B");
 
             entity.ToTable("Agent");
 
@@ -45,7 +45,7 @@ public partial class ABZProposalDBContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.CustomerID).HasName("PK__Customer__A4AE64B8CB5C57BC");
+            entity.HasKey(e => e.CustomerID).HasName("PK_Customer_A4AE64B8CB5C57BC");
 
             entity.ToTable("Customer");
 
@@ -57,7 +57,7 @@ public partial class ABZProposalDBContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductID).HasName("PK__Product__B40CC6EDC39A7A3B");
+            entity.HasKey(e => e.ProductID).HasName("PK_Product_B40CC6EDC39A7A3B");
 
             entity.ToTable("Product");
 
@@ -69,7 +69,7 @@ public partial class ABZProposalDBContext : DbContext
 
         modelBuilder.Entity<Proposal>(entity =>
         {
-            entity.HasKey(e => e.ProposalNo).HasName("PK__Proposal__6F39E10019679DFD");
+            entity.HasKey(e => e.ProposalNo).HasName("PK_Proposal_6F39E10019679DFD");
 
             entity.ToTable("Proposal");
 
@@ -100,31 +100,31 @@ public partial class ABZProposalDBContext : DbContext
             entity.HasOne(d => d.Agent).WithMany(p => p.Proposals)
                 .HasForeignKey(d => d.AgentID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Proposal__AgentI__412EB0B6");
+                .HasConstraintName("FK_ProposalAgentI_412EB0B6");
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Proposals)
                 .HasForeignKey(d => d.CustomerID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Proposal__Custom__403A8C7D");
+                .HasConstraintName("FK_ProposalCustom_403A8C7D");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Proposals)
                 .HasForeignKey(d => d.ProductID)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Proposal__Produc__3F466844");
+                .HasConstraintName("FK_ProposalProduc_3F466844");
 
             entity.HasOne(d => d.RegNoNavigation).WithMany(p => p.Proposals)
                 .HasForeignKey(d => d.RegNo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Proposal__RegNo__3E52440B");
+                .HasConstraintName("FK_ProposalRegNo_3E52440B");
         });
 
         modelBuilder.Entity<Vehicle>(entity =>
         {
-            entity.HasKey(e => e.RegNO).HasName("PK__Vehicle__2C6FF1C8504E8C5B");
+            entity.HasKey(e => e.RegNo).HasName("PK_Vehicle_2C6FF1C8504E8C5B");
 
             entity.ToTable("Vehicle");
 
-            entity.Property(e => e.RegNO)
+            entity.Property(e => e.RegNo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();

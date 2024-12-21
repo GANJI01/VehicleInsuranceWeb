@@ -90,7 +90,7 @@ namespace ABZClaimWebApi.Controllers
         [HttpPost("Policy")]
         public async Task<ActionResult> InsertPolicy(Policy policy)
         {
-           
+            try { 
                 await claimRepo.InsertPolicyAsync(policy);
                 // HttpClient client = new HttpClient();
                 //await client.PostAsJsonAsync("http://localhost:5189/api/Claim", new { PolicyNo = policy.PolicyNo });

@@ -23,11 +23,11 @@ namespace ABZProductLibrary.Repos
             return productAddons;
         }
 
-        public async Task<ProductAddon> GetProductAddonAsync(string productId, string addonId)
+        public async Task<ProductAddon> GetProductAddonAsync(string productID, string addonId)
         {
             try
             {
-                ProductAddon productAddon = await (from proadd in ctx.ProductAddons where proadd.ProductID == productId && proadd.AddonID == addonId select proadd).FirstAsync();
+                ProductAddon productAddon = await (from proadd in ctx.ProductAddons where proadd.ProductID == productID && proadd.AddonID == addonId select proadd).FirstAsync();
                 return productAddon;
             }
             catch

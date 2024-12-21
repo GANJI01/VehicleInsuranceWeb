@@ -13,7 +13,7 @@ namespace ABZProductLibrary.Repos
         Task UpdateProductAddonAsync(string productID, string addonId, ProductAddon productAddon);
         Task DeleteProductAddonAsync(string productID, string addonId);
         Task<List<ProductAddon>> GetAllProductAddonAsync();
-        Task<ProductAddon> GetProductAddonAsync(string productId, string addonId);
+        Task<ProductAddon> GetProductAddonAsync(string productID, string addonId);
         
 
     }

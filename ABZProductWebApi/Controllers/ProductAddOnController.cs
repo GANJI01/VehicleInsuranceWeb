@@ -19,12 +19,12 @@
 //            List<ProductAddon> productAddons = await productaddRepo.GetAllProductAddonAsync();
 //            return Ok(productAddons);
 //        }
-//        [HttpGet("{productId}/{addonId}")]
-//        public async Task<ActionResult> Getone(string productId, string addonId)
+//        [HttpGet("{productID}/{addonId}")]
+//        public async Task<ActionResult> Getone(string productID, string addonId)
 //        {
 //            try
 //            {
-//                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addonId);
+//                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productID, addonId);
 //                return Ok(productAddon);
 //            }
 //            catch (Exception ex)
@@ -45,7 +45,7 @@
 //                return BadRequest(ex.Message);
 //            }
 //        }
-//        [HttpPut("{productId}/{addonId}}")]
+//        [HttpPut("{productID}/{addonId}")]
 //        //string productID, string addonId, ProductAddon productAddon
 //        public async Task<ActionResult> Update(string productID, string addonId, ProductAddon productAddon)
 //        {
@@ -59,7 +59,7 @@
 //                return BadRequest(ex.Message);
 //            }
 //        }
-//        [HttpDelete("{productId}/{addonId}")]
+//        [HttpDelete("{productID}/{addonId}")]
 //        public async Task<ActionResult> Delete(string productID, string addonId)
 //        {
 //            try

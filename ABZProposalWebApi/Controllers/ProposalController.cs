@@ -20,7 +20,7 @@ namespace ABZProposalWebApi.Controllers
             List<Proposal> proposals = await proRepo.GetAllProposalsAsync();
             return Ok(proposals);
         }
-        [HttpGet("{proposalId}")]
+        [HttpGet("{proposalNo}")]
         public async Task<ActionResult> GetOne(string proposalNo)
         {
             try
@@ -66,14 +66,39 @@ namespace ABZProposalWebApi.Controllers
             {
                 await proRepo.InsertProposalAsync(proposal);
                 HttpClient client = new HttpClient();
-                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new {proposal= proposal.ProposalNo });
-                return Created($"api/Proposal/{proposal.ProposalNo}",proposal);
+                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+                return Created($"api/Proposal/{proposal.ProposalNo}", proposal);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("Agent")]
+        public async Task<ActionResult> InsertAgentAsync(Agent agent)
+        {
+            await proRepo.InsertAgentAsync(agent);
+            return Created();
+        }
+        [HttpPost("Customer")]
+        public async Task<ActionResult> InsertCustomerAsync(Customer customer)
+        {
+            await proRepo.InsertCustomerAsync(customer);
+            return Created();
+        }
+        [HttpPost("Product")]
+        public async Task<ActionResult> InsertProductAsync(Product product)
+        {
+            await proRepo.InsertProposalAsync(product);
+            return Created();
+        }
+        [HttpPost("Vehicle")]
+        public async Task<ActionResult> InsertVehicleAsync(Vehicle vehicle)
+        {
+            await proRepo.InsertVehicleAsync(vehicle);
+            return Created();
+        }
+
         [HttpGet("ByVehicle{regNo}")]
         public async Task<ActionResult> GetByVehicle(string regNo)
         {
@@ -124,45 +149,6 @@ namespace ABZProposalWebApi.Controllers
             catch (Exception ex)
             {
                 return NotFound(ex.Message);
-            }
-        }
-        [HttpPost("Customer")]
-        public async Task<ActionResult> InsertCustomer(Customer customer)
-        {
-            try
-            {
-                await proRepo.InsertCustomerAsync(customer);
-                return Created();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-        [HttpPost("Agent")]
-        public async Task<ActionResult> InsertAgent(Agent agent)
-        {
-            try
-            {
-                await proRepo.InsertAgentAsync(agent);
-                return Created();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-        [HttpPost("Vehicle")]
-        public async Task<ActionResult> InsertVehicle(Vehicle vehicle)
-        {
-            try
-            {
-                await proRepo.InsertVehicleAsync(vehicle);
-                return Created();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
             }
         }
     }

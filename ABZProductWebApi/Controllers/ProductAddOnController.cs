@@ -19,8 +19,8 @@ namespace ABZProductWebApi.Controllers
             List<ProductAddon> productAddons = await productaddRepo.GetAllProductAddonAsync();
             return Ok(productAddons);
         }
-        [HttpGet("{productId}/{addId}")]
-        public async Task<ActionResult> Getone(string productId, string addId)
+        [HttpGet("{productId}/{addonId}")]
+        public async Task<ActionResult> Getone(string productId, string addonId)
         {
             try
             {

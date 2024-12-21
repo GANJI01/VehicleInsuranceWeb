@@ -59,7 +59,11 @@ namespace ABZPolicyLibrary.Repos
             await ctx.SaveChangesAsync();
         }
 
-        
+        //public async Task InsertPolicyAsync(Policy policy)
+        //{
+        //    await ctx.Policies.AddAsync(policy);
+        //    await ctx.SaveChangesAsync();
+        //}
 
         public async Task UpdatePolicyAddonAsync(string policyNo, string addonId, PolicyAddon policyAddon)
         {

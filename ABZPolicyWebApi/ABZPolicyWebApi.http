@@ -46,7 +46,7 @@ Content-Type: application/json
   
 }
 ###
-DELETE {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UA
+DELETE {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678ZX
 Accept: application/json
 ###
 GET {{ABZPolicyWebApi_HostAddress}}/api/policyAddon/

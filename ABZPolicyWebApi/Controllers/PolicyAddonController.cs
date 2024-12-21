@@ -93,9 +93,9 @@ namespace ABZPolicyWebApi.Controllers
         //    try
         //    {
         //        await poliaddRepo.InsertPolicyAsync(policy);
-        //        HttpClient client = new HttpClient();
-        //        await client.PostAsJsonAsync("",new  { PolicyNo=policy.PolicyNo });
-        //        return Created($"api/Policy{policy.PolicyNo}",policy);
+        //        //HttpClient client = new HttpClient();
+        //        //await client.PostAsJsonAsync("",new  { PolicyNo=policy.PolicyNo });
+        //        return Created();
         //    }
         //    catch (Exception ex)
         //    {

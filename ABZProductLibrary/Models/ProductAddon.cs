@@ -13,5 +13,5 @@ public partial class ProductAddon
 
     public string AddonDescription { get; set; } = null!;
 
-    public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; } = null!;
 }

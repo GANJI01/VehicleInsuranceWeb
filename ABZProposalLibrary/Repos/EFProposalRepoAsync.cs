@@ -80,17 +80,12 @@ namespace ABZProposalLibrary.RepoAsync
             await ctx.Vehicles.AddAsync(vehicle);
             await ctx.SaveChangesAsync();
         }
-
         public async Task UpdateProposalAsync(string proposalNo, Proposal updatedProposal)
         {
             Proposal existingProposal = await GetProposalByIdAsync(proposalNo);
-            existingProposal.RegNo = updatedProposal.RegNo;
-            existingProposal.ProductID = updatedProposal.ProductID;
-            existingProposal.CustomerID = updatedProposal.CustomerID;
             existingProposal.FromDate = updatedProposal.FromDate;
             existingProposal.ToDate = updatedProposal.ToDate;
             existingProposal.IDV = updatedProposal.IDV;
-            existingProposal.AgentID = updatedProposal.AgentID;
             existingProposal.BasicAmount = updatedProposal.BasicAmount;
             existingProposal.TotalAmount = updatedProposal.TotalAmount;
             await ctx.SaveChangesAsync();

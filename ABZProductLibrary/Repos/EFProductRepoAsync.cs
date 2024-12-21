@@ -52,7 +52,7 @@ namespace ABZProductLibrary.Repos
             product1.ProductDescription = product.ProductDescription;
             product1.InsuredInterests = product.InsuredInterests;
             product1.PolicyCoverage = product.PolicyCoverage;
-            ctx.SaveChangesAsync();
+            await ctx.SaveChangesAsync();
         }
     }
 }

@@ -7,7 +7,7 @@ Accept: application/json
 POST {{ABZVehicleWebApi_HostAddress}}/api/Vehicle
 Content-Type:application/json
 {
-  "regNo": "string",
+  "regNo": "R101",
   "regAuthority": "string",
   "make": "string",
   "model": "string",
@@ -21,11 +21,11 @@ Content-Type:application/json
   "regDate": "2024-12-19T09:58:15.438Z",
   "bodyType": "string",
   "leasedBy": "string",
-  "ownerId": "C1234"
+  "ownerId": "C0295"
 }
 ###
 
-GET {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/string
+GET {{ABZVehicleWebApi_HostAddress}}/api/Vehicle
 Accept: application/json
 ###
 PUT {{ABZVehicleWebApi_HostAddress}}/api/Vehicle/string

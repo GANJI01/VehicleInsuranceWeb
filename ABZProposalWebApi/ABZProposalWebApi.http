@@ -9,14 +9,14 @@ Accept: application/json
 POST {{ABZProposalWebApi_HostAddress}}/api/Proposal
 Content-Type:application/json
 {
-  "proposalID": "string1",
+  "proposalNo": "string1",
   "regNo": "V1234",
   "productID": "P1234",
   "customerID": "C1234",
   "fromDate": "2024-12-19",
   "toDate": "2024-12-19",
-  "idv": 0,
+  "idv": 100,
   "agentID": "A1234",
-  "basicAmount": 0,
-  "totalAmount": 0
+  "basicAmount": 10,
+  "totalAmount": 20
 }

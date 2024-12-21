@@ -1,32 +1,34 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ABZProductLibrary.Models;
+﻿using ABZProductLibrary.Models;
 using ABZProductLibrary.Repos;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ABZProductWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProductController : ControllerBase
     {
-        IProductRepoAsync productRepo;
+        IProductRepoAsync proRepo;
         public ProductController(IProductRepoAsync repo)
         {
-            productRepo = repo;
+            proRepo = repo;
         }
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            List<Product> products = await productRepo.GetAllProductsAsync();
+            List<Product> products = await proRepo.GetAllProductsAsync();
             return Ok(products);
         }
-        [HttpGet("{productId}")]
-        public async Task<ActionResult> GetOne(string productId)
+        [HttpGet("{productID}")]
+        public async Task<ActionResult> GetOne(string productID)
         {
             try
             {
-                Product product = await productRepo.GetProductAsync(productId);
+                Product product = await proRepo.GetProductAsync(productID);
                 return Ok(product);
+
             }
             catch (Exception ex)
             {
@@ -38,34 +40,42 @@ namespace ABZProductWebApi.Controllers
         {
             try
             {
-                await productRepo.InsertProductAsync(product);
+                await proRepo.InsertProductAsync(product);
+                HttpClient client = new HttpClient();
+                //  await client.PostAsJsonAsync("http://localhost:5189/api/Claim/Policy", new { ProductID = product.ProductID });
+                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Product/", new { ProductID = product.ProductID });
+
                 return Created($"api/Product/{product.ProductID}", product);
+
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                {
+                    return BadRequest(ex.Message);
+                }
             }
 
         }
-        [HttpPut("{productId}")]
-        public async Task<ActionResult> Update(string productId, Product product)
+        [HttpPut("{productID}")]
+        public async Task<ActionResult> Update(string productID, Product product)
         {
             try
             {
-                await productRepo.UpdateProductAsync(productId, product);
-                return Ok(product);
+                await proRepo.UpdateProductAsync(productID, product);
+                return Ok();
+
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{productId}")]
-        public async Task<ActionResult> Delete(string productId)
+        [HttpDelete("{productID}")]
+        public async Task<ActionResult> Delete(string productID)
         {
             try
             {
-                await productRepo.DeleteProductAsync(productId);
+                await proRepo.DeleteProductAsync(productID);
                 return Ok();
             }
             catch (Exception ex)
@@ -73,5 +83,6 @@ namespace ABZProductWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }

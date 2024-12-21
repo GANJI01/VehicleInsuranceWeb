@@ -48,12 +48,9 @@ namespace ABZPolicyWebApi.Controllers
             }
             catch (Exception ex)
             {
-                {
                     return BadRequest(ex.Message);
-                }
             }
         }
-
         [HttpPut("{policyNo}")]
         public async Task<ActionResult> Update(string policyNo, Policy policy)
         {
@@ -96,7 +93,6 @@ namespace ABZPolicyWebApi.Controllers
 
             }
         }
-
         [HttpPost("Proposal")]
         public async Task<ActionResult> InsertProposalAsync(Proposal proposal)
         {
@@ -105,3 +101,4 @@ namespace ABZPolicyWebApi.Controllers
         }
     }
 }
+

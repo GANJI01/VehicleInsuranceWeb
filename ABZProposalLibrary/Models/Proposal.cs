@@ -13,9 +13,9 @@ public partial class Proposal
 
     public string CustomerID { get; set; } = null!;
 
-    public DateOnly FromDate { get; set; }
+    public DateTime FromDate { get; set; }
 
-    public DateOnly ToDate { get; set; }
+    public DateTime ToDate { get; set; }
 
     public decimal IDV { get; set; }
 

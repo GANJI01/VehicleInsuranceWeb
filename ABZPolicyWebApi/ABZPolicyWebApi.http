@@ -21,7 +21,7 @@ POST {{ABZPolicyWebApi_HostAddress}}/api/policy/
 Content-Type: application/json
 {
   "policyNo": "12345678CD",
-  "proposalNo": "12345678AB",
+  "proposalNo": "Z123456789",
   "noClaimBonus": 100,
   "receiptNo": "12345",
   "receiptDate": "2024-12-19T10:15:47.247Z",
@@ -30,7 +30,7 @@ Content-Type: application/json
   
 }
 ###
-GET {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI
+GET {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678CD
 Accept: application/json
 ###
 PUT {{ABZPolicyWebApi_HostAddress}}/api/policy/12345678UI

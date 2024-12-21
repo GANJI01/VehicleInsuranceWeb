@@ -26,7 +26,7 @@ namespace ABZProposalWebApi.Controllers
             try
             {
                 Proposal prop = await proRepo.GetProposalByIdAsync(proposalNo);
-                return Ok();
+                return Ok(prop);
             }
             catch (Exception ex)
             {

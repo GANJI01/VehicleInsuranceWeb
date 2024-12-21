@@ -19,12 +19,12 @@ namespace ABZProductWebApi.Controllers
             List<ProductAddon> productAddons = await productaddRepo.GetAllProductAddonAsync();
             return Ok(productAddons);
         }
-        [HttpGet("{productId}/{addId}")]
-        public async Task<ActionResult> Getone(string productId, string addId)
+        [HttpGet("{productId}/{addonId}")]
+        public async Task<ActionResult> Getone(string productId, string addonId)
         {
             try
             {
-                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addId);
+                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addonId);
                 return Ok(productAddon);
             }
             catch (Exception ex)
@@ -45,7 +45,7 @@ namespace ABZProductWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("{productId}/{addonId}/{productAddon}")]
+        [HttpPut("{productId}/{addonId}")]
         //string productID, string addonId, ProductAddon productAddon
         public async Task<ActionResult> Update(string productID, string addonId, ProductAddon productAddon)
         {

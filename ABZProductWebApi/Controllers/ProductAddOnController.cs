@@ -24,7 +24,7 @@ namespace ABZProductWebApi.Controllers
         {
             try
             {
-                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addId);
+                ProductAddon productAddon = await productaddRepo.GetProductAddonAsync(productId, addonId);
                 return Ok(productAddon);
             }
             catch (Exception ex)
@@ -46,7 +46,6 @@ namespace ABZProductWebApi.Controllers
             }
         }
         [HttpPut("{productId}/{addonId}/{productAddon}")]
-        //string productID, string addonId, ProductAddon productAddon
         public async Task<ActionResult> Update(string productID, string addonId, ProductAddon productAddon)
         {
             try

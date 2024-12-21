@@ -80,7 +80,7 @@ namespace ABZProposalLibrary.RepoAsync
             await ctx.SaveChangesAsync();
         }
 
-        public async Task UpdateProposalAsync(string proposalId, Proposal updatedProposal)
+        public async Task UpdateProposalAsync(string proposalNo, Proposal updatedProposal)
         {
             Proposal existingProposal = await GetProposalByIdAsync(proposalNo);
             existingProposal.RegNo = updatedProposal.RegNo;

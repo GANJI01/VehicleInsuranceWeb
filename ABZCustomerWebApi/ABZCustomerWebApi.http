@@ -7,24 +7,24 @@ Accept: application/json
 POST {{ABZCustomerWebApi_HostAddress}}/api/Customer
 Content-Type:application/json
 {
-  "customerID": "C102",
-  "customerName": "Chandana",
-  "customerPhone": "0000000000",
-  "customerEmail": "chandana@gmail.com",
-  "customerAddress": "Andhra"
+  "customerID": "C104",
+  "customerName": "Swati",
+  "customerPhone": "124567806",
+  "customerEmail": "swathi@gmail.com",
+  "customerAddress": "Tela"
 }
 ###
-GET {{ABZCustomerWebApi_HostAddress}}/api/Customer/C101
+GET {{ABZCustomerWebApi_HostAddress}}/api/Customer/C102
 Accept: application/json
 ###
 DELETE {{ABZCustomerWebApi_HostAddress}}/api/Customer/C102
 Accept: application/json
 ###
-PUT {{ABZCustomerWebApi_HostAddress}}/api/Customer/C101
+PUT {{ABZCustomerWebApi_HostAddress}}/api/Customer/C103
 Content-Type:application/json
 {
   "customerID": "C101",
-  "customerName": "Chandana",
+  "customerName": "Hana",
   "customerPhone": "1234567890",
   "customerEmail": "praveen@gmail.com",
   "customerAddress": "Andhra"

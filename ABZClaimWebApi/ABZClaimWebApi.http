@@ -8,18 +8,19 @@ Accept: application/json
 POST {{ABZClaimWebApi_HostAddress}}/api/Claim/bce
 Content-Type:application/json
 {
-  "claimNo": "CL4",
-  "claimDate": "2024-12-19T09:59:53.448Z",
-  "policyNo": "13",
-  "incidentDate": "2024-12-19T09:59:53.448Z",
-  "incidentLocation": "Bang",
-  "incidentDescription": "Descriptions",
-  "claimAmount": 10000,
-  "surveyorName": "Suresh",
-  "surveyorPhone": "789456123",
-  "surveyDate": "2024-12-19T09:59:53.448Z",
-  "surveyDescription": "Hi",
-  "claimStatus": "S"
+  "claimNo": "CL6",
+    "claimDate": "2024-12-19T09:59:53.447",
+    "policyNo": "20",
+    "incidentDate": "2024-12-19T09:30:24.367",
+    "incidentLocation": "Hyderabad",
+    "incidentDescription": "Description",
+    "claimAmount": 15000,
+    "surveyorName": "Raju",
+    "surveyorPhone": "2234567890",
+    "surveyDate": "2024-12-19T09:30:24.367",
+    "surveyDescription": "Hey",
+    "claimStatus": "S",
+    "policyNoNavigation": null
 
 }
 

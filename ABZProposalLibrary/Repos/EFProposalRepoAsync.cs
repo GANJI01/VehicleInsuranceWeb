@@ -68,6 +68,12 @@ namespace ABZProposalLibrary.RepoAsync
             await ctx.SaveChangesAsync();
         }
 
+        public async Task InsertProductAsync(Product product)
+        {
+            await ctx.Products.AddAsync(product);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertProposalAsync(Proposal proposal)
         {
             await ctx.Proposals.AddAsync(proposal);

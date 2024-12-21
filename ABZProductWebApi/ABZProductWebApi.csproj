@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\ABZProductDBProject\ABZProductDBProject.sqlproj" />
+    <ProjectReference Include="..\ABZProductLibrary\ABZProductLibrary.csproj" />
   </ItemGroup>
 
 </Project>

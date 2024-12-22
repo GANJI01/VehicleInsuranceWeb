@@ -74,6 +74,20 @@ namespace ABZProductWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("ByProduct/{productID}")]
+        public async Task<ActionResult> GetProductAddonByProduct(string productID)
+        {
+            try
+            {
+                ProductAddon productAddon = await productaddRepo.GetProductAddonByProduct(productID);
+                return Ok(productAddon);
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
     }
 

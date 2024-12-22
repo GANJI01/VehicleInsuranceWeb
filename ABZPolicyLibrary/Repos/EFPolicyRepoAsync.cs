@@ -53,7 +53,7 @@ namespace ABZPolicyLibrary.Repos
 
         }
 
-        public async Task<List<Policy>> GetPolicyByProposalAsync(string proposalNo)
+        public async Task<List<Policy>> GetPoliciesByProposalAsync(string proposalNo)
         {
             List<Policy> policies = await(from p in ctx.Policies where p.ProposalNo==proposalNo select p).ToListAsync();
             if (policies.Count == 0)

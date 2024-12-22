@@ -41,8 +41,10 @@ namespace ABZCustomerWebApi.Controllers
                 await custRepo.InsertCustomerAsync(customer);
                 HttpClient client = new HttpClient();
                 HttpClient client2 = new HttpClient();
-                await client2.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { customerId = customer.CustomerID });
-                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { customerId = customer.CustomerID });
+                //await client2.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { customerId = customer.CustomerID });
+                //await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { customerId = customer.CustomerID });
+                await client2.PostAsJsonAsync("http://abzvehiclewebapi.azurewebsites.net/api/vehicleCustomer", new { customerId = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzproposalwebapi.azurewebsites.net/api/Proposal/Customer", new { customerId = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }

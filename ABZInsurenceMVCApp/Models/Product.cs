@@ -13,7 +13,5 @@
         public string InsuredInterests { get; set; } = null!;
 
         public string PolicyCoverage { get; set; } = null!;
-
-        public virtual ICollection<ProductAddOn> ProductAddons { get; set; } = new List<ProductAddOn>();
     }
 }

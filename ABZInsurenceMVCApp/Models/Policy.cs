@@ -16,7 +16,6 @@
 
         public decimal? Amount { get; set; }
 
-        public virtual ICollection<PolicyAddOn> PolicyAddons { get; set; } = new List<PolicyAddOn>();
 
         public virtual Proposal? PrososalNoNavigation { get; set; }
     }

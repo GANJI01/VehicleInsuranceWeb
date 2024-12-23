@@ -10,7 +10,7 @@ namespace ABZInsurenceMVCApp.Controllers
     public class ClaimController : Controller
     {
         // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net\r\n") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
         // GET: ClaimController
         public async Task<ActionResult> Index()
         {
@@ -97,6 +97,7 @@ namespace ABZInsurenceMVCApp.Controllers
                 return View();
             }
         }
+        [HttpGet("Policy")]
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);

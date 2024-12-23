@@ -18,6 +18,6 @@
 
         public string ClaimStatus { get; set; } = null!;
 
-        public virtual Policy? PolicyNoNavigation { get; set; } = null!;
+       
     }
 }

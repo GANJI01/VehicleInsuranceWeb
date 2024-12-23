@@ -8,7 +8,7 @@ namespace ABZInsurenceMVCApp.Controllers
 {
     public class PolicyController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzploicywebapi.azurewebsites.net/api/Policy/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
         // GET: PolicyController
         public async Task<ActionResult> Index()
         {
@@ -94,6 +94,12 @@ namespace ABZInsurenceMVCApp.Controllers
             {
                 return View();
             }
+        }
+        
+        public async Task<ActionResult> ByProposal(string proposalId)
+        {
+            List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("ByProposal/"+proposalId);
+            return View(policies);
         }
 
     }

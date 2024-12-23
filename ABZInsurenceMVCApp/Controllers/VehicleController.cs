@@ -1,36 +1,42 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ABZInsurenceMVCApp.Models;
+using System.Runtime.InteropServices;
 
 namespace ABZInsurenceMVCApp.Controllers
 {
     public class VehicleController : Controller
     {
-        
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5083/api/Vehicle/") };
         // GET: VehicleController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
+            return View(vehicles);
         }
 
         // GET: VehicleController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(string regNo)
         {
-            return View();
+            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
+            return View(vehicle);
         }
 
         // GET: VehicleController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            Vehicle vehicle = new Vehicle();
+            return View(vehicle);
         }
 
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Vehicle vehicle)
         {
             try
             {
+                await client.PostAsJsonAsync<Vehicle>("", vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -40,18 +46,22 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: VehicleController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("Vehicle/Edit/{regNo}")]
+        public async Task<ActionResult> Edit(string regNo)
         {
-            return View();
+            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
+            return View(vehicle);
         }
 
         // POST: VehicleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("Vehicle/Edit/{regNo}")]
+        public async Task<ActionResult> Edit(string regNo, Vehicle vehicle)
         {
             try
             {
+                await client.PutAsJsonAsync<Vehicle>("", vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -61,18 +71,23 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: VehicleController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("Vehicle/Delete/{regNo}")]
+        public async Task<ActionResult> Delete(string regNo)
         {
-            return View();
+            Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
+            return View(vehicle);
+
         }
 
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("Vehicle/Delete/{regNo}")]
+        public async Task<ActionResult> Delete(string regNo, IFormCollection collection)
         {
             try
             {
+                await client.DeleteAsync("" + regNo);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,5 +95,12 @@ namespace ABZInsurenceMVCApp.Controllers
                 return View();
             }
         }
+        
+        public async Task<ActionResult> ByCustomer(string customerId)
+        {
+            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByCustomer/"+customerId);
+            return View(vehicles);
+        }
+        
     }
 }

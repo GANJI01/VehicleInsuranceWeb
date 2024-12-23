@@ -85,7 +85,7 @@ namespace ABZPolicyWebApi.Controllers
         {
             try
             {
-                List<Policy> polycies = await policyRepo.GetPolicyByProposalAsync(proposalNo);
+                List<Policy> polycies = await policyRepo.GetPoliciesByProposalAsync(proposalNo);
                 return Ok(polycies);
             }
             catch (Exception ex)

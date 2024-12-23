@@ -26,7 +26,7 @@ namespace ABZInsurenceMVCApp.Controllers
         public async Task<ActionResult> Create()
         {
             PolicyAddon policyAddon=new PolicyAddon();
-            return View();
+            return View(policyAddon);
         }
 
         // POST: PolicyAddonController/Create
@@ -46,6 +46,7 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: PolicyAddonController/Edit/5
+        [Route("PolicyAddon/Edit/{policyNo}")]
         public async Task<ActionResult> Edit(string policyNo,string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
@@ -55,11 +56,12 @@ namespace ABZInsurenceMVCApp.Controllers
         // POST: PolicyAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
         public async Task<ActionResult> Edit(string policyNo, string addonId,PolicyAddon policyAddon)
         {
             try
             {
-                await client.PutAsJsonAsync<PolicyAddon>("", policyAddon);    
+                await client.PutAsJsonAsync<PolicyAddon>(""+policyNo+addonId, policyAddon);    
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -69,6 +71,7 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: PolicyAddonController/Delete/5
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
         public async Task<ActionResult> Delete(string policyNo,string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
@@ -78,6 +81,7 @@ namespace ABZInsurenceMVCApp.Controllers
         // POST: PolicyAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
         public async Task<ActionResult> Delete(string policyNo,string addonId, IFormCollection collection)
         {
             try
@@ -93,7 +97,7 @@ namespace ABZInsurenceMVCApp.Controllers
         
         public async Task<ActionResult> ByPolicy(string proposalId)
         {
-            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPlicy/"+proposalId);
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPolicy/"+proposalId);
             return View(policyAddons);
         }
     }

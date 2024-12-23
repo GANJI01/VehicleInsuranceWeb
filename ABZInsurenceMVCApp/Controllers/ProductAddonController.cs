@@ -3,28 +3,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ABZInsurenceMVCApp.Controllers
 {
-    public class VehicleController : Controller
+    public class ProductAddonController : Controller
     {
-        
-        // GET: VehicleController
+        // GET: ProductAddonController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: VehicleController/Details/5
+        // GET: ProductAddonController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: VehicleController/Create
+        // GET: ProductAddonController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: VehicleController/Create
+        // POST: ProductAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -39,13 +38,13 @@ namespace ABZInsurenceMVCApp.Controllers
             }
         }
 
-        // GET: VehicleController/Edit/5
+        // GET: ProductAddonController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: VehicleController/Edit/5
+        // POST: ProductAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -60,13 +59,13 @@ namespace ABZInsurenceMVCApp.Controllers
             }
         }
 
-        // GET: VehicleController/Delete/5
+        // GET: ProductAddonController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: VehicleController/Delete/5
+        // POST: ProductAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

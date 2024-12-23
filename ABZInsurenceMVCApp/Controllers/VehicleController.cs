@@ -95,7 +95,7 @@ namespace ABZInsurenceMVCApp.Controllers
                 return View();
             }
         }
-        
+       // [HttpGet("ByCustomer/{customerId}")]
         public async Task<ActionResult> ByCustomer(string customerId)
         {
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByCustomer/"+customerId);

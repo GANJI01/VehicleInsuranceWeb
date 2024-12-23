@@ -109,9 +109,10 @@
                 @Html.DisplayFor(modelItem => item.OwnerId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { regNo=item.RegNo }) |
+                    @Html.ActionLink("Details", "Details", new { regNo = item.RegNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { regNo = item.RegNo })|
+                    
             </td>
         </tr>
 }

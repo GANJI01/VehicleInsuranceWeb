@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ABZInsurenceMVCApp.Models.Policy>
+
+@{
+    ViewData["Title"] = "ByProposal";
+}
+
+<h1>ByProposal</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoClaimBonus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiptNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiptDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoClaimBonus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ABZInsurenceMVCApp.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "ByCustomer";
+}
+
+<h1>ByCustomer</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegAuthority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuelType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Variant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChassisNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EngineCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatingCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MfgYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeasedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegAuthority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Variant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChassisNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatingCapacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MfgYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeasedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

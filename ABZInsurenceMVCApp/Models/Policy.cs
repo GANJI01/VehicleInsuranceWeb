@@ -16,7 +16,8 @@
 
         public decimal? Amount { get; set; }
 
+        
 
-        public virtual Proposal? PrososalNoNavigation { get; set; }
+       // public virtual Proposal? PrososalNoNavigation { get; set; }
     }
 }

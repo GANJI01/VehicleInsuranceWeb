@@ -41,8 +41,8 @@ namespace ABZAgentWebApi.Controllers
             {
                 await agentRepo.InsertAgentAsync(agent);
                 HttpClient client = new HttpClient();
-                //  await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Agent", new { AgentId = agent.AgentID });
-                await client.PostAsJsonAsync("http://abzproposalwebapi.azurewebsites.net/api/Proposal/Agent", new { AgentId = agent.AgentID });
+                 await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Agent", new { AgentId = agent.AgentID });
+               // await client.PostAsJsonAsync("http://abzproposalwebapi.azurewebsites.net/api/Proposal/Agent", new { AgentID = agent.AgentID });
                 return Created($"api/Agent{agent.AgentID}",agent);
             }
             catch (Exception ex)

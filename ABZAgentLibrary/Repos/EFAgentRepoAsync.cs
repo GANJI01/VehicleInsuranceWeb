@@ -27,7 +27,7 @@ namespace ABZAgentLibrary.Repos
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("No such Id exist");
             }
         }
         public async Task<List<Agent>> GetAllAgentsAsync()

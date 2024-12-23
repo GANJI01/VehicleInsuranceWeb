@@ -1,35 +1,43 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ABZInsurenceMVCApp.Controllers;
+using ABZInsurenceMVCApp.Models;
+using System.Runtime.InteropServices;
 
 namespace ABZInsurenceMVCApp.Controllers
 {
     public class ProductAddonController : Controller
     {
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145") };
         // GET: ProductAddonController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<ProductAddon> productAddon = await client.GetFromJsonAsync<List<ProductAddon>>("");
+            return View(productAddon);
         }
 
         // GET: ProductAddonController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(string productID, string addonId)
         {
-            return View();
+            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>("" + productID + addonId);
+            return View(productAddon);
         }
 
         // GET: ProductAddonController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            ProductAddon productAddon = new ProductAddon();
+            return View(productAddon);
         }
 
         // POST: ProductAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(ProductAddon productAddon)
         {
             try
             {
+                await client.PostAsJsonAsync<ProductAddon>("", productAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -39,18 +47,22 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: ProductAddonController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("ProductAddon/Edit/{productID}")]
+        public async Task<ActionResult> Edit(string productID, string addonId)
         {
-            return View();
+            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>("" + productID + addonId);
+            return View(productAddon);
         }
 
         // POST: ProductAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("ProductAddon/Edit/{productID}/{addonId}")]
+        public async Task<ActionResult> Edit(string productID, string addonId, ProductAddon productAddon)
         {
             try
             {
+                await client.PutAsJsonAsync<ProductAddon>("" + productID + addonId, productAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -60,24 +72,34 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: ProductAddonController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("ProductAddon/Delete/{productID}/{addonId}")]
+        public async Task<ActionResult> Delete(string productID, string addonId)
         {
-            return View();
+            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>("" + productID + addonId);
+            return View(productAddon);
         }
 
         // POST: ProductAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("ProductAddon/Delete/{productID}/{addonId}")]
+        public async Task<ActionResult> Delete(string productID, string addonId, IFormCollection collection)
         {
             try
             {
+                await client.DeleteAsync("" + productID + addonId);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+ 
+        public async Task<ActionResult> ByProduct(string productID)
+        {
+            List<ProductAddon> productAddons = await client.GetFromJsonAsync<List<ProductAddon>>("ByProduct/" + productID);
+            return View(productAddons);
         }
     }
 }

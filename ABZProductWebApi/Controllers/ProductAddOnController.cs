@@ -75,11 +75,11 @@ namespace ABZProductWebApi.Controllers
             }
         }
         [HttpGet("ByProduct/{productID}")]
-        public async Task<ActionResult> GetProductAddonByProduct(string productID)
+        public async Task<ActionResult> GetByProduct(string productID)
         {
             try
             {
-                ProductAddon productAddon = await productaddRepo.GetProductAddonByProduct(productID);
+                List<ProductAddon> productAddon = await productaddRepo.GetProductAddonByProductAsync(productID);
                 return Ok(productAddon);
 
             }

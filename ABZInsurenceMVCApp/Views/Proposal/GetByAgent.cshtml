@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ABZInsurenceMVCApp.Models.Proposal>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetByAgent";
 }
 
-<h1>Index</h1>
+<h1>GetByAgent</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -78,12 +76,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit", new { proposalID = item.ProposalNo }) |
-                    @Html.ActionLink("Details", "Details", new { proposalID = item.ProposalNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { proposalID = item.ProposalNo })
-            </td>
+           
         </tr>
 }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

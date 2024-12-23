@@ -10,7 +10,7 @@ namespace ABZInsurenceMVCApp.Controllers
     public class ClaimController : Controller
     {
         // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net\r\n") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net/api/Claim/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189") };
         // GET: ClaimController
         public async Task<ActionResult> Index()
         {

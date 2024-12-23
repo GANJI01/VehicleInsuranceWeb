@@ -5,6 +5,7 @@ namespace ABZInsurenceMVCApp.Controllers
 {
     public class VehicleController : Controller
     {
+        
         // GET: VehicleController
         public ActionResult Index()
         {

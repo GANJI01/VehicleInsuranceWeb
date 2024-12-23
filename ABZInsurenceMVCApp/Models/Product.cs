@@ -14,6 +14,6 @@
 
         public string PolicyCoverage { get; set; } = null!;
 
-        public virtual ICollection<ProductAddon> ProductAddons { get; set; } = new List<ProductAddon>();
+        public virtual ICollection<ProductAddOn> ProductAddons { get; set; } = new List<ProductAddOn>();
     }
 }

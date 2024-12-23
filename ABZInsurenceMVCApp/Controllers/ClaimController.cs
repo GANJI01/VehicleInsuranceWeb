@@ -1,35 +1,45 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ABZInsurenceMVCApp.Controllers;
+using ABZInsurenceMVCApp.Models;
+using System.Runtime.InteropServices;
+
 
 namespace ABZInsurenceMVCApp.Controllers
 {
     public class ClaimController : Controller
     {
+        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net\r\n") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net/api/Claim/") };
         // GET: ClaimController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
+            return View(claims);
         }
 
         // GET: ClaimController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(string claimNo)
         {
-            return View();
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
+            return View(claim);
         }
 
         // GET: ClaimController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            Claim claim = new Claim();
+            return View(claim);
         }
 
         // POST: ClaimController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Claim claim)
         {
             try
             {
+                await client.PostAsJsonAsync<Claim>("", claim);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -39,18 +49,22 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: ClaimController/Edit/5
-        public ActionResult Edit(int id)
+        [Route("Claim/Edit/{claimNo}")]
+        public async Task<ActionResult> Edit(string claimNo)
         {
-            return View();
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
+            return View(claim);
         }
 
         // POST: ClaimController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("Claim/Edit/{claimNo}")]
+        public async Task<ActionResult> Edit(string claimNo, Claim claim)
         {
             try
             {
+                await client.PutAsJsonAsync<Claim>("" + claimNo, claim);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -60,24 +74,33 @@ namespace ABZInsurenceMVCApp.Controllers
         }
 
         // GET: ClaimController/Delete/5
-        public ActionResult Delete(int id)
+        [Route("Claim/Delete/{id}")]
+        public async Task<ActionResult> Delete(string claimNo)
         {
-            return View();
+            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
+            return View(claim);
         }
 
         // POST: ClaimController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("Claim/Delete/{claimNo}")]
+        public async Task<ActionResult> Delete(string claimNo, IFormCollection collection)
         {
             try
             {
+                await client.DeleteAsync("" + claimNo);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+        public async Task<ActionResult> ByPolicy(string policyNo)
+        {
+            List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);
+            return View(claims);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ABZInsurenceMVCApp.Models
 {
-    public class PolicyAddOn
+    public class PolicyAddon
     {
         public string AddonID { get; set; } = null!;
 

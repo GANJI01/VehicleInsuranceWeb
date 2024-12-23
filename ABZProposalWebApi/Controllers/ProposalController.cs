@@ -66,8 +66,8 @@ namespace ABZProposalWebApi.Controllers
             {
                 await proRepo.InsertProposalAsync(proposal);
                 HttpClient client = new HttpClient();
-                //await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new { ProposalNo = proposal.ProposalNo });
-                await client.PostAsJsonAsync("http://abzploicywebapi.azurewebsites.net/api/policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+                 await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal", new { ProposalNo = proposal.ProposalNo });
+               // await client.PostAsJsonAsync("http://abzploicywebapi.azurewebsites.net/api/policy/Proposal", new { ProposalNo = proposal.ProposalNo });
 
                 return Created($"api/Proposal/{proposal.ProposalNo}", proposal);
             }

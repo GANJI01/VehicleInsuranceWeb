@@ -1,35 +1,40 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using ABZInsurenceMVCApp.Models;
 namespace ABZInsurenceMVCApp.Controllers
 {
     public class CustomerController : Controller
     {
         // GET: CustomerController
-        public ActionResult Index()
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("");
+            return View(customers);
         }
 
-        // GET: CustomerController/Details/5
-        public ActionResult Details(int id)
+        // GET: ProposalController/Details/5
+        public async Task<ActionResult> Details(string customerID)
         {
-            return View();
+            Customer customer = await client.GetFromJsonAsync<Customer>("" + customerID);
+            return View(customer);
         }
 
-        // GET: CustomerController/Create
+        // GET: ProposalController/Create
         public ActionResult Create()
         {
-            return View();
+            Customer customer = new Customer();
+            return View(customer);
         }
 
-        // POST: CustomerController/Create
+        // POST: ProposalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Customer customer)
         {
             try
             {
+                await client.PostAsJsonAsync<Customer>("", customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -38,19 +43,22 @@ namespace ABZInsurenceMVCApp.Controllers
             }
         }
 
-        // GET: CustomerController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: ProposalController/Edit/5
+        [Route("Customer/Edit/{customerID}")]
+        public async Task<ActionResult> Edit(string customerID)
         {
-            return View();
+            Customer customer = await client.GetFromJsonAsync<Customer>("" + customerID);
+            return View(customer);
         }
-
-        // POST: CustomerController/Edit/5
+        // POST: ProposalController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [Route("Customer/Edit/{customerID}")]
+        public async Task<ActionResult> Edit(string customerID, Customer customer)
         {
             try
             {
+                await client.PutAsJsonAsync<Customer>("" + customerID, customer);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +67,23 @@ namespace ABZInsurenceMVCApp.Controllers
             }
         }
 
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: ProposalController/Delete/5
+        [Route("Customer/Delete/{customerID}")]
+        public async Task<ActionResult> Delete(string customerID)
         {
-            return View();
+            Customer customer = await client.GetFromJsonAsync<Customer>("" + customerID);
+            return View(customer);
         }
 
-        // POST: CustomerController/Delete/5
+        // POST: ProposalController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [Route("Customer/Delete/{customerID}")]
+        public async Task<ActionResult> Delete(string customerID, IFormCollection collection)
         {
             try
             {
+                await client.DeleteAsync("" + customerID);
                 return RedirectToAction(nameof(Index));
             }
             catch

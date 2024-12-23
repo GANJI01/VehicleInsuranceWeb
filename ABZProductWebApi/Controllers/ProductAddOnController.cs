@@ -75,7 +75,7 @@ namespace ABZProductWebApi.Controllers
             }
         }
         [HttpGet("ByProduct/{productID}")]
-        public async Task<ActionResult> ByProduct(string productID)
+        public async Task<ActionResult> GetByProduct(string productID)
         {
             try
             {

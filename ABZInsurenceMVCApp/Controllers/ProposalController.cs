@@ -109,9 +109,9 @@ namespace ABZInsurenceMVCApp.Controllers
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("GetByProduct/" + productID);
             return View(products);
         }
-        public async Task<ActionResult> GetByVehicle(string regID)
+        public async Task<ActionResult> GetByVehicle(string regNo)
         {
-            List<Vehicle> vehicles = await client.GetFromJsonAsync < List < Vehicle>>("GetByVehicle/" + regID);
+            List<Vehicle> vehicles = await client.GetFromJsonAsync < List < Vehicle>>("GetByVehicle/" + regNo);
             return View(vehicles);
         }
     }

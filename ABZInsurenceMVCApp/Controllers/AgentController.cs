@@ -8,7 +8,7 @@ namespace ABZInsurenceMVCApp.Controllers
 {
     public class AgentController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
         // GET: AgentController
         public async Task<ActionResult> Index()
         {

@@ -8,7 +8,7 @@ namespace ABZInsurenceMVCApp.Controllers
 {
     public class ProductAddonController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/Product/") };
         // GET: ProductAddonController
         public async Task<ActionResult> Index()
         {

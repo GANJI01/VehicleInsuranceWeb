@@ -47,10 +47,10 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProductAddonController/Edit/5
-        [Route("ProductAddon/Edit/{productID}")]
+        [Route("ProductAddon/Edit/{productID}/{addonId}")]
         public async Task<ActionResult> Edit(string productID, string addonId)
         {
-            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>("" + productID + addonId);
+            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productAddon);
         }
 
@@ -62,7 +62,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<ProductAddon>("" + productID + addonId, productAddon);
+                await client.PutAsJsonAsync<ProductAddon>($"{productID}/{addonId}", productAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,7 +75,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
         public async Task<ActionResult> Delete(string productID, string addonId)
         {
-            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>("" + productID + addonId);
+            ProductAddon productAddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productAddon);
         }
 
@@ -87,7 +87,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.DeleteAsync("" + productID + addonId);
+                await client.DeleteAsync($"{productID}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch

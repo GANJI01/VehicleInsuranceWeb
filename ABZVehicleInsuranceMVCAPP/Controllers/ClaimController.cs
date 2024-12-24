@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ABZVehicleInsuranceMVCAPP.Controllers;
 using ABZVehicleInsuranceMVCAPP.Models;
-using System.Runtime.InteropServices;
-
+using Claim = ABZVehicleInsuranceMVCAPP.Models.Claim;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
     public class ClaimController : Controller
     {
-        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi.azurewebsites.net\r\n") };
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
         // GET: ClaimController
         public async Task<ActionResult> Index()
@@ -21,12 +19,12 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ClaimController/Details/5
         public async Task<ActionResult> Details(string claimNo)
         {
-            Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
-            return View(claim);
+            Claim claims = await client.GetFromJsonAsync<Claim>("" + claimNo);
+            return View(claims);
         }
 
         // GET: ClaimController/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             Claim claim = new Claim();
             return View(claim);
@@ -35,6 +33,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ClaimController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> Create(Claim claim)
         {
             try
@@ -47,9 +46,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-
-        // GET: ClaimController/Edit/5
         [Route("Claim/Edit/{claimNo}")]
+        // GET: ClaimController/Edit/5
         public async Task<ActionResult> Edit(string claimNo)
         {
             Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
@@ -72,9 +70,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-
+        [Route("Claim/Delete/{claimNo}")]
         // GET: ClaimController/Delete/5
-        [Route("Claim/Delete/{id}")]
         public async Task<ActionResult> Delete(string claimNo)
         {
             Claim claim = await client.GetFromJsonAsync<Claim>("" + claimNo);
@@ -103,5 +100,6 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);
             return View(claims);
         }
+
     }
 }

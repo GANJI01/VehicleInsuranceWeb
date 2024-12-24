@@ -94,6 +94,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
+       
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);

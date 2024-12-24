@@ -48,7 +48,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController/Edit/5
         public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
-            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyAddon);
         }
 
@@ -59,7 +59,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<PolicyAddon>("", policyAddon);
+                await client.PutAsJsonAsync<PolicyAddon>($"{policyNo}/{addonId}", policyAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,7 +71,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController/Delete/5
         public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
-            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyAddon);
         }
 
@@ -82,7 +82,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.DeleteAsync("" + policyNo + addonId);
+                await client.DeleteAsync($"{policyNo}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch

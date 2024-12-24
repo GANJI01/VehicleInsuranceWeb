@@ -35,7 +35,7 @@ namespace ABZClaimWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-       // [HttpPost("{token}")]
+        [HttpPost]
         public async Task<ActionResult> Insert( Claim claim)
         {
             try
@@ -92,8 +92,6 @@ namespace ABZClaimWebApi.Controllers
         { 
            
                 await claimRepo.InsertPolicyAsync(policy);
-                // HttpClient client = new HttpClient();
-                //await client.PostAsJsonAsync("http://localhost:5189/api/Claim", new { PolicyNo = policy.PolicyNo });
                 return Created();
            
         }

@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ABZVehicleInsuranceMVCAPP.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Controllers;
-using   ABZVehicleInsuranceMVCAPP.Models;
-using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Net.Http.Json;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+
     public class ProductController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/Product/") };
-
         // GET: ProductController
         public async Task<ActionResult> Index()
         {
@@ -25,7 +26,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProductController/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             Product product = new Product();
             return View(product);
@@ -34,6 +35,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public async Task<ActionResult> Create(Product product)
         {
             try
@@ -46,9 +48,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-
+        [Route("Product/Edit/{productID}")]
         // GET: ProductController/Edit/5
-        [Route("Product/ Edit/{prouctID}")]
         public async Task<ActionResult> Edit(string productID)
         {
             Product product = await client.GetFromJsonAsync<Product>("" + productID);
@@ -58,7 +59,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Product/ Edit/{prouctID}")]
+        [Route("Product/Edit/{productID}")]
         public async Task<ActionResult> Edit(string productID, Product product)
         {
             try
@@ -73,7 +74,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProductController/Delete/5
-        [Route("Product/Delete/{prouctID}")]
+        [Route("Product/Delete/{productID}")]
         public async Task<ActionResult> Delete(string productID)
         {
             Product product = await client.GetFromJsonAsync<Product>("" + productID);
@@ -83,12 +84,12 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Product/ Delete/{prouctID}")]
-        public async Task<ActionResult> Delete(string prouctID, IFormCollection collection)
+        [Route("Product/Delete/{productID}")]
+        public async Task<ActionResult> Delete(string productID, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + prouctID);
+                await client.DeleteAsync("" + productID);
                 return RedirectToAction(nameof(Index));
             }
             catch

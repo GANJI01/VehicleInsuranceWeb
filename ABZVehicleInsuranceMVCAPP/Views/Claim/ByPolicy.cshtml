@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Claim>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ByPolicy";
 }
 
-<h1>Index</h1>
+<h1>ByPolicy</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -90,12 +90,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ClaimStatus)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {claimNo=item.ClaimNo }) |
-                    @Html.ActionLink("Details", "Details", new { claimNo = item.ClaimNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { claimNo = item.ClaimNo }) |
-                    @Html.ActionLink("ByPolicy", "ByPolicy", new { policyNo = item.PolicyNo })
-            </td>
+            
         </tr>
 }
     </tbody>

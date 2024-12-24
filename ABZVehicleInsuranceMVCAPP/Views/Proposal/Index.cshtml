@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Proposal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BasicAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasicAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { proposalID = item.ProposalNo }) |
+                    @Html.ActionLink("Details", "Details", new { proposalID = item.ProposalNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { proposalID = item.ProposalNo })  |
+                    @Html.ActionLink("GetByAgent", "GetByAgent", new { agentID = item.AgentID })  |
+                    @Html.ActionLink("GetByCustomer", "GetByCustomer", new { custID = item.CustomerID }) }
+                    @Html.ActionLink("GetByProduct", "GetByProduct", new { productID = item.ProductID })|
+                    @Html.ActionLink("GetByVehicle", "GetByVehicle", new { regNo = item.RegNo })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

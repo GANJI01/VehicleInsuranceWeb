@@ -1,10 +1,11 @@
-﻿@model IEnumerable<ABZInsurenceMVCApp.Models.PolicyAddon>
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.PolicyAddon>
+
 
 @{
-    ViewData["Title"] = "ByPolicy";
+    ViewData["Title"] = "Index";
 }
 
-<h1>ByPolicy</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -37,9 +38,13 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo, addonId = item.AddonID }) |
+                    @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo, addonId = item.AddonID }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo, addonId = item.AddonID }) |
+                    @Html.ActionLink("ByPolicy", "ByPolicy", new { policyNo = item.PolicyNo})
+                    
+
+
             </td>
         </tr>
 }

@@ -2,6 +2,14 @@
 {
     public class Claim
     {
+        public string ClaimNo { get; set; } = null!;
+
+        public DateTime? ClaimDate { get; set; }
+
+        public string PolicyNo { get; set; } = null!;
+
+        public DateTime IncidentDate { get; set; }
+
         public string IncidentLocation { get; set; } = null!;
 
         public string? IncidentDescription { get; set; }
@@ -18,6 +26,6 @@
 
         public string ClaimStatus { get; set; } = null!;
 
-       
+       // public virtual Policy? PolicyNoNavigation { get; set; } = null!;
     }
 }

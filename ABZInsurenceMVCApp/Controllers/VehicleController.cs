@@ -61,7 +61,7 @@ namespace ABZInsurenceMVCApp.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<Vehicle>("", vehicle);
+                await client.PutAsJsonAsync<Vehicle>(""+regNo, vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch

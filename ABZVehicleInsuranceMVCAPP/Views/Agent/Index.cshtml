@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Agent>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseCode)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { agentId = item.AgentID}) |
+                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

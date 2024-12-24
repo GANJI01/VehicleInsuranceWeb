@@ -61,60 +61,61 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegAuthority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Make)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Variant)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChassisNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EngineCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeatingCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MfgYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeasedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerId)
-            </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit", new { regNo=item.RegNo }) |
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegAuthority)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FuelType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Variant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EngineNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChassisNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EngineCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatingCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MfgYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeasedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { regNo = item.RegNo }) |
                     @Html.ActionLink("Details", "Details", new { regNo = item.RegNo }) |
                     @Html.ActionLink("Delete", "Delete", new { regNo = item.RegNo }) |
-                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId=item.OwnerId })
-            </td>
-        </tr>
-}
+                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.OwnerId })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

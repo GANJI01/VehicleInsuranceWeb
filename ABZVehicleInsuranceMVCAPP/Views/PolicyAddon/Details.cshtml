@@ -29,8 +29,8 @@
             @Html.DisplayFor(model => model.Amount)
         </dd>
     </dl>
-</div>
+</div> 
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { policyNo = Model.PolicyNo, addonId = Model.AddonID }) |
     <a asp-action="Index">Back to List</a>
 </div>

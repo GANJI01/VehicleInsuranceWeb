@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Claim>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClaimNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClaimDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IncidentDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClaimAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyorPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClaimStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncidentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyorPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClaimStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {claimNo=item.ClaimNo }) |
+                    @Html.ActionLink("Details", "Details", new { claimNo = item.ClaimNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { claimNo = item.ClaimNo })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

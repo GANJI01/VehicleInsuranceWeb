@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.PolicyAddon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AddonID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo, addonId = item.AddonID }) |
+                    @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo, addonId = item.AddonID }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo, addonId = item.AddonID }) 
+                    
+                   
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

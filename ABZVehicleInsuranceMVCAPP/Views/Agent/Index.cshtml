@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.LicenseCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { agentId = item.AgentID}) |
+                    @Html.ActionLink("Details", "Details", new { agentId = item.AgentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { agentId = item.AgentID })
             </td>
         </tr>
 }

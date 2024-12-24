@@ -91,9 +91,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             }
         }
 
-        public async Task<ActionResult> ByPolicy(string proposalId)
+        public async Task<ActionResult> ByProposal(string proposalId)
         {
-            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPolicy/" + proposalId);
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByProposal/" + proposalId);
             return View(policyAddons);
         }
     }

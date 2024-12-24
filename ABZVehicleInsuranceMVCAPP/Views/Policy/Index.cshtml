@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Policy>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProposalNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoClaimBonus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiptNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiptDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProposalNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoClaimBonus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { policyNo=item.PolicyNo }) |
+                    @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }) |
+                    @Html.ActionLink("ByProposal", "ByProposal", new { proposalId=item.ProposalNo })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

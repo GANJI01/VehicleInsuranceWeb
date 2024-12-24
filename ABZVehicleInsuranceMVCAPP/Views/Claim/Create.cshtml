@@ -1,0 +1,88 @@
+﻿@model ABZVehicleInsuranceMVCAPP.Models.Claim
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Claim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClaimNo" class="control-label"></label>
+                <input asp-for="ClaimNo" class="form-control" />
+                <span asp-validation-for="ClaimNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaimDate" class="control-label"></label>
+                <input asp-for="ClaimDate" class="form-control" />
+                <span asp-validation-for="ClaimDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyNo" class="control-label"></label>
+                <input asp-for="PolicyNo" class="form-control" />
+                <span asp-validation-for="PolicyNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncidentDate" class="control-label"></label>
+                <input asp-for="IncidentDate" class="form-control" />
+                <span asp-validation-for="IncidentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncidentLocation" class="control-label"></label>
+                <input asp-for="IncidentLocation" class="form-control" />
+                <span asp-validation-for="IncidentLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncidentDescription" class="control-label"></label>
+                <input asp-for="IncidentDescription" class="form-control" />
+                <span asp-validation-for="IncidentDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaimAmount" class="control-label"></label>
+                <input asp-for="ClaimAmount" class="form-control" />
+                <span asp-validation-for="ClaimAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyorName" class="control-label"></label>
+                <input asp-for="SurveyorName" class="form-control" />
+                <span asp-validation-for="SurveyorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyorPhone" class="control-label"></label>
+                <input asp-for="SurveyorPhone" class="form-control" />
+                <span asp-validation-for="SurveyorPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyDate" class="control-label"></label>
+                <input asp-for="SurveyDate" class="form-control" />
+                <span asp-validation-for="SurveyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurveyDescription" class="control-label"></label>
+                <input asp-for="SurveyDescription" class="form-control" />
+                <span asp-validation-for="SurveyDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClaimStatus" class="control-label"></label>
+                <input asp-for="ClaimStatus" class="form-control" />
+                <span asp-validation-for="ClaimStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

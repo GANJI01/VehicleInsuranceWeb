@@ -79,9 +79,13 @@
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { proposalID = item.ProposalNo }) |
+                    @Html.ActionLink("Details", "Details", new { proposalID = item.ProposalNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { proposalID = item.ProposalNo })  |
+                    @Html.ActionLink("GetByAgent", "GetByAgent", new { agentID = item.AgentID })  |
+                    @Html.ActionLink("GetByCustomer", "GetByCustomer", new { custID = item.CustomerID }) }
+                    @Html.ActionLink("GetByProduct", "GetByProduct", new { productID = item.ProductID })|
+                    @Html.ActionLink("GetByVehicle", "GetByVehicle", new { regNo = item.RegNo })
             </td>
         </tr>
 }

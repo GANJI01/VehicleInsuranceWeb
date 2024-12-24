@@ -7,7 +7,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
     public class PolicyAddonController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/PolicyAddon/") };
         // GET: PolicyAddonController
         public async Task<ActionResult> Index(string pid)
         {
@@ -18,7 +18,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController/Details/5
         public async Task<ActionResult> Details(string policyNo, string addonId)
         {
-            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
             return View(policyAddon);
         }
 
@@ -26,7 +26,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         public async Task<ActionResult> Create()
         {
             PolicyAddon policyAddon = new PolicyAddon();
-            return View();
+            return View(policyAddon);
         }
 
         // POST: PolicyAddonController/Create
@@ -46,6 +46,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: PolicyAddonController/Edit/5
+        [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
         public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
@@ -55,6 +56,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: PolicyAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
         public async Task<ActionResult> Edit(string policyNo, string addonId, PolicyAddon policyAddon)
         {
             try
@@ -69,6 +71,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: PolicyAddonController/Delete/5
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
         public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
@@ -78,6 +81,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: PolicyAddonController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
         public async Task<ActionResult> Delete(string policyNo, string addonId, IFormCollection collection)
         {
             try

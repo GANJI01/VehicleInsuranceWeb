@@ -1,6 +1,6 @@
 ﻿namespace ABZVehicleInsuranceMVCAPP.Models
 {
-    public class ProductAddOn
+    public class ProductAddon
     {
         public string ProductID { get; set; } = null!;
 

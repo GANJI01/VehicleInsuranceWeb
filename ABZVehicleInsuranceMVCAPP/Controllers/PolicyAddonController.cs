@@ -11,32 +11,32 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController
         public async Task<ActionResult> Index()
         {
-            List<PolicyAddOn> policyAddons = await client.GetFromJsonAsync<List<PolicyAddOn>>("");
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("");
             return View(policyAddons);
         }
 
         // GET: PolicyAddonController/Details/5
         public async Task<ActionResult> Details(string policyNo, string addonId)
         {
-            PolicyAddOn policyAddon = await client.GetFromJsonAsync<PolicyAddOn>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
             return View(policyAddon);
         }
 
         // GET: PolicyAddonController/Create
         public async Task<ActionResult> Create()
         {
-            PolicyAddOn policyAddon = new PolicyAddOn();
+            PolicyAddon policyAddon = new PolicyAddon();
             return View();
         }
 
         // POST: PolicyAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(PolicyAddOn policyAddon)
+        public async Task<ActionResult> Create(PolicyAddon policyAddon)
         {
             try
             {
-                await client.PostAsJsonAsync<PolicyAddOn>("", policyAddon);
+                await client.PostAsJsonAsync<PolicyAddon>("", policyAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -48,18 +48,18 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController/Edit/5
         public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
-            PolicyAddOn policyAddon = await client.GetFromJsonAsync<PolicyAddOn>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
             return View(policyAddon);
         }
 
         // POST: PolicyAddonController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(string policyNo, string addonId, PolicyAddOn policyAddon)
+        public async Task<ActionResult> Edit(string policyNo, string addonId, PolicyAddon policyAddon)
         {
             try
             {
-                await client.PutAsJsonAsync<PolicyAddOn>("", policyAddon);
+                await client.PutAsJsonAsync<PolicyAddon>("", policyAddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,7 +71,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController/Delete/5
         public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
-            PolicyAddOn policyAddon = await client.GetFromJsonAsync<PolicyAddOn>("" + policyNo + addonId);
+            PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>("" + policyNo + addonId);
             return View(policyAddon);
         }
 
@@ -93,7 +93,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         public async Task<ActionResult> ByPolicy(string proposalId)
         {
-            List<PolicyAddOn> policyAddons = await client.GetFromJsonAsync<List<PolicyAddOn>>("ByPlicy/" + proposalId);
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPolicy/" + proposalId);
             return View(policyAddons);
         }
     }

@@ -62,7 +62,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<Policy>("", policy);
+                await client.PutAsJsonAsync<Policy>(""+policyNo, policy);
                 return RedirectToAction(nameof(Index));
             }
             catch

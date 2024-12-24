@@ -16,9 +16,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProposalController/Details/5
-        public async Task<ActionResult> Details(string proposalID)
+        public async Task<ActionResult> Details(string proposalNo)
         {
-            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalID);
+            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" +proposalNo);
             return View(proposal);
         }
 
@@ -46,22 +46,22 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProposalController/Edit/5
-        [Route("Proposal/Edit/{proposalID}")]
-        public async Task<ActionResult> Edit(string proposalID)
+        [Route("Proposal/Edit/{proposalNo}")]
+        public async Task<ActionResult> Edit(string proposalNo)
         {
-            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalID);
+            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
             return View(proposal);
         }
 
         // POST: ProposalController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Proposal/Edit/{proposalID}")]
-        public async Task<ActionResult> Edit(string proposalID, Proposal proposal)
+        [Route("Proposal/Edit/{proposalNo}")]
+        public async Task<ActionResult> Edit(string proposalNo, Proposal proposal)
         {
             try
             {
-                await client.PutAsJsonAsync<Proposal>("" + proposalID, proposal);
+                await client.PutAsJsonAsync<Proposal>("" + proposalNo, proposal);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -71,22 +71,22 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProposalController/Delete/5
-        [Route("Proposal/Delete/{proposalID}")]
-        public async Task<ActionResult> Delete(string proposalID)
+        [Route("Proposal/Delete/{proposalNo}")]
+        public async Task<ActionResult> Delete(string proposalNo)
         {
-            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalID);
+            Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
             return View(proposal);
         }
 
         // POST: ProposalController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Proposal/Delete/{proposalID}")]
-        public async Task<ActionResult> Delete(string proposalID, IFormCollection collection)
+        [Route("Proposal/Delete/{proposalNo}")]
+        public async Task<ActionResult> Delete(string proposalNo, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + proposalID);
+                await client.DeleteAsync("" + proposalNo);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -94,24 +94,24 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> GetByAgent(string agentID)
+        public async Task<ActionResult> ByAgent(string agentId)
         {
-            List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("GetByAgent/" + agentID);
+            List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("ByAgent/" + agentId);
             return View(proposals);
         }
-        public async Task<ActionResult> GetByCustomer(string custID)
+        public async Task<ActionResult> ByCustomer(string customerId)
         {
-            List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("GetByCustomer/" + custID);
+            List<Proposal> customers = await client.GetFromJsonAsync<List<Proposal>>("ByCustomer/" + customerId);
             return View(customers);
         }
-        public async Task<ActionResult> GetByProduct(string productID)
+        public async Task<ActionResult> ByProduct(string productId)
         {
-            List<Product> products = await client.GetFromJsonAsync<List<Product>>("GetByProduct/" + productID);
+            List<Proposal> products = await client.GetFromJsonAsync<List<Proposal>>("ByProduct/" + productId);
             return View(products);
         }
-        public async Task<ActionResult> GetByVehicle(string regNo)
+        public async Task<ActionResult> ByVehicle(string regNo)
         {
-            List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("GetByVehicle/" + regNo);
+            List<Proposal> vehicles = await client.GetFromJsonAsync<List<Proposal>>("ByVehicle/" + regNo);
             return View(vehicles);
         }
     }

@@ -35,7 +35,7 @@ namespace ABZClaimWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-       // [HttpPost("{token}")]
+        [HttpPost]
         public async Task<ActionResult> Insert( Claim claim)
         {
             try

@@ -99,7 +99,6 @@ namespace ABZVehicleWebApi.Controllers
             try
             {
                 await vehRepo.InsertCustomerAsync(customer);
-               //return Created($"api/Vehicle/Customer/{customer.CustomerId}", customer);
                 return Created();
             }
             catch (Exception ex)

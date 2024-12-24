@@ -17,7 +17,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ProductAddonController/Details/5
         public async Task<ActionResult> Details(string productID, string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
@@ -63,7 +63,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<ProductAddon>($"{productID}/{addonId}/", productaddon);
+                await client.PutAsJsonAsync<ProductAddon>($"{productID}/{addonId}/", productaddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,9 +75,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ProductAddonController/Delete/5
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId)
+        public async Task<ActionResult> Delete(string productID, string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
@@ -86,11 +86,11 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [ValidateAntiForgeryToken]
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId, IFormCollection collection)
+        public async Task<ActionResult> Delete(string productID, string addonId, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + addonId);
+                await client.DeleteAsync($"{productID}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch

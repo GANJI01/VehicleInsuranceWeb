@@ -108,12 +108,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerId)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            
         </tr>
 }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

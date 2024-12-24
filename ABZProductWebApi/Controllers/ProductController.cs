@@ -42,8 +42,8 @@ namespace ABZProductWebApi.Controllers
             {
                 await proRepo.InsertProductAsync(product);
                 HttpClient client = new HttpClient();
-               await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Product/", new { ProductID = product.ProductID });
-                //await client.PostAsJsonAsync("http://abzproposalwebapi.azurewebsites.net/api/proposal/product", new { ProductID = product.ProductID });
+                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Product/", new { ProductID = product.ProductID });
+                //await client.PostAsJsonAsync("http://abzproposalwebapi-hana.azurewebsites.net/api/proposal/product", new { ProductID = product.ProductID });
                 return Created($"api/Product/{product.ProductID}", product);
 
             }

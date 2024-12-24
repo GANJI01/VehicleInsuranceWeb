@@ -43,7 +43,7 @@ namespace ABZPolicyWebApi.Controllers
                 await policyRepo.InsertPolicyAsync(policy);
                 HttpClient client = new HttpClient();
                await client.PostAsJsonAsync("http://localhost:5189/api/Claim/Policy", new { PolicyNo = policy.PolicyNo });
-               //await client.PostAsJsonAsync("http://abzclaimwebapi.azurewebsites.net/api/Claim/Policy", new { PolicyNo = policy.PolicyNo });
+              // await client.PostAsJsonAsync("http://abzclaimwebapi-hana.azurewebsites.net/api/Claim/Policy", new { PolicyNo = policy.PolicyNo });
                 return Created($"api/Policy/{policy.PolicyNo}", policy);
 
             }

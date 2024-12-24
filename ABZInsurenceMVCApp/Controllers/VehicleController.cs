@@ -61,7 +61,7 @@ namespace ABZInsurenceMVCApp.Controllers
         {
             try
             {
-                await client.PutAsJsonAsync<Vehicle>("", vehicle);
+                await client.PutAsJsonAsync<Vehicle>(""+regNo, vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -95,7 +95,7 @@ namespace ABZInsurenceMVCApp.Controllers
                 return View();
             }
         }
-        
+       // [HttpGet("ByCustomer/{customerId}")]
         public async Task<ActionResult> ByCustomer(string customerId)
         {
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("ByCustomer/"+customerId);

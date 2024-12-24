@@ -79,13 +79,13 @@
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { proposalID = item.ProposalNo }) |
-                    @Html.ActionLink("Details", "Details", new { proposalID = item.ProposalNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { proposalID = item.ProposalNo })  |
-                    @Html.ActionLink("GetByAgent", "GetByAgent", new { agentID = item.AgentID })  |
-                    @Html.ActionLink("GetByCustomer", "GetByCustomer", new { custID = item.CustomerID }) }
-                    @Html.ActionLink("GetByProduct", "GetByProduct", new { productID = item.ProductID })|
-                    @Html.ActionLink("GetByVehicle", "GetByVehicle", new { regNo = item.RegNo })
+                    @Html.ActionLink("Edit", "Edit", new { proposalNo = item.ProposalNo }) |
+                    @Html.ActionLink("Details", "Details", new { proposalNo = item.ProposalNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { proposalNo = item.ProposalNo })  |
+                    @Html.ActionLink("ByAgent", "ByAgent", new { agentID = item.AgentID })  |
+                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.CustomerID }) |
+                    @Html.ActionLink("ByProduct", "ByProduct", new { productID = item.ProductID })|
+                    @Html.ActionLink("ByVehicle", "ByVehicle", new { regNo = item.RegNo })
             </td>
         </tr>
 }

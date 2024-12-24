@@ -31,9 +31,9 @@ namespace ABZProposalLibrary.RepoAsync
             return proposals;
         }
 
-        public async Task<List<Proposal>> GetProposalByCustomerAsync(string customerId)
+        public async Task<List<Proposal>> GetProposalByCustomerAsync(string customerID)
         {
-            List<Proposal> proposals = await (from pro in ctx.Proposals where customerId == pro.CustomerID select pro).ToListAsync();
+            List<Proposal> proposals = await (from pro in ctx.Proposals where customerID == pro.CustomerID select pro).ToListAsync();
             return proposals;
         }
 

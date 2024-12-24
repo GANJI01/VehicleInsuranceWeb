@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.Proposal>
 
 @{
-    ViewData["Title"] = "GetByProduct";
+    ViewData["Title"] = "ByAgent";
 }
 
-<h1>GetByProduct</h1>
+<h1>ByAgent</h1>
 
 
 <table class="table">
@@ -76,8 +76,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
-            
+          
         </tr>
 }
     </tbody>
 </table>
+<div>
+
+    <a asp-action="Index">Back to List</a>
+</div>

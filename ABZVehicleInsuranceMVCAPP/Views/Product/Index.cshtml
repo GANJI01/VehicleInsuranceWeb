@@ -57,7 +57,8 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { productID=item.ProductID}) |
                     @Html.ActionLink("Details", "Details", new { productID = item.ProductID }) |
-                    @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID })
+                    @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID }) |
+                    @Html.ActionLink("Add-on", "Index","ProductAddon", new { productID = item.ProductID })
             </td>
         </tr>
 }

@@ -1,4 +1,5 @@
-﻿using ABZVehicleInsuranceMVCAPP.Models;
+﻿using System.Collections.Specialized;
+using ABZVehicleInsuranceMVCAPP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     {
         // GET: ProductAddonController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/ProductAddon/") };
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string pid)
         {
-            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>("");
+            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>(""+pid);
             return View(productaddons);
         }
 
@@ -98,10 +99,6 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> ByProduct(string productId)
-        {
-            List<ProductAddon> productAddons = await client.GetFromJsonAsync<List<ProductAddon>>("ByProduct/" + productId);
-            return View(productAddons);
-        }
+       
     }
 }

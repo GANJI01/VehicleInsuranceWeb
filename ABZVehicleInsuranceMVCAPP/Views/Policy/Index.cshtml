@@ -64,7 +64,8 @@
                     @Html.ActionLink("Edit", "Edit", new { policyNo=item.PolicyNo }) |
                     @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }) |
                     @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }) |
-                    @Html.ActionLink("ByProposal", "ByProposal", new { proposalId=item.ProposalNo })
+                    @Html.ActionLink("ByProposal", "ByProposal", new { proposalId=item.ProposalNo }) |
+                    @Html.ActionLink("Add-on", "Index", "PolicyAddon", new { policyNo = item.PolicyNo })
             </td>
         </tr>
 }

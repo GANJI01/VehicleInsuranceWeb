@@ -1,4 +1,5 @@
-﻿using ABZVehicleInsuranceMVCAPP.Models;
+﻿using System.Collections.Specialized;
+using ABZVehicleInsuranceMVCAPP.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,16 +9,16 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     {
         // GET: ProductAddonController
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5145/api/ProductAddon/") };
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string pid)
         {
-            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>("");
+            List<ProductAddon> productaddons = await client.GetFromJsonAsync<List<ProductAddon>>(""+pid);
             return View(productaddons);
         }
 
         // GET: ProductAddonController/Details/5
         public async Task<ActionResult> Details(string productID, string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
@@ -63,7 +64,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<ProductAddon>($"{productID}/{addonId}/", productaddon);
+                await client.PutAsJsonAsync<ProductAddon>($"{productID}/{addonId}/", productaddon);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,9 +76,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ProductAddonController/Delete/5
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId)
+        public async Task<ActionResult> Delete(string productID, string addonId)
         {
-            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>("" + addonId);
+            ProductAddon productaddon = await client.GetFromJsonAsync<ProductAddon>($"{productID}/{addonId}");
             return View(productaddon);
         }
 
@@ -86,11 +87,11 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [ValidateAntiForgeryToken]
         [Route("ProductAddon/Delete/{productID}/{addonId}")]
 
-        public async Task<ActionResult> Delete(string addonId, IFormCollection collection)
+        public async Task<ActionResult> Delete(string productID, string addonId, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + addonId);
+                await client.DeleteAsync($"{productID}/{addonId}");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -98,10 +99,6 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> ByProduct(string productId)
-        {
-            List<ProductAddon> productAddons = await client.GetFromJsonAsync<List<ProductAddon>>("ByProduct/" + productId);
-            return View(productAddons);
-        }
+       
     }
 }

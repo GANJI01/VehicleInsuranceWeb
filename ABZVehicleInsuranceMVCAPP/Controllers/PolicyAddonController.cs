@@ -9,9 +9,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/PolicyAddon/") };
         // GET: PolicyAddonController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string pid)
         {
-            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("");
+            List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>(""+pid);
             return View(policyAddons);
         }
 
@@ -95,10 +95,10 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             }
         }
 
-        public async Task<ActionResult> ByPolicy(string policyNo)
+        /*public async Task<ActionResult> ByPolicy(string policyNo)
         {
             List<PolicyAddon> policyAddons = await client.GetFromJsonAsync<List<PolicyAddon>>("ByPolicy/" + policyNo);
             return View(policyAddons);
-        }
+        }*/
     }
 }

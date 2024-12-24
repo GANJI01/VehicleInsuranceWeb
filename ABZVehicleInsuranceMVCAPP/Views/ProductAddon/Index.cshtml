@@ -43,10 +43,9 @@
                 @Html.DisplayFor(modelItem => item.AddonDescription)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { productID = item.ProductID, addonId=item.AddonID }) |
+                    @Html.ActionLink("Edit", "Edit", new { productID = item.ProductID, addonId = item.AddonID }) |
                     @Html.ActionLink("Details", "Details", new { productID = item.ProductID, addonId = item.AddonID }) |
-                    @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID, addonId = item.AddonID }) |
-                    @Html.ActionLink("ByProduct", "ByProduct", new { productID = item.ProductID})
+                    @Html.ActionLink("Delete", "Delete", new { productID = item.ProductID, addonId = item.AddonID })
             </td>
         </tr>
 }

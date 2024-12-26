@@ -1,5 +1,6 @@
 ﻿using ABZProposalLibrary.Models;
 using ABZProposalLibrary.RepoAsync;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,8 @@ namespace ABZProposalWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ProposalController : ControllerBase
     {
         IProposalRepoAsync proRepo;

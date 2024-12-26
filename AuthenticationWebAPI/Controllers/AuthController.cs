@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace AuthenticatonWebApi.Controllers
+namespace AuthenticationWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,9 +16,9 @@ namespace AuthenticatonWebApi.Controllers
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             Claim[] claims = new[] {
-                new Claim(ClaimTypes.Name, userName),
-                new Claim(ClaimTypes.Role, role)
-            };
+        new Claim(ClaimTypes.Name, userName),
+        new Claim(ClaimTypes.Role, role)
+    };
             var token = new JwtSecurityToken(
                 issuer: "https://www.team1.com",
                 audience: "https://www.team1.com",
@@ -36,4 +36,3 @@ namespace AuthenticatonWebApi.Controllers
         }
     }
 }
-

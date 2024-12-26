@@ -70,8 +70,8 @@ namespace ABZVehicleWebApi.Controllers
             {
                 await vehRepo.InsertVehicleAsync(vehicle);
                 HttpClient client = new HttpClient();
-               await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
-                //await client.PostAsJsonAsync("http://abzproposalwebapi-hana.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
+               //await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
+               await client.PostAsJsonAsync("http://abzproposalwebapi-chana.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
 
                 return Created($"api/Vehicle/{vehicle.RegNo}",vehicle);
             }
@@ -99,7 +99,6 @@ namespace ABZVehicleWebApi.Controllers
             try
             {
                 await vehRepo.InsertCustomerAsync(customer);
-               //return Created($"api/Vehicle/Customer/{customer.CustomerId}", customer);
                 return Created();
             }
             catch (Exception ex)

@@ -14,13 +14,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PolicyNo" class="control-label"></label>
-               <!---- <input asp-for="PolicyNo" class="form-control" />-->
-                @Html.DropDownListFor(model => model.PolicyNo, await ForeignKeyHelper.GetProposalIds())
+               <input asp-for="PolicyNo" class="form-control" />
                 <span asp-validation-for="PolicyNo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ProposalNo" class="control-label"></label>
-                <input asp-for="ProposalNo" class="form-control" />
+                <!---<input asp-for="ProposalNo" class="form-control" />-->
+                @Html.DropDownListFor(model => model.ProposalNo, await ForeignKeyHelper.GetProposalNos())
                 <span asp-validation-for="ProposalNo" class="text-danger"></span>
             </div>
             <div class="form-group">

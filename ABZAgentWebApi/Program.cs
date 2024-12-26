@@ -51,7 +51,7 @@ namespace ABZAgentWebApi
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseAuthentication();
 
             app.MapControllers();
 

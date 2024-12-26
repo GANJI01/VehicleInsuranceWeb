@@ -1,6 +1,12 @@
 
 using System.Text;
 using ABZProposalLibrary.RepoAsync;
+using RabbitMQ.Client.Events;
+using RabbitMQ.Client;
+using ABZProposalLibrary.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -38,6 +44,7 @@ namespace ABZProposalWebApi
                 };
             });
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,5 +62,6 @@ namespace ABZProposalWebApi
 
             app.Run();
         }
+       
     }
 }

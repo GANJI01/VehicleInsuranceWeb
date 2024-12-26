@@ -49,7 +49,6 @@ namespace ABZAgentWebApi
                 app.UseSwaggerUI();
             }
 
-           
             app.UseAuthorization();
             app.UseAuthentication();
 

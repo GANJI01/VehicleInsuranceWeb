@@ -4,11 +4,13 @@ using ABZClaimsLibrary.Models;
 using ABZClaimsLibrary.RepoAsync;
     
 using Microsoft.AspNetCore.Routing.Matching;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZClaimWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClaimController : ControllerBase
     {
         IClaimRepoAsync claimRepo;

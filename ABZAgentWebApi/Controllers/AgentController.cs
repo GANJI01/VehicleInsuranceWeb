@@ -1,5 +1,6 @@
 ﻿using ABZAgentLibrary.Models;
 using ABZAgentLibrary.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace ABZAgentWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AgentController : ControllerBase
     {
         IAgentRepoAsync agentRepo;

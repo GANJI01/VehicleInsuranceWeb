@@ -37,8 +37,8 @@ namespace ABZProposalWebApi
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = "https://www.snrao.com",
-                    ValidAudience = "https://www.snrao.com",
+                    ValidIssuer = "https://www.team1.com",
+                    ValidAudience = "https://www.team1.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My name is Bond, James Bond the great"))
                 };
             });

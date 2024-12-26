@@ -33,8 +33,8 @@ namespace ABZCustomerWebApi
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidIssuer = "https://www.snrao.com",
-                    ValidAudience = "https://www.snrao.com",
+                    ValidIssuer = "https://www.team1.com",
+                    ValidAudience = "https://www.team1.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My name is Bond, James Bond the great"))
                 };
             });
@@ -47,9 +47,9 @@ namespace ABZCustomerWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseAuthentication();
 
             app.UseAuthorization();
-            app.UseAuthentication();
 
             app.MapControllers();
 

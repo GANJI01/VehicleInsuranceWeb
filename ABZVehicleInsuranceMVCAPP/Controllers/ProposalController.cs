@@ -17,7 +17,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("http://localhost:5050/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Proposal> proposals = await client.GetFromJsonAsync<List<Proposal>>("");
@@ -35,6 +35,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         public ActionResult Create()
         {
             Proposal proposal = new Proposal();
+            ViewData["token"] = token;
             return View(proposal);
         }
 

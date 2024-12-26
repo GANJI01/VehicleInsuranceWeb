@@ -1,5 +1,8 @@
 
+using System.Text;
 using ABZVehicleLibrary.Repos;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ABZVehicleWebApi
 {
@@ -43,14 +46,9 @@ namespace ABZVehicleWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-<<<<<<< HEAD
+
             app.UseAuthentication();
             app.UseAuthorization();
-=======
-
-            app.UseAuthorization();
-
->>>>>>> e9e7681bc3fc792490b053fc7a9976d01d5caf4b
 
             app.MapControllers();
 

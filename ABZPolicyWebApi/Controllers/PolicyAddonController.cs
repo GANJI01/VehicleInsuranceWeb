@@ -9,7 +9,7 @@ namespace ABZPolicyWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
 
     public class PolicyAddonController : ControllerBase
     {

@@ -32,6 +32,6 @@
 
         public string OwnerId { get; set; } = null!;
 
-        public virtual Customer? Owner { get; set; } = null!;
+        //public virtual Customer? Owner { get; set; } = null!;
     }
 }

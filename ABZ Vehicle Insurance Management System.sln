@@ -47,6 +47,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZProposalDBProject", "ABZ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZVehicleInsuranceMVCAPP", "ABZVehicleInsuranceMVCAPP\ABZVehicleInsuranceMVCAPP.csproj", "{3D2D9D4C-8651-4E55-B467-E43BE9B8C617}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebApi", "AuthenticationWebApi\AuthenticationWebApi.csproj", "{BA03647D-D802-40CB-97C6-96A23F025C5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +157,10 @@ Global
 		{3D2D9D4C-8651-4E55-B467-E43BE9B8C617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D2D9D4C-8651-4E55-B467-E43BE9B8C617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D2D9D4C-8651-4E55-B467-E43BE9B8C617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA03647D-D802-40CB-97C6-96A23F025C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA03647D-D802-40CB-97C6-96A23F025C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA03647D-D802-40CB-97C6-96A23F025C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA03647D-D802-40CB-97C6-96A23F025C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

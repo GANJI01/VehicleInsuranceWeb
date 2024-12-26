@@ -1,5 +1,5 @@
 
-namespace AuthenticationWebApi
+namespace AuthenticatonWebApi
 {
     public class Program
     {

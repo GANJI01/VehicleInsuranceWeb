@@ -1,12 +1,15 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace AuthenticationWebApi.Controllers
+namespace AuthenticatonWebApi.Controllers
 {
-    public class AuthController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
     {
         private string GenerateJWT(string userName, string role, string secretKey)
         {
@@ -17,14 +20,15 @@ namespace AuthenticationWebApi.Controllers
                 new Claim(ClaimTypes.Role, role)
             };
             var token = new JwtSecurityToken(
-                issuer: "https://www.snrao.com",
-                audience: "https://www.snrao.com",
+                issuer: "https://www.team1.com",
+                audience: "https://www.team1.com",
                 expires: DateTime.Now.AddHours(2),
                 signingCredentials: credentials,
                 claims: claims
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        [HttpGet("{userName}/{role}/{secretKey}")]
         public string GetToken(string userName, string role, string secretKey)
         {
             string token = GenerateJWT(userName, role, secretKey);
@@ -32,3 +36,4 @@ namespace AuthenticationWebApi.Controllers
         }
     }
 }
+

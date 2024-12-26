@@ -3,16 +3,24 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Controllers;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
+using NuGet.Common;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
     public class AgentController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
-        
+        static string token;
         // GET: AgentController
         public async Task<ActionResult> Index()
         {
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "My name is Bond, James Bond the great";
+            HttpClient client2 = new HttpClient();
+            token = await client2.GetStringAsync("http://localhost:5243/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
             return View(agents);
         }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
+using NuGet.Common;
 
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
@@ -9,9 +10,17 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     public class PolicyController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };
+        static string token;
         // GET: PolicyController
         public async Task<ActionResult> Index()
         {
+            string userName = User.Identity.Name;
+            string role = User.Claims.ToArray()[4].Value;
+            string secretKey = "My name is Bond, James Bond the great";
+            HttpClient client2 = new HttpClient();
+            token = await client2.GetStringAsync("http://localhost:5243/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
             List<Policy> policies = await client.GetFromJsonAsync<List<Policy>>("");
             return View(policies);
         }

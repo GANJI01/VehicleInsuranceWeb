@@ -7,6 +7,7 @@ namespace ABZAgentWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class AgentController : ControllerBase
     {
         IAgentRepoAsync agentRepo;

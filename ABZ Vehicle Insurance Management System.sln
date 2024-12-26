@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebAPI", "Aut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZAuthenticationWebApi", "ABZAuthenticationWebApi\ABZAuthenticationWebApi.csproj", "{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZCustomerQueryLibrary", "ABZCustomerQueryLibrary\ABZCustomerQueryLibrary.csproj", "{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +177,10 @@ Global
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -53,10 +53,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebAPI", "Aut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZAuthenticationWebApi", "ABZAuthenticationWebApi\ABZAuthenticationWebApi.csproj", "{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZQueryWebApi", "ABZQueryWebApi\ABZQueryWebApi.csproj", "{DBC45E24-0BBE-4BE5-A25E-F5C22D2328AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZQueryLibrary", "ABZQueryLibrary\ABZQueryLibrary.csproj", "{FDA8F088-F468-410B-BF69-5822761DDA53}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,14 +175,6 @@ Global
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBC45E24-0BBE-4BE5-A25E-F5C22D2328AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBC45E24-0BBE-4BE5-A25E-F5C22D2328AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBC45E24-0BBE-4BE5-A25E-F5C22D2328AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBC45E24-0BBE-4BE5-A25E-F5C22D2328AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDA8F088-F468-410B-BF69-5822761DDA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDA8F088-F468-410B-BF69-5822761DDA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDA8F088-F468-410B-BF69-5822761DDA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDA8F088-F468-410B-BF69-5822761DDA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

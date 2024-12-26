@@ -24,7 +24,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ClaimController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             Claim claim = new Claim();
             return View(claim);

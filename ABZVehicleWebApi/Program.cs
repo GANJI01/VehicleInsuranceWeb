@@ -1,8 +1,5 @@
 
-using System.Text;
 using ABZVehicleLibrary.Repos;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ABZVehicleWebApi
 {
@@ -19,24 +16,7 @@ namespace ABZVehicleWebApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IVehicleRepoAsync, EFVehicleRepoAsync>();
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.SaveToken = true;
-                options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = "https://www.snrao.com",
-                    ValidAudience = "https://www.snrao.com",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("My name is Bond, James Bond the great"))
-                };
-            });
+
 
             var app = builder.Build();
 
@@ -48,7 +28,7 @@ namespace ABZVehicleWebApi
             }
 
             app.UseAuthorization();
-            app.UseAuthorization();
+
 
             app.MapControllers();
 

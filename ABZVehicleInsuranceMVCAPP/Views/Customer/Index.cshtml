@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.CustomerAddress)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { customerID=item.CustomerID }) |
-                    @Html.ActionLink("Details", "Details", new { customerID = item.CustomerID }) |
-                    @Html.ActionLink("Delete", "Delete", new { customerID = item.CustomerID })
+                    @Html.ActionLink("Edit", "Edit", new { customerId=item.CustomerID }) |
+                    @Html.ActionLink("Details", "Details", new { customerId = item.CustomerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { customerId = item.CustomerID })
             </td>
         </tr>
 }

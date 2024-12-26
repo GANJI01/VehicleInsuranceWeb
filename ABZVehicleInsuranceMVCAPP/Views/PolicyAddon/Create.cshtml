@@ -1,7 +1,10 @@
-﻿@model ABZVehicleInsuranceMVCAPP.Models.PolicyAddon
+﻿@using ABZVehicleInsuranceMVCAPP.Models
+@model ABZVehicleInsuranceMVCAPP.Models.PolicyAddon
 
 @{
     ViewData["Title"] = "Create";
+    string token = (string)ViewData["token"];
+
 }
 
 <h1>Create</h1>
@@ -20,7 +23,7 @@
             <div class="form-group">
                 <label asp-for="PolicyNo" class="control-label"></label>
              <!-- <input asp-for="PolicyNo" class="form-control" />-->
-                @Html.DropDownListFor(model => model.PolicyNo, await ForeignKeyHelper.GetPolicyNos())
+                @Html.DropDownListFor(model => model.PolicyNo, await ForeignKeyHelper.GetPolicyNos(token))
 
                 <span asp-validation-for="PolicyNo" class="text-danger"></span>
             </div>

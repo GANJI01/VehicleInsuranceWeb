@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace AuthenticatonWebApi.Controllers
+namespace ABZAuthenticationWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

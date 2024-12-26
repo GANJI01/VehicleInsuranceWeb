@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using ABZPolicyLibrary.Models;
 using ABZPolicyLibrary.Repos;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZPolicyWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class PolicyAddonController : ControllerBase
     {
         IPolicyAddonRepoAsync poliaddRepo;

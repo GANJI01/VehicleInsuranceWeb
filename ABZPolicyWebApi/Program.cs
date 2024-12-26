@@ -48,6 +48,7 @@ namespace ABZPolicyWebApi
                 app.UseSwaggerUI();
             }
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

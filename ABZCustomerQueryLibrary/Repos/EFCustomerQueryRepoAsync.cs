@@ -41,15 +41,14 @@ namespace ABZCustomerQueryLibrary.Repos
 
         public async Task<List<CustomerQuery>> GetCustomerQueryByCustomerAsync(string customerId)
         {
-            List<CustomerQuery> customerQueries= await(from cq in ctx.CustomerQueries where customerId==cq.CustomerID select cq).ToListAsync();
-            if(customerQueries.Count == 0)
-            {
-                throw new Exception("No Such CustomerId exist");
-            }
+             
+                List<CustomerQuery> customerQueries = await(from cq in ctx.CustomerQueries
+                                       where cq.CustomerID == customerId
+                                       select cq).ToListAsync();
+            if (customerQueries.Count == 0)
+                throw new Exception("No such customer id");
             else
-            {
                 return customerQueries;
-            }
         }
 
         public async Task InsertCustomerAsync(Customer customer)

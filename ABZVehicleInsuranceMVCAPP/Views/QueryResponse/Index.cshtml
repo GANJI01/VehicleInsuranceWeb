@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.QueryResponse>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QueryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SrNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResponseDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SrNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponseDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {queryID=item.QueryID, srNo=item.SrNo }) |
+                    @Html.ActionLink("Details", "Details", new { queryID = item.QueryID, srNo = item.SrNo }) |
+                    @Html.ActionLink("Delete", "Delete", new { queryID = item.QueryID, srNo = item.SrNo }) |
+                    @Html.ActionLink("GetByCustomer", "GetByCustomer", new { queryId = item.QueryID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

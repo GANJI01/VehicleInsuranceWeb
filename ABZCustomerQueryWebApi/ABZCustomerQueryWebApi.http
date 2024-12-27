@@ -1,6 +1,6 @@
 @ABZCustomerQueryWebApi_HostAddress = http://localhost:5058
 
-GET {{ABZCustomerQueryWebApi_HostAddress}}/weatherforecast/
+GET {{ABZCustomerQueryWebApi_HostAddress}}/api/CustomerQuery/
 Accept: application/json
 
 ###

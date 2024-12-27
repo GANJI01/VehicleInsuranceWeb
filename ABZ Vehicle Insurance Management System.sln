@@ -49,8 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZVehicleInsuranceMVCAPP",
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ABZCustomerQueryDBProject", "ABZCustomerQueryDBProject\ABZCustomerQueryDBProject.sqlproj", "{762C33CF-0E32-41AF-AA7F-890334DF22BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationWebAPI", "AuthenticationWebAPI\AuthenticationWebAPI.csproj", "{09F7D386-4E04-4B92-B701-EB16D490E008}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZAuthenticationWebApi", "ABZAuthenticationWebApi\ABZAuthenticationWebApi.csproj", "{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABZCustomerQueryLibrary", "ABZCustomerQueryLibrary\ABZCustomerQueryLibrary.csproj", "{83CB072D-9348-4CD1-A1DD-353FD23B6FA0}"
@@ -171,10 +169,6 @@ Global
 		{762C33CF-0E32-41AF-AA7F-890334DF22BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762C33CF-0E32-41AF-AA7F-890334DF22BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{762C33CF-0E32-41AF-AA7F-890334DF22BD}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{09F7D386-4E04-4B92-B701-EB16D490E008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09F7D386-4E04-4B92-B701-EB16D490E008}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09F7D386-4E04-4B92-B701-EB16D490E008}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09F7D386-4E04-4B92-B701-EB16D490E008}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B8E2E20-56F6-4AC2-B1BF-5315AE5D8B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU

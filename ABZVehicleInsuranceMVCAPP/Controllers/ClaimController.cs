@@ -9,7 +9,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
     public class ClaimController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/") };
+
         static string token;
         // GET: ClaimController
         public async Task<ActionResult> Index()
@@ -18,7 +20,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            // token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");

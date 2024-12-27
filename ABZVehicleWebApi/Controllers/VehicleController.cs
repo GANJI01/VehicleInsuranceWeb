@@ -74,8 +74,8 @@ namespace ABZVehicleWebApi.Controllers
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
-             //  await client.PostAsJsonAsync("http://abzproposalwebapi-chana.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
+             //   await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
+               await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
 
                 return Created($"api/Vehicle/{vehicle.RegNo}",vehicle);
             }

@@ -45,10 +45,10 @@ namespace ABZCustomerWebApi.Controllers
 
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                await client.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { CustomerID = customer.CustomerID });
-                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { CustomerID = customer.CustomerID });
-               // await client.PostAsJsonAsync("http://abzvehiclewebapi-chana.azurewebsites.net/api/Vehicle/Customer", new { CustomerID = customer.CustomerID });
-               // await client.PostAsJsonAsync("http://abzproposalwebapi-chana.azurewebsites.net/api/Proposal/Customer", new { CustomerID = customer.CustomerID });
+                //await client.PostAsJsonAsync("http://localhost:5083/api/Vehicle/Customer/", new { CustomerID = customer.CustomerID });
+               // await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/Customer", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/Customer", new { CustomerID = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 
             }

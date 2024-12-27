@@ -50,7 +50,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Product>("", product);
+                await client.PostAsJsonAsync<Product>("" + token, product);
                 return RedirectToAction(nameof(Index));
             }
             catch

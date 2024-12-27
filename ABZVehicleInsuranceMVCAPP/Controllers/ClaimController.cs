@@ -28,7 +28,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ClaimController/Details/5
         public async Task<ActionResult> Details(string claimNo)
         {
-            Claim claims = await client.GetFromJsonAsync<Claim>("" + claimNo);
+            Claim claims = await client.GetFromJsonAsync<Claim>(""  + claimNo);
             return View(claims);
         }
 
@@ -48,7 +48,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Claim>("", claim);
+                await client.PostAsJsonAsync<Claim>("" + token, claim);
                 return RedirectToAction(nameof(Index));
             }
             catch

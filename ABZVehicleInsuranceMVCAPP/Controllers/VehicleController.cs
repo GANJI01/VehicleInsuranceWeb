@@ -46,7 +46,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Vehicle>("", vehicle);
+                await client.PostAsJsonAsync<Vehicle>("" + token, vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch

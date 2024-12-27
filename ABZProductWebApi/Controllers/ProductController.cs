@@ -3,6 +3,7 @@ using ABZProductLibrary.Repos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace ABZProductWebApi.Controllers
 {
@@ -36,13 +37,16 @@ namespace ABZProductWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPost]
-        public async Task<ActionResult> Insert(Product product)
+        [HttpPost("{token}")]
+        public async Task<ActionResult> Insert(string token,Product product)
         {
             try
             {
                 await proRepo.InsertProductAsync(product);
                 HttpClient client = new HttpClient();
+
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
                 await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Product/", new { ProductID = product.ProductID });
                // await client.PostAsJsonAsync("http://abzproposalwebapi-chana.azurewebsites.net/api/proposal/product", new { ProductID = product.ProductID });
                 return Created($"api/Product/{product.ProductID}", product);

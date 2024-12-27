@@ -65,14 +65,16 @@ namespace ABZVehicleWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
-        public async Task<ActionResult> Insert(Vehicle vehicle)
+        [HttpPost("{token}")]
+        public async Task<ActionResult> Insert(string token,Vehicle vehicle)
         {
             try
             {
                 await vehRepo.InsertVehicleAsync(vehicle);
                 HttpClient client = new HttpClient();
-               await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Vehicle", new {RegNo=vehicle.RegNo});
              //  await client.PostAsJsonAsync("http://abzproposalwebapi-chana.azurewebsites.net/api/proposal/Vehicle", new { RegNo = vehicle.RegNo });
 
                 return Created($"api/Vehicle/{vehicle.RegNo}",vehicle);

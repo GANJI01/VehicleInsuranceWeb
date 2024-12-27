@@ -28,7 +28,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyController/Details/5
         public async Task<ActionResult> Details(string policyNo)
         {
-            Policy policy = await client.GetFromJsonAsync<Policy>("" + policyNo);
+            Policy policy = await client.GetFromJsonAsync<Policy>(""  + policyNo);
             return View(policy);
         }
 
@@ -47,7 +47,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.PostAsJsonAsync<Policy>("", policy);
+                await client.PostAsJsonAsync<Policy>("" + token, policy);
                 return RedirectToAction(nameof(Index));
             }
             catch

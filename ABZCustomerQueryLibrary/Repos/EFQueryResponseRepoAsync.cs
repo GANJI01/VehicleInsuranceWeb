@@ -50,6 +50,12 @@ namespace ABZCustomerQueryLibrary.Repos
             }
         }
 
+        public async Task InsertAgentAsync(Agent agent)
+        {
+            await ctx.Agents.AddAsync(agent);
+            await ctx.SaveChangesAsync();
+        }
+
         public async Task InsertCustomerQueryAsync(CustomerQuery customerquery)
         {
             await ctx.CustomerQueries.AddAsync(customerquery);

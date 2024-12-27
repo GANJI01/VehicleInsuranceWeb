@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZCustomerQueryLibrary.Repos;
 using ABZCustomerQueryLibrary.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZCustomerQueryWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class QueryResponseController : ControllerBase
     {
         IQueryResponseRepoAsync qrRepo;
@@ -87,6 +89,34 @@ namespace ABZCustomerQueryWebApi.Controllers
             catch (Exception ex)
             {
                 return NotFound(ex.Message);
+            }
+        }
+        [HttpPost("Agent")]
+
+        public async Task<ActionResult> InsertAgent(Agent agent)
+        {
+            try
+            {
+                await qrRepo.InsertAgentAsync(agent);
+                return Ok(agent);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("CustomerQuery")]
+
+        public async Task<ActionResult> InsertCustomerQuery(CustomerQuery customerQuery)
+        {
+            try
+            {
+                await qrRepo.InsertCustomerQueryAsync(customerQuery);
+                return Ok(customerQuery);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }

@@ -8,7 +8,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
     public class QueryResponseController : Controller
     {
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5058/api/QueryResponse/") };
+        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5058/api/QueryResponse/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzquerywebapi-chanad.azurewebsites.net/api/QueryResponse/") };
+
         static string token;
         // GET: CustomerQueryController
         public async Task<ActionResult> Index()
@@ -17,7 +19,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            token = await client2.GetStringAsync("http://localhost:5058/api/QueryResponse/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("http://localhost:5058/api/QueryResponse/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("");

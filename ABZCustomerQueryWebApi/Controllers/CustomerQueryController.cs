@@ -79,5 +79,33 @@ namespace ABZCustomerQueryWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("Customer")]
+        public async Task<ActionResult> InsertCustomer(Customer customer)
+        {
+            try
+            {
+                await cqRepo.InsertCustomerAsync(customer);
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        //GetCustomerQueryByCustomerAsync
+        [HttpGet("ByCustomer/{customerId}")]
+
+        public async Task<ActionResult> GetByCustomer(string customerId)
+        {
+            try
+            {
+                List<CustomerQuery> customerQueries = await cqRepo.GetCustomerQueryByCustomerAsync(customerId);
+                return Ok(customerQueries);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

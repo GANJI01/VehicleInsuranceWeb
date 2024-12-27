@@ -44,8 +44,11 @@ namespace ABZAgentWebApi.Controllers
                 await agentRepo.InsertAgentAsync(agent);
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-              //  await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Agent", new { AgentID = agent.AgentID });
+                //  await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Agent/", new { AgentID = agent.AgentID });
+                //  await client.PostAsJsonAsync("http://localhost:5058/api/QueryResponse/Agent/", new { AgentID = agent.AgentID });
                 await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/Agent", new { AgentID = agent.AgentID });
+                await client.PostAsJsonAsync("http://abzquerywebapi-chanad.azurewebsites.net/api/QueryResponse/Agent", new { AgentID = agent.AgentID });
+
                 return Created($"api/Agent{agent.AgentID}",agent);
             }
             catch (Exception ex)

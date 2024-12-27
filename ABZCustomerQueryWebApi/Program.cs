@@ -76,7 +76,7 @@ namespace ABZCustomerQueryWebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

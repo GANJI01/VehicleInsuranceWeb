@@ -15,7 +15,7 @@ namespace ABZCustomerQueryLibrary.Repos
         Task<List<QueryResponse>> GetAllQuerysAsync();
         Task<QueryResponse> GetQueryResponseAsync(string queryId, string srNo);
         Task<List<QueryResponse>> GetQueryResponseByCustomerQueryAsync(string queryId);
-        Task InsertCustomerQueryAsync(CustomerQuery customerquery);
         Task InsertAgentAsync(Agent agent);
+        Task<List<QueryResponse>> GetQueryResponseByAgentAsync(string agentID);
     }
 }

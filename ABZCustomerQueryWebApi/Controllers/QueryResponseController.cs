@@ -56,7 +56,7 @@ namespace ABZCustomerQueryWebApi.Controllers
             try
             {
                 await qrRepo.UpdateQueryResponseAsync(queryId, srNo,queryresponse);
-                return Ok(qrRepo);
+                return Ok(queryresponse);
             }
             catch (Exception ex)
             {
@@ -77,9 +77,9 @@ namespace ABZCustomerQueryWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("ByCustomer/{queryId}")]
+        [HttpGet("ByCustomerQuery/{queryId}")]
         
-        public async Task<ActionResult> GetByCustomer(string queryId)
+        public async Task<ActionResult> GetByCustomerQuery(string queryId)
         {
             try
             {
@@ -98,19 +98,19 @@ namespace ABZCustomerQueryWebApi.Controllers
             await qrRepo.InsertAgentAsync(agent);
             return Ok(agent);
         }
-        [HttpPost("CustomerQuery")]
-
-        public async Task<ActionResult> InsertCustomerQuery(CustomerQuery customerquery)
+        [HttpGet("ByAgent/{agentID}")]
+        public async Task<ActionResult> GetByAgent(string agentID)
         {
             try
             {
-                await qrRepo.InsertCustomerQueryAsync(customerquery);
-                return Ok(customerquery);
+                List<QueryResponse> queryResponses = await qrRepo.GetQueryResponseByAgentAsync(agentID);
+                return Ok(queryResponses);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return NotFound();
             }
         }
+
     }
 }

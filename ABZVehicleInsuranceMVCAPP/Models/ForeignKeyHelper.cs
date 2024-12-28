@@ -38,21 +38,21 @@ namespace ABZVehicleInsuranceMVCAPP.Models
             }
             return cIds;
         }
-        public static async Task<List<SelectListItem>> GetCustomerQueryIds(string token)
-        {
-            // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
-            HttpClient client = new HttpClient() { BaseAddress = new Uri(" https://abzquerywebapi-chanad.azurewebsites.net/api/QueryResponse/Query/") };
+        //public static async Task<List<SelectListItem>> GetCustomerQueryIds(string token)
+        //{
+        //    // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
+        //    HttpClient client = new HttpClient() { BaseAddress = new Uri(" https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/") };
 
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            List<CustomerQuery> customerQueries = await client.GetFromJsonAsync<List<CustomerQuery>>("");
-            List<SelectListItem> cqIds = new List<SelectListItem>();
-            foreach (CustomerQuery customerQuery in customerQueries)
-            {
-                cqIds.Add(new SelectListItem { Text = customerQuery.QueryID.ToString(), Value = customerQuery.QueryID.ToString() });
+        //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        //    List<CustomerQuery> customerQueries = await client.GetFromJsonAsync<List<CustomerQuery>>("");
+        //    List<SelectListItem> cqIds = new List<SelectListItem>();
+        //    foreach (CustomerQuery customerQuery in customerQueries)
+        //    {
+        //        cqIds.Add(new SelectListItem { Text = customerQuery.QueryID.ToString(), Value = customerQuery.QueryID.ToString() });
 
-            }
-            return cqIds;
-        }
+        //    }
+        //    return cqIds;
+        //}
 
         public static async Task<List<SelectListItem>> GetPolicyNos(string token)
         {

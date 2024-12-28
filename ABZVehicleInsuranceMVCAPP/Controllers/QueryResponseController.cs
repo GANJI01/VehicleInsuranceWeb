@@ -30,7 +30,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: CustomerQueryController/Details/5
         public async Task<ActionResult> Details(string queryId, string srNo)
         {
-            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryId + srNo);
+            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryId}/{srNo}");
             return View(query);
         }
 
@@ -108,10 +108,15 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> ByCustomer(string queryId)
+        public async Task<ActionResult> ByCustomerQuery(string queryId)
         {
-            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("GByCustomer/" + queryId);
+            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("ByCustomerQuery/" + queryId);
             return View(queries);
+        }
+        public async Task<ActionResult> ByAgent(string agentID)
+        {
+            List<QueryResponse> qr = await client.GetFromJsonAsync<List<QueryResponse>>("ByAgent/" + agentID);
+            return View(qr);
         }
     }
 }

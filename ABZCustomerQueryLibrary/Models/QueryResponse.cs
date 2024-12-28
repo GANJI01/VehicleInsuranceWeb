@@ -17,5 +17,5 @@ public partial class QueryResponse
 
     public virtual Agent? Agent { get; set; }
 
-    public virtual CustomerQuery Query { get; set; } = null!;
+    public virtual CustomerQuery? Query { get; set; } = null!;
 }

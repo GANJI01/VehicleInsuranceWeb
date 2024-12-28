@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.QueryResponse>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "ByAgent";
 }
 
-<h1>Index</h1>
+<h1>ByAgent</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -47,13 +47,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ResponseDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {queryId=item.QueryID, srNo=item.SrNo }) |
-                @Html.ActionLink("Details", "Details", new { queryId = item.QueryID, srNo = item.SrNo }) |
-                @Html.ActionLink("Delete", "Delete", new { queryId = item.QueryID, srNo = item.SrNo }) |
-                @Html.ActionLink("ByCustomerQuery", "ByCustomerQuery", new { queryId = item.QueryID }) |
-                    @Html.ActionLink("ByAgent", "ByAgent", new { agentId = item.AgentID })
             </td>
         </tr>
 }

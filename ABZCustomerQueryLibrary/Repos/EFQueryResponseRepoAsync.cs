@@ -56,11 +56,7 @@ namespace ABZCustomerQueryLibrary.Repos
             await ctx.SaveChangesAsync();
         }
 
-        public async Task InsertCustomerQueryAsync(CustomerQuery customerquery)
-        {
-            await ctx.CustomerQueries.AddAsync(customerquery);
-            await ctx.SaveChangesAsync();
-        }
+       
 
         public async Task InsertQueryResponseAsync(QueryResponse queryresponse)
         {
@@ -74,6 +70,18 @@ namespace ABZCustomerQueryLibrary.Repos
             qr.ResponseDate = queryresponse.ResponseDate;
             qr.Description = queryresponse.Description;
             await ctx.SaveChangesAsync();
+        }
+        public async Task<List<QueryResponse>> GetQueryResponseByAgentAsync(string agentID)
+        {
+            List<QueryResponse> qrs = await (from q in ctx.QueryResponses where q.AgentID == agentID select q).ToListAsync();
+            if (qrs.Count == 0)
+            {
+                throw new Exception("No such agentID");
+            }
+            else
+            {
+                return qrs;
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ namespace ABZPolicyWebApi.Controllers
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                 //await client.PostAsJsonAsync("http://localhost:5189/api/Claim/Policy", new { PolicyNo = policy.PolicyNo });
-                await client.PostAsJsonAsync("http://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/Policy", new { PolicyNo = policy.PolicyNo });
+                await client.PostAsJsonAsync("http://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/Policy/", new { PolicyNo = policy.PolicyNo });
                 return Created($"api/Policy/{policy.PolicyNo}", policy);
 
             }

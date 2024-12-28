@@ -49,8 +49,8 @@ namespace ABZCustomerWebApi.Controllers
                 // await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Customer/", new { CustomerID = customer.CustomerID });
                 // await client.PostAsJsonAsync("http://localhost:5058/api/CustomerQuery/Customer/", new { CustomerID = customer.CustomerID });
 
-                await client.PostAsJsonAsync("http://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/Customer", new { CustomerID = customer.CustomerID });
-                await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/Customer", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/Customer/", new { CustomerID = customer.CustomerID });
+                await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/Customer/", new { CustomerID = customer.CustomerID });
                 await client.PostAsJsonAsync("http://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/Customer/", new { CustomerID = customer.CustomerID });
                 return Created($"api/Customer/{customer.CustomerID}", customer);
                 

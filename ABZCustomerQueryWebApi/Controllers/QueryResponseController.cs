@@ -43,7 +43,7 @@ namespace ABZCustomerQueryWebApi.Controllers
                 await qrRepo.InsertQueryResponseAsync(queryresponse);
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                return Created($"api/QueryResponse{queryresponse.QueryID}", queryresponse);
+                return Created($"api/QueryResponse/{queryresponse.QueryID}", queryresponse);
             }
             catch (Exception ex)
             {

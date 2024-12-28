@@ -38,7 +38,7 @@ namespace ABZPolicyWebApi.Controllers
                 return NotFound(ex.Message);
             }
         }
-        [HttpPost("{tken}")]
+        [HttpPost("{token}")]
         public async Task<ActionResult> Insert(string token,PolicyAddon policyAddon)
         {
             try
@@ -47,7 +47,7 @@ namespace ABZPolicyWebApi.Controllers
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                return Created($"api/PolicyAddon{policyAddon.PolicyNo}", policyAddon);
+                return Created($"api/PolicyAddon/{policyAddon.PolicyNo}", policyAddon);
             }
             catch (Exception ex)
             {

@@ -44,7 +44,7 @@ namespace ABZProductWebApi.Controllers
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                return Created($"api/ProductAddon{productAddon.ProductID}", productAddon);
+                return Created($"api/ProductAddon/{productAddon.ProductID}", productAddon);
 
             }
             catch (Exception ex)

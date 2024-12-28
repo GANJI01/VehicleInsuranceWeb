@@ -48,7 +48,7 @@ namespace ABZProductWebApi.Controllers
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                // await client.PostAsJsonAsync("http://localhost:5273/api/Proposal/Product/", new { ProductID = product.ProductID });
-                await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/proposal/product", new { ProductID = product.ProductID });
+                await client.PostAsJsonAsync("http://abzproposalwebapi-chanad.azurewebsites.net/api/proposal/product/", new { ProductID = product.ProductID });
                 return Created($"api/Product/{product.ProductID}", product);
 
             }

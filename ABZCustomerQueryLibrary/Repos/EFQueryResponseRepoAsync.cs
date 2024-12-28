@@ -37,7 +37,7 @@ namespace ABZCustomerQueryLibrary.Repos
             }
         }
 
-        public async Task<List<QueryResponse>> GetQueryResponseByCustomerQuery(string queryId)
+        public async Task<List<QueryResponse>> GetQueryResponseByCustomerQueryAsync(string queryId)
         {
             List<QueryResponse> qrs = await (from q in ctx.QueryResponses where q.QueryID == queryId select q).ToListAsync();
             if (qrs.Count == 0)

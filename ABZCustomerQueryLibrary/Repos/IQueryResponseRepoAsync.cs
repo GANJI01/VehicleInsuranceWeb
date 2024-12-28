@@ -13,8 +13,8 @@ namespace ABZCustomerQueryLibrary.Repos
         Task DeleteQueryResponseAsync(string queryId, string srNo);
         Task UpdateQueryResponseAsync(string queryId, string srNo, QueryResponse queryresponse);
         Task<List<QueryResponse>> GetAllQuerysAsync();
-        Task<QueryResponse> GetQueryResponseAsync(string queryID, string srNo);
-        Task<List<QueryResponse>> GetQueryResponseByCustomerQuery(string queryId);
+        Task<QueryResponse> GetQueryResponseAsync(string queryId, string srNo);
+        Task<List<QueryResponse>> GetQueryResponseByCustomerQueryAsync(string queryId);
         Task InsertCustomerQueryAsync(CustomerQuery customerquery);
         Task InsertAgentAsync(Agent agent);
     }

@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ABZVehicleInsuranceMVCAPP.Models.QueryResponse>
 
 @{
-    ViewData["Title"] = "GetByCustomer";
+    ViewData["Title"] = "ByCustomer";
 }
 
-<h1>GetByCustomer</h1>
+<h1>ByCustomer</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -48,11 +46,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ResponseDate)
             </td>
-          
+            
         </tr>
 }
     </tbody>
 </table>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<a asp-action="Index">Back to List</a>

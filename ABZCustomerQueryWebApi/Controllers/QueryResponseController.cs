@@ -83,7 +83,7 @@ namespace ABZCustomerQueryWebApi.Controllers
         {
             try
             {
-                List<QueryResponse> queryResponses = await qrRepo.GetQueryResponseByCustomerQuery(queryId);
+                List<QueryResponse> queryResponses = await qrRepo.GetQueryResponseByCustomerQueryAsync(queryId);
                 return Ok(queryResponses);
             }
             catch (Exception ex)
@@ -107,12 +107,12 @@ namespace ABZCustomerQueryWebApi.Controllers
         }
         [HttpPost("CustomerQuery")]
 
-        public async Task<ActionResult> InsertCustomerQuery(CustomerQuery customerQuery)
+        public async Task<ActionResult> InsertCustomerQuery(CustomerQuery customerquery)
         {
             try
             {
-                await qrRepo.InsertCustomerQueryAsync(customerQuery);
-                return Ok(customerQuery);
+                await qrRepo.InsertCustomerQueryAsync(customerquery);
+                return Ok(customerquery);
             }
             catch (Exception ex)
             {

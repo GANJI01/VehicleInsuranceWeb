@@ -59,7 +59,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Edit/5
-        [HttpPut]
+       
         [Route("QueryResponse/Edit/{queryId}/{srNo}")]
         public async Task<ActionResult> Edit(string queryId, string srNo)
         {
@@ -68,7 +68,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // POST: CustomerQueryController/Edit/5
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("QueryResponse/Edit/{queryId}/{srNo}")]
         public async Task<ActionResult> Edit(string queryId, string srNo, QueryResponse queryResponse)
@@ -108,9 +108,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> GetByCustomer(string queryId)
+        public async Task<ActionResult> ByCustomer(string queryId)
         {
-            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("GetByCustomer/" + queryId);
+            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("ByCustomer/" + queryId);
             return View(queries);
         }
     }

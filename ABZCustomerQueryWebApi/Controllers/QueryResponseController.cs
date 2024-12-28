@@ -95,15 +95,8 @@ namespace ABZCustomerQueryWebApi.Controllers
 
         public async Task<ActionResult> InsertAgent(Agent agent)
         {
-            try
-            {
-                await qrRepo.InsertAgentAsync(agent);
-                return Ok(agent);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await qrRepo.InsertAgentAsync(agent);
+            return Ok(agent);
         }
         [HttpPost("CustomerQuery")]
 

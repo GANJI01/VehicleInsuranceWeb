@@ -85,10 +85,10 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Delete/5
-        [Route("QueryResponse/Delete/{queryId}")]
+        [Route("QueryResponse/Delete/{queryId}/{srNo}")]
         public async Task<ActionResult> Delete(string queryId, string srNo)
         {
-            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryId + srNo);
+            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryId}/{srNo}");
             return View(query);
         }
 
@@ -100,7 +100,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             try
             {
-                await client.DeleteAsync("" + queryId + srNo);
+                await client.DeleteAsync($"{queryId}/{srNo}");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -110,7 +110,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
         public async Task<ActionResult> ByCustomer(string queryId)
         {
-            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("ByCustomer/" + queryId);
+            List<QueryResponse> queries = await client.GetFromJsonAsync<List<QueryResponse>>("GByCustomer/" + queryId);
             return View(queries);
         }
     }

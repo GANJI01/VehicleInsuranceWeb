@@ -28,7 +28,7 @@ namespace ABZCustomerQueryLibrary.Repos
         {
             try
             {
-                QueryResponse qe = await (from q in ctx.QueryResponses where q.SrNo == srNo && q.QueryID == queryId select q).FirstAsync();
+                QueryResponse qe = await (from q in ctx.QueryResponses where srNo == q.SrNo && queryId == q.QueryID select q).FirstAsync();
                 return qe;
             }
             catch (Exception)

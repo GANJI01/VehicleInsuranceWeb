@@ -50,9 +50,9 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {queryId=item.QueryID, srNo=item.SrNo }) |
-                    @Html.ActionLink("Details", "Details", new { queryId = item.QueryID, srNo = item.SrNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { queryId = item.QueryID, srNo = item.SrNo }) |
-                    @Html.ActionLink("ByCustomer", "ByCustomer", new { queryId = item.QueryID })
+                @Html.ActionLink("Details", "Details", new { queryId = item.QueryID, srNo = item.SrNo }) |
+                @Html.ActionLink("Delete", "Delete", new { queryId = item.QueryID, srNo = item.SrNo }) |
+                @Html.ActionLink("ByCustomer", "ByCustomer", new { queryId = item.QueryID })
             </td>
         </tr>
 }

@@ -65,7 +65,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // POST: CustomerQueryController/Edit/5
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Edit/{queryId}")]
         public async Task<ActionResult> Edit(string queryId, CustomerQuery customerquery)

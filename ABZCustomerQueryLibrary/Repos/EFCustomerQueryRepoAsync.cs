@@ -69,6 +69,8 @@ namespace ABZCustomerQueryLibrary.Repos
             customerQuery1.Description= customerquery.Description;
             customerQuery1.QueryDate=customerquery.QueryDate;
             customerQuery1.Status=customerquery.Status;
+            await ctx.SaveChangesAsync();
         }
+        
     }
 }

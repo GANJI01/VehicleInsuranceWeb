@@ -59,6 +59,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Edit/5
+        [HttpPut]
         [Route("QueryResponse/Edit/{queryId}/{srNo}")]
         public async Task<ActionResult> Edit(string queryId, string srNo)
         {
@@ -67,7 +68,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // POST: CustomerQueryController/Edit/5
-        [HttpPost]
+        [HttpPut]
         [ValidateAntiForgeryToken]
         [Route("QueryResponse/Edit/{queryId}/{srNo}")]
         public async Task<ActionResult> Edit(string queryId, string srNo, QueryResponse queryResponse)

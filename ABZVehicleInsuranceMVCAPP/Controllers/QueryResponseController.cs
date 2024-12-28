@@ -28,9 +28,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Details/5
-        public async Task<ActionResult> Details(string queryID,string srNo)
+        public async Task<ActionResult> Details(string queryId, string srNo)
         {
-            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryID + srNo);
+            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryId + srNo);
             return View(query);
         }
 
@@ -59,22 +59,22 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Edit/5
-        [Route("CustomerQuery/Edit/{queryID}")]
-        public async Task<ActionResult> Edit(string queryID, string srNo)
+        [Route("QueryResponse/Edit/{queryId}/{srNo}")]
+        public async Task<ActionResult> Edit(string queryId, string srNo)
         {
-            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryID+ srNo);
+            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>($"{queryId}/{srNo}");
             return View(query);
         }
 
         // POST: CustomerQueryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("QueryResponse/Edit/{queryID}/{srNo}")]
-        public async Task<ActionResult> Edit(string queryID, string srNo, QueryResponse qr)
+        [Route("QueryResponse/Edit/{queryId}/{srNo}")]
+        public async Task<ActionResult> Edit(string queryId, string srNo, QueryResponse queryResponse)
         {
             try
             {
-                await client.PutAsJsonAsync<QueryResponse>("" + queryID+srNo, qr);
+                await client.PutAsJsonAsync<QueryResponse>($"{queryId}/{srNo}", queryResponse);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,22 +84,22 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Delete/5
-        [Route("CustomerQuery/Delete/{queryID}")]
-        public async Task<ActionResult> Delete(string queryID,string srNo)
+        [Route("QueryResponse/Delete/{queryId}")]
+        public async Task<ActionResult> Delete(string queryId, string srNo)
         {
-            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryID + srNo);
+            QueryResponse query = await client.GetFromJsonAsync<QueryResponse>("" + queryId + srNo);
             return View(query);
         }
 
         // POST: CustomerQueryController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("QueryResponse/Delete/{queryID}/{srNo}")]
-        public async Task<ActionResult> Delete(string queryID, string srNo, IFormCollection collection)
+        [Route("QueryResponse/Delete/{queryId}/{srNo}")]
+        public async Task<ActionResult> Delete(string queryId, string srNo, IFormCollection collection)
         {
             try
             {
-                await client.DeleteAsync("" + queryID+srNo);
+                await client.DeleteAsync("" + queryId + srNo);
                 return RedirectToAction(nameof(Index));
             }
             catch

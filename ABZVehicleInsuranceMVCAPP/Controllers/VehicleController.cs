@@ -9,7 +9,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     public class VehicleController : Controller
     {
        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5083/api/Vehicle/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-chanad.azurewebsites.net/api/Vechicle/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/") };
 
         static string token;
         // GET: VehicleController

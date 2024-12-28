@@ -11,9 +11,9 @@ namespace ABZCustomerQueryLibrary.Repos
     public class EFQueryResponseRepoAsync : IQueryResponseRepoAsync
     {
         ABZQueryDBContext ctx = new ABZQueryDBContext();
-        public async Task DeleteQueryResponseAsync(string queryID, string srNo)
+        public async Task DeleteQueryResponseAsync(string queryId, string srNo)
         {
-            QueryResponse qr = await GetQueryResponseAsync(queryID, srNo);
+            QueryResponse qr = await GetQueryResponseAsync(queryId, srNo);
             ctx.QueryResponses.Remove(qr);
             await ctx.SaveChangesAsync();
         }
@@ -24,11 +24,11 @@ namespace ABZCustomerQueryLibrary.Repos
             return qr;
         }
 
-        public async Task<QueryResponse> GetQueryResponseAsync(string queryID, string srNo)
+        public async Task<QueryResponse> GetQueryResponseAsync(string queryId, string srNo)
         {
             try
             {
-                QueryResponse qe = await (from q in ctx.QueryResponses where q.SrNo == srNo && q.QueryID == queryID select q).FirstAsync();
+                QueryResponse qe = await (from q in ctx.QueryResponses where q.SrNo == srNo && q.QueryID == queryId select q).FirstAsync();
                 return qe;
             }
             catch (Exception)
@@ -68,9 +68,9 @@ namespace ABZCustomerQueryLibrary.Repos
             await ctx.SaveChangesAsync();
         }
 
-        public async Task UpdateQueryResponseAsync(string queryID, string srNo, QueryResponse queryresponse)
+        public async Task UpdateQueryResponseAsync(string queryId, string srNo, QueryResponse queryresponse)
         {
-            QueryResponse qr = await GetQueryResponseAsync(queryID, srNo);
+            QueryResponse qr = await GetQueryResponseAsync(queryId, srNo);
             qr.ResponseDate = queryresponse.ResponseDate;
             qr.Description = queryresponse.Description;
             await ctx.SaveChangesAsync();

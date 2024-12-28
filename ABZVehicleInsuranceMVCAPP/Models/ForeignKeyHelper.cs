@@ -21,18 +21,7 @@ namespace ABZVehicleInsuranceMVCAPP.Models
             }
             return aIds;
         }
-        //public static async Task<List<SelectListItem>> GetCustomerIds(string token)
-        //{
-        //    HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
-        //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        //    List<Customer> customers = await client.GetFromJsonAsync<List<Customer>>("");
-        //    List<SelectListItem> customerIds = new List<SelectListItem>();
-        //    foreach (Customer customer in customers)
-        //    {
-        //        customerIds.Add(new SelectListItem { Text = customer.CustomerID.ToString(), Value = customer.CustomerID.ToString() });
-        //    }
-        //    return customerIds;
-        //}
+        
 
         public static async Task<List<SelectListItem>> GetCustomerIds(string token)
         {
@@ -49,7 +38,22 @@ namespace ABZVehicleInsuranceMVCAPP.Models
             }
             return cIds;
         }
-       
+        public static async Task<List<SelectListItem>> GetCustomerQueryIds(string token)
+        {
+            // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
+            HttpClient client = new HttpClient() { BaseAddress = new Uri(" https://abzquerywebapi-chanad.azurewebsites.net/api/QueryResponse/Query/") };
+
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            List<CustomerQuery> customerQueries = await client.GetFromJsonAsync<List<CustomerQuery>>("");
+            List<SelectListItem> cqIds = new List<SelectListItem>();
+            foreach (CustomerQuery customerQuery in customerQueries)
+            {
+                cqIds.Add(new SelectListItem { Text = customerQuery.QueryID.ToString(), Value = customerQuery.QueryID.ToString() });
+
+            }
+            return cqIds;
+        }
+
         public static async Task<List<SelectListItem>> GetPolicyNos(string token)
         {
             // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/Policy/") };

@@ -37,15 +37,16 @@ namespace ABZCustomerQueryWebApi.Controllers
             }
         }
         [HttpPost("{token}")]
-        public async Task<ActionResult> Insert(string token, CustomerQuery customerQuery)
+        public async Task<ActionResult> Insert(string token, CustomerQuery customerquery)
         {
             try
             {
-                await cqRepo.InsertCustomerQueryAsync(customerQuery);
+                await cqRepo.InsertCustomerQueryAsync(customerquery);
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                await client.PostAsJsonAsync("http://localhost:5058/api/CustomerQuery", new { QueryID = customerQuery.QueryID });
-                return Created($"api/CustomerQuery{customerQuery.QueryID}", customerQuery);
+                //  await client.PostAsJsonAsync("http://localhost:5058/api/CustomerQuery/", new { QueryID = customerQuery.QueryID });
+                await client.PostAsJsonAsync("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/", new { QueryID = customerquery.QueryID });
+                return Created($"api/CustomerQuery/{customerquery.QueryID}", customerquery);
             }
             catch (Exception ex)
             {
@@ -53,12 +54,12 @@ namespace ABZCustomerQueryWebApi.Controllers
             }
         }
         [HttpPut("{queryId}")]
-        public async Task<ActionResult> Update(string queryId, CustomerQuery customerQuery)
+        public async Task<ActionResult> Update(string queryId, CustomerQuery customerquery)
         {
             try
             {
-                await cqRepo.UpdateCustomerQueryAsync(queryId, customerQuery);
-                return Ok(customerQuery);
+                await cqRepo.UpdateCustomerQueryAsync(queryId, customerquery);
+                return Ok(customerquery);
             }
             catch (Exception ex)
             {

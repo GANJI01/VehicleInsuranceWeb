@@ -28,16 +28,16 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: CustomerQueryController/Details/5
         public async Task<ActionResult> Details(string queryId)
         {
-            CustomerQuery customerQuery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
-            return View(customerQuery);
+            CustomerQuery customerquery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
+            return View(customerquery);
         }
 
         // GET: CustomerQueryController/Create
         public async Task<ActionResult> Create()
         {
-            CustomerQuery customerQuery = new CustomerQuery();
+            CustomerQuery customerquery = new CustomerQuery();
             ViewData["token"] = token;
-            return View(customerQuery);
+            return View(customerquery);
         }
 
         // POST: CustomerQueryController/Create
@@ -60,19 +60,19 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [Route("CustomerQuery/Edit/{queryId}")]
         public async Task<ActionResult> Edit(string queryId)
         {
-            CustomerQuery customerQuery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
-            return View(customerQuery);
+            CustomerQuery customerquery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
+            return View(customerquery);
         }
 
         // POST: CustomerQueryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Edit/{queryId}")]
-        public async Task<ActionResult> Edit(string queryId, CustomerQuery cq)
+        public async Task<ActionResult> Edit(string queryId, CustomerQuery customerquery)
         {
             try
             {
-                await client.PutAsJsonAsync<CustomerQuery>("" + queryId, cq);
+                await client.PutAsJsonAsync<CustomerQuery>("" + queryId, customerquery);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -85,8 +85,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [Route("CustomerQuery/Delete/{queryId}")]
         public async Task<ActionResult> Delete(string queryId)
         {
-            CustomerQuery customerQuery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
-            return View(customerQuery);
+            CustomerQuery customerquery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
+            return View(customerquery);
         }
 
         // POST: CustomerQueryController/Delete/5
@@ -107,8 +107,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
         public async Task<ActionResult> GetByCustomer(string customerId)
         {
-            List<CustomerQuery> customerQuery = await client.GetFromJsonAsync<List<CustomerQuery>>("GetByCustomer/" + customerId);
-            return View(customerQuery);
+            List<CustomerQuery> customerquery = await client.GetFromJsonAsync<List<CustomerQuery>>("GetByCustomer/" + customerId);
+            return View(customerquery);
         }
     }
 }

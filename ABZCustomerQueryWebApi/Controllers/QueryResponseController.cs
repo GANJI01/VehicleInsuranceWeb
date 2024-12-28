@@ -22,12 +22,12 @@ namespace ABZCustomerQueryWebApi.Controllers
             List<QueryResponse> qr = await qrRepo.GetAllQuerysAsync();
             return Ok(qr);
         }
-        [HttpGet("{queryID}/{srNo}")]
-        public async Task<ActionResult> GetOne(string queryID, string srNo)
+        [HttpGet("{queryId}/{srNo}")]
+        public async Task<ActionResult> GetOne(string queryId, string srNo)
         {
             try
             {
-                QueryResponse qr = await qrRepo.GetQueryResponseAsync(queryID, srNo);
+                QueryResponse qr = await qrRepo.GetQueryResponseAsync(queryId, srNo);
                 return Ok(qr);
             }
             catch (Exception ex)
@@ -50,12 +50,12 @@ namespace ABZCustomerQueryWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("{queryID}/{srNo}")]
-        public async Task<ActionResult> Update(string queryID, string srNo, QueryResponse queryresponse)
+        [HttpPut("{queryId}/{srNo}")]
+        public async Task<ActionResult> Update(string queryId, string srNo, QueryResponse queryresponse)
         {
             try
             {
-                await qrRepo.UpdateQueryResponseAsync(queryID, srNo,queryresponse);
+                await qrRepo.UpdateQueryResponseAsync(queryId, srNo,queryresponse);
                 return Ok(qrRepo);
             }
             catch (Exception ex)
@@ -63,12 +63,12 @@ namespace ABZCustomerQueryWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{queryID}/{srNo}")]
-        public async Task<ActionResult> Delete(string queryID, string srNo)
+        [HttpDelete("{queryId}/{srNo}")]
+        public async Task<ActionResult> Delete(string queryId, string srNo)
         {
             try
             {
-                await qrRepo.DeleteQueryResponseAsync(queryID, srNo);
+                await qrRepo.DeleteQueryResponseAsync(queryId, srNo);
                 return Ok();
 
             }
@@ -77,13 +77,13 @@ namespace ABZCustomerQueryWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("ByCustomer/{queryID}")]
+        [HttpGet("ByCustomer/{queryId}")]
         
-        public async Task<ActionResult> GetByCustomer(string queryID)
+        public async Task<ActionResult> GetByCustomer(string queryId)
         {
             try
             {
-                List<QueryResponse> queryResponses = await qrRepo.GetQueryResponseByCustomerQuery(queryID);
+                List<QueryResponse> queryResponses = await qrRepo.GetQueryResponseByCustomerQuery(queryId);
                 return Ok(queryResponses);
             }
             catch (Exception ex)

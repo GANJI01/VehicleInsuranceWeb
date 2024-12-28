@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { queryID=item.QueryID }) |
-                    @Html.ActionLink("Details", "Details", new { queryID = item.QueryID }) |
-                    @Html.ActionLink("Delete", "Delete", new { queryID = item.QueryID }) |
+                @Html.ActionLink("Edit", "Edit", new { queryId=item.QueryID }) |
+                    @Html.ActionLink("Details", "Details", new { queryId = item.QueryID }) |
+                    @Html.ActionLink("Delete", "Delete", new { queryId = item.QueryID }) |
                     @Html.ActionLink("GetByCustomer", "GetByCustomer", new { customerId=item.CustomerID})
             </td>
         </tr>

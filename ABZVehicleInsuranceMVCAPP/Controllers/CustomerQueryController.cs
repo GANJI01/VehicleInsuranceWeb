@@ -105,9 +105,9 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-        public async Task<ActionResult> GetByCustomer(string customerId)
+        public async Task<ActionResult> ByCustomer(string customerId)
         {
-            List<CustomerQuery> customerquery = await client.GetFromJsonAsync<List<CustomerQuery>>("GetByCustomer/" + customerId);
+            List<CustomerQuery> customerquery = await client.GetFromJsonAsync<List<CustomerQuery>>("ByCustomer/" + customerId);
             return View(customerquery);
         }
     }

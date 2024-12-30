@@ -20,3 +20,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+.navbar {
+    width: 100%; /* Ensure full width */
+}

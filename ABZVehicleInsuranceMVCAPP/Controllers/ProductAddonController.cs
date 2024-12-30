@@ -15,6 +15,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         static string token;
         public async Task<ActionResult> Index(string pid)
         {
+            ViewData["ActiveNav"] = "ProductAddon";
 
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;

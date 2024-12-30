@@ -37,7 +37,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
+               @* <input asp-for="Status" class="form-control" />*@
+                @Html.DropDownListFor(
+                         model => model.Status,
+                         (List<SelectListItem>)ViewBag.FuelTypes,
+                         "-- Select Query Status --",
+                         new { @class = "form-control" }
+                         )
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">

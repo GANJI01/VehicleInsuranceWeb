@@ -17,6 +17,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyController
         public async Task<ActionResult> Index()
         {
+            ViewData["ActiveNav"] = "Policy";
+
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";

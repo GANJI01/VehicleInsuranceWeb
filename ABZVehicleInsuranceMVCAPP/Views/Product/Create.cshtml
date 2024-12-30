@@ -33,7 +33,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="InsuredInterests" class="control-label"></label>
-                <input asp-for="InsuredInterests" class="form-control" />
+                @*<input asp-for="InsuredInterests" class="form-control" /> *@
+                @Html.DropDownListFor(
+                         model => model.InsuredInterests,
+                         (List<SelectListItem>)ViewBag.FuelTypes,
+                         "-- Select Insured Intrests --",
+                         new { @class = "form-control" }
+                         )
                 <span asp-validation-for="InsuredInterests" class="text-danger"></span>
             </div>
             <div class="form-group">

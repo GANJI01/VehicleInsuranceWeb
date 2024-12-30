@@ -16,6 +16,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         static string token;
         public async Task<ActionResult> Index(string searchBy,string searchValue)
         {
+            ViewData["ActiveNav"] = "Customer";
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";

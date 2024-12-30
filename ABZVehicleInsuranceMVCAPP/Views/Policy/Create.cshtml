@@ -36,18 +36,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="ReceiptDate" class="control-label"></label>
-                @*<input asp-for="ReceiptDate" class="form-control" />*@
-                @Html.DropDownListFor(
-                         model => model.ReceiptDate,
-                         (List<SelectListItem>)ViewBag.FuelTypes,
-                         "-- Select Payment Mode --",
-                         new { @class = "form-control" }
-                         )
+                <input asp-for="ReceiptDate" class="form-control" />
                 <span asp-validation-for="ReceiptDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PaymentMode" class="control-label"></label>
-                <input asp-for="PaymentMode" class="form-control" />
+                @*<input asp-for="PaymentMode" class="form-control" />*@
+                @Html.DropDownListFor(
+                         model => model.ReceiptDate,
+                         (List<SelectListItem>)ViewBag.FuelTypes,
+                         "-- Select Fuel Type --",
+                         new { @class = "form-control" }
+                         )
                 <span asp-validation-for="PaymentMode" class="text-danger"></span>
             </div>
             <div class="form-group">

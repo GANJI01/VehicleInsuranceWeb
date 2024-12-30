@@ -7,6 +7,7 @@ using System.Net.Http.Json;
 using NuGet.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Buffers;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
@@ -20,6 +21,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ProductController
         public async Task<ActionResult> Index(string searchBy, string searchValue)
         {
+            ViewData["ActiveNav"] = "Product";
 
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
@@ -80,6 +82,14 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             Product product = new Product();
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Private car", Value = "PRIVATE CAR" },
+                new SelectListItem { Text = "Public car", Value = "PUBLIC CAR" }
+             };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             return View(product);
         }
 

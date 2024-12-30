@@ -32,9 +32,21 @@
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @* <div class="form-group">
+
                 <label asp-for="FuelType" class="control-label"></label>
                 <input asp-for="FuelType" class="form-control" />
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </div> *@
+            <!-- FuelType Dropdown -->
+            <div class="form-group">
+                <label asp-for="FuelType" class="control-label"></label>
+                @Html.DropDownListFor(
+                         model => model.FuelType,
+                         (List<SelectListItem>)ViewBag.FuelTypes,
+                         "-- Select Fuel Type --",
+                         new { @class = "form-control" }
+                         )
                 <span asp-validation-for="FuelType" class="text-danger"></span>
             </div>
             <div class="form-group">

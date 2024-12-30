@@ -32,6 +32,38 @@
 
 </p>
 
+<div>
+    @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td>
+                    <span><b>Search By: </b></span>
+                    @Html.RadioButton("searchBy", "CustomerName", true)
+                    <text>Customer Name</text>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("searchValue", null, new { @class = "form-control", placeholder = "Enter Customer name" })
+                </td>
+                <td>
+                    <input type="submit" value="Search" class="btn btn-outline-success" />
+                </td>
+            </tr>
+        </table>
+
+    }
+</div>
+
+<!-- Display Results -->
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["InfoMessage"]
+    </div>
+}
+
 <table class="table table-hover table-responsive">
     <thead>
         <tr>

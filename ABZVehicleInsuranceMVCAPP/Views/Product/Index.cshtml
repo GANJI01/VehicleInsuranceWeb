@@ -30,77 +30,27 @@
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 
 </p>
-
-
-@* <div>
-    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
-    {
-        <table>
-            <tr>
-                <td>
-                    <span><b>Search By: </b></span>
-                    @Html.RadioButton("searchBy", "ProductName", false)
-                    <text>Product Name</text>
-                    @Html.RadioButton("searchBy", "Id", true)   @* Set default to Product Id 
-                    <text>Product Id</text>
-                    @Html.RadioButton("searchBy", "InsuredIntrests")
-                    <text>Insured Interests</text>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.TextBox("searchValue", null, new { @class = "form-control", placeholder = "Enter product Id or Name or II" })
-                </td>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Search" class="btn btn-outline-success" />
-                </td>
-            </tr>
-        </table>
-    }
-</div> *@
-@* <form asp-action="Index">
-	<div class="input-group md-form-sm form-2 pl-0">
-		<input name="id" class="form-control my-0 py-1 table-bordered type="text" placeholder="Search" aria-label="Search" />
-		<div class="input-group-append">
-
-			<span class="input-group-text list-group-numbered lighthen-3" id="basic-text1">
-				>
-				<i class="fas fa-search text-black-grey">
-					aria-hidden="true"
-				</i>
-
-
-
-			</span>
-		</div>
-	</div>
-</form> *@
-<!-- Search Form -->
 <div>
-    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Product", FormMethod.Get))//Index,controllername
     {
         <table>
             <tr>
                 <td>
                     <span><b>Search By: </b></span>
-                    @Html.RadioButton("searchBy", "ProductName")
+                    @Html.RadioButton("searchBy", "ProductName", true)
                     <text>Product Name</text>
-                    @Html.RadioButton("searchBy", "Id", true)  <!-- Default search by Product ID -->
-                    <text>Product Id</text>
-                    @Html.RadioButton("searchBy", "InsuredInterests")
-                    <text>Insured Interests</text>
                 </td>
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("searchValue", null, new { @class = "form-control", placeholder = "Enter Product Id" })
+                    @Html.TextBox("searchValue", null, new { @class = "form-control", placeholder = "Enter Product name" })
                 </td>
                 <td>
                     <input type="submit" value="Search" class="btn btn-outline-success" />
                 </td>
             </tr>
         </table>
+
     }
 </div>
 
@@ -190,13 +140,3 @@
 </table>
 
 
-@section scripts{
-    <script>
-    $(function (){
-        $("#basic-text1").click(function ()
-        {
-            $("Form").submit();
-        })
-    });
-    </script>
-}

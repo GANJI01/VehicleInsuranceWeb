@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
 using NuGet.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
@@ -41,6 +42,17 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             Policy policy = new Policy();
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Cash", Value = "C" },
+                new SelectListItem { Text = "Cheque", Value = "Q" },
+                new SelectListItem { Text = "Credit or Debit", Value = "U" },
+                new SelectListItem { Text = "Digital Payment", Value = "D" }
+             };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
+
             return View(policy);
         }
 

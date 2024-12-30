@@ -31,86 +31,37 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Product> products = await client.GetFromJsonAsync<List<Product>>("");
-            return View(products);
+           // return View(products);
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                searchValue = searchValue.Replace(" ", "").ToLower(); // Remove spaces and convert to lowercase
+            }
 
-
-            //try
-            //{
-            //    if (products.Count == 0)
-            //    {
-            //        TempData["InfoMessage"] = "Currently No products Available in Database";
-            //        return View(products);
-            //    }
-            //    else
-            //    {
-            //        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(id))
-            //        {
-            //            TempData["InfoMessage"] = "Please Provide Search Criteria and Value";
-            //            return View(products);
-            //        }
-            //        else
-            //        {
-            //            IEnumerable<Product> searchResults = null;
-
-            //            if (searchBy.ToLower() == "ProductName")
-            //            {
-            //                searchResults = products.Where(p => p.ProductName.ToLower().Contains(searchValue.ToLower()));
-            //            }
-            //            else if (searchBy.ToLower() == "Id")
-            //            {
-            //                var searchByProductId =  Products
-            //                        .Where(p => p.ProductID.ToLower().Contains(searchValue.ToLower())) // Case-insensitive search
-            //                        .ToList();
-            //                return View(searchByProductId);
-            //            }
-            //            else if (searchBy.ToLower() == "InsuredIntrests")
-            //            {
-            //                searchResults = products.Where(p => p.InsuredInterests.ToLower().Contains(searchValue.ToLower()));
-            //            }
-
-            //            if (searchResults != null && searchResults.Any())
-            //            {
-            //                return View(searchResults.ToList());
-            //            }
-            //            else
-            //            {
-            //                TempData["InfoMessage"] = "No matching products found";
-            //                return View(products);  // Return the list with all products or an empty list
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Log error for debugging purposes
-            //    TempData["ErrorMessage"] = "An error occurred while searching for products.";
-            //    // Optionally, log the exception (e.g., using a logger)
-            //    // Log.Error(ex, "Error in Index action");
-            //    return View(products);
-            //}
             if (string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchValue))
             {
-                // If no search criteria is provided, return all products
                 return View(products);
             }
 
+            // Initialize search results
             IEnumerable<Product> searchResults = null;
 
-            // Search by ProductID (varchar type)
-            if (searchBy.ToLower() == "id")
+            // Search by AgentName
+            if (searchBy.ToLower() == "productname")
             {
-                searchResults = products.Where(p => p.ProductID.ToLower().Contains(searchValue.ToLower())).ToList();
+                searchResults = products.Where(a => a.ProductName != null && a.ProductName.ToLower().Contains(searchValue.ToLower())).ToList();
             }
 
             if (searchResults != null && searchResults.Any())
             {
-                return View(searchResults);  // Return filtered results
+                return View(searchResults); // Return filtered results
             }
             else
             {
-                TempData["InfoMessage"] = "No matching products found.";
-                return View(products);  // Return all products if no match is found
+                TempData["InfoMessage"] = "No matching agents found.";
+                return View(products); // Return all agents if no match is found
             }
+
+            return View(products);
         }
     
 

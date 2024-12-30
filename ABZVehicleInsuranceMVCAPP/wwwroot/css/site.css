@@ -12,24 +12,35 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+/*html {
     position: relative;
     min-height: 100%;
+}*/
+html, body {
+    height: 100%;
+    overflow: auto; /* Allow scrolling */
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    overflow: auto; /* Allow scrolling */
 }
 
-body {
+ /*body {
     margin-bottom: 60px;
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px); /* Adjust 60px to match the height of your navbar */
+    height: calc(100vh - 60px);*/ /* Adjust 60px to match the height of your navbar */
     
-    background-size: cover;
-    z-index: -1; /* Ensure the image stays behind other content */
-}
+    /*background-size: cover;
+    z-index: -1;*/ /* Ensure the image stays behind other content */
+/*}*/
 
-/added from here/
+
+/*added from here*/
 .navbar {
     height: 60px; /* Set the navbar height */
     display: flex;
@@ -45,13 +56,16 @@ body {
     position: relative;
     top: 10px; /* Adjust the vertical position if needed */
 }
+body {
+    margin-bottom: 60px; /* Optional: Set bottom margin to create space for fixed footer or content */
+}
 
-body, html {
+/*body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
-}
+}*/
 /*
 .fullscreen-image {
     

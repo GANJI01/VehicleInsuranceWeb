@@ -1,25 +1,61 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px); /* Adjust 60px to match the height of your navbar */
+    
+    background-size: cover;
+    z-index: -1; /* Ensure the image stays behind other content */
 }
+
+/added from here/
 .navbar {
-    width: 100%; /* Ensure full width */
+    height: 60px; /* Set the navbar height */
+    display: flex;
+    align-items: center; /* Center contents vertically */
+    margin-bottom: 0;
+}
+
+.nav-logo {
+    height: 100px; /* Set the desired height for the logo */
+    width: auto; /* Maintain aspect ratio */
+    max-height: 100%; /* Ensure the logo doesn't exceed the navbar's height */
+    max-width: 100%; /* Ensure the logo doesn't exceed its container */
+    position: relative;
+    top: 10px; /* Adjust the vertical position if needed */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+/*
+.fullscreen-image {
+    
+}*/
+.navbar {
+    z-index: 1;
 }

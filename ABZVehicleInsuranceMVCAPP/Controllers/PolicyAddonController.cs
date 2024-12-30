@@ -53,6 +53,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             try
             {
                 await client.PostAsJsonAsync<PolicyAddon>("" + token, policyAddon);
+                TempData["AlertMessage"] = "Created Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -78,6 +79,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             try
             {
                 await client.PutAsJsonAsync<PolicyAddon>($"{policyNo}/{addonId}/", policyAddon);
+                TempData["AlertMessage"] = "Edited Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -103,6 +105,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             try
             {
                 await client.DeleteAsync($"{policyNo}/{addonId}");
+                TempData["AlertMessage"] = "Deleted Successfully.....!";
                 return RedirectToAction(nameof(Index));
             }
             catch

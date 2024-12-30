@@ -5,6 +5,27 @@
 }
 
 <h1>Index</h1>
+@if (TempData["AlertMessage"] != null)
+{
+
+
+    <div id="alertMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success  !</strong>    @TempData["AlertMessage"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+           $(document).ready(function() {
+        var alertMessage = $("#alertMessage");
+
+        if (alertMessage.length > 0) {
+            // Hide the alert after 3 seconds with a fade-out effect
+            setTimeout(function() {
+                alertMessage.fadeOut(); // This will fade out the alert
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    });
+</script>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>

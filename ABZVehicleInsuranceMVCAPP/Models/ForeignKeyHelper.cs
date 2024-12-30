@@ -38,20 +38,20 @@ namespace ABZVehicleInsuranceMVCAPP.Models
             }
             return cIds;
         }
-        //public static async Task<List<SelectListItem>> GetCustomerQueryIds(string token)
+        //public static async task<list<selectlistitem>> getcustomerqueryids(string token)
         //{
-        //    // HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5151/api/Customer/") };
-        //    HttpClient client = new HttpClient() { BaseAddress = new Uri(" https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/") };
+        //    // httpclient client = new httpclient() { baseaddress = new uri("http://localhost:5151/api/customer/") };
+        //    httpclient client = new httpclient() { baseaddress = new uri(" https://abzquerywebapi-chanad.azurewebsites.net/api/customerquery/") };
 
-        //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-        //    List<CustomerQuery> customerQueries = await client.GetFromJsonAsync<List<CustomerQuery>>("");
-        //    List<SelectListItem> cqIds = new List<SelectListItem>();
-        //    foreach (CustomerQuery customerQuery in customerQueries)
+        //    client.defaultrequestheaders.authorization = new system.net.http.headers.authenticationheadervalue("bearer", token);
+        //    list<customerquery> customerqueries = await client.getfromjsonasync<list<customerquery>>("");
+        //    list<selectlistitem> cqids = new list<selectlistitem>();
+        //    foreach (customerquery customerquery in customerqueries)
         //    {
-        //        cqIds.Add(new SelectListItem { Text = customerQuery.QueryID.ToString(), Value = customerQuery.QueryID.ToString() });
+        //        cqids.add(new selectlistitem { text = customerquery.queryid.tostring(), value = customerquery.queryid.tostring() });
 
         //    }
-        //    return cqIds;
+        //    return cqids;
         //}
 
         public static async Task<List<SelectListItem>> GetPolicyNos(string token)

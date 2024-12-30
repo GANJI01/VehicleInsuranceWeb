@@ -7,9 +7,11 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+
 </p>
-<table class="table">
+
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -61,11 +63,36 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { policyNo=item.PolicyNo }) |
-                    @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }) |
-                    @Html.ActionLink("ByProposal", "ByProposal", new { proposalId=item.ProposalNo }) |
-                    @Html.ActionLink("Add-on", "Index", "PolicyAddon", new { policyNo = item.PolicyNo })
+                @*   <div class="btn-group" role="group">
+                    @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("ByProposal", "ByProposal", new { proposalId = item.ProposalNo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Add-on", "Index", "PolicyAddon", new { policyNo = item.PolicyNo }, new { @class = "btn btn-primary" })
+                    </div>
+                    *@
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Details", "Details", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Delete", "Delete", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByProposal", "ByProposal", new { proposalId = item.ProposalNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Add-on", "Index", "PolicyAddon", new { policyNo = item.PolicyNo }, new { @class = "dropdown-item" })
+                            </li>
+                        </ul>
+                    </div>
             </td>
         </tr>
 }

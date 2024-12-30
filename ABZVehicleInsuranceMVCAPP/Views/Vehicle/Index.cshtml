@@ -7,9 +7,11 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+
 </p>
-<table class="table">
+
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -110,10 +112,33 @@
                     @Html.DisplayFor(modelItem => item.OwnerId)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { regNo = item.RegNo }) |
-                    @Html.ActionLink("Details", "Details", new { regNo = item.RegNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { regNo = item.RegNo }) |
-                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.OwnerId })
+                    @*
+                    @Html.ActionLink("Edit", "Edit", new { regNo = item.RegNo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { regNo = item.RegNo }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { regNo = item.RegNo }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.OwnerId }, new { @class = "btn btn-primary" })
+                    *@
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { regNo = item.RegNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Details", "Details", new { regNo = item.RegNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Delete", "Delete", new { regNo = item.RegNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.OwnerId }, new { @class = "dropdown-item" })
+                            </li>
+                        </ul>
+                    </div>
+
+
                 </td>
             </tr>
         }

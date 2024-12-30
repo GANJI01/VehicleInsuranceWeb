@@ -7,9 +7,11 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+
 </p>
-<table class="table">
+
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th>
@@ -79,14 +81,44 @@
                 @Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { proposalNo = item.ProposalNo }) |
-                    @Html.ActionLink("Details", "Details", new { proposalNo = item.ProposalNo }) |
-                    @Html.ActionLink("Delete", "Delete", new { proposalNo = item.ProposalNo })  |
-                    @Html.ActionLink("ByAgent", "ByAgent", new { agentID = item.AgentID })  |
-                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.CustomerID }) |
-                    @Html.ActionLink("ByProduct", "ByProduct", new { productID = item.ProductID })|
-                    @Html.ActionLink("ByVehicle", "ByVehicle", new { regNo = item.RegNo })
-            </td>
+                   @* @Html.ActionLink("Edit", "Edit", new { proposalNo = item.ProposalNo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { proposalNo = item.ProposalNo }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { proposalNo = item.ProposalNo }, new { @class = "btn btn-danger" })  |
+                    @Html.ActionLink("ByAgent", "ByAgent", new { agentID = item.AgentID }, new { @class = "btn btn-primary" })  |
+                    @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.CustomerID }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("ByProduct", "ByProduct", new { productID = item.ProductID }, new { @class = "btn btn-primary" })|
+                    @Html.ActionLink("ByVehicle", "ByVehicle", new { regNo = item.RegNo }, new { @class = "btn btn-primary" })
+                    *@
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                @Html.ActionLink("Edit", "Edit", new { proposalNo = item.ProposalNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Details", "Details", new { proposalNo = item.ProposalNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Delete", "Delete", new { proposalNo = item.ProposalNo }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByAgent", "ByAgent", new { agentID = item.AgentID }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByCustomer", "ByCustomer", new { customerId = item.CustomerID }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByProduct", "ByProduct", new { productID = item.ProductID }, new { @class = "dropdown-item" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("ByVehicle", "ByVehicle", new { regNo = item.RegNo }, new { @class = "dropdown-item" })
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            
         </tr>
 }
     </tbody>

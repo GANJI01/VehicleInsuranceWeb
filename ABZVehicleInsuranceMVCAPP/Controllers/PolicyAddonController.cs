@@ -15,6 +15,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: PolicyAddonController
         public async Task<ActionResult> Index(string pid)
         {
+            ViewData["ActiveNav"] = "PolicyAddon";
 
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;

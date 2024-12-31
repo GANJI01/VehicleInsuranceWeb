@@ -28,9 +28,32 @@
 </script>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Create New
+    </a>
 </p>
+<form method="get" asp-action="Index">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="QueryStatus" class="form-label">Filter by Query Status</label>
+            <select id="QuerySatusDropDown" name="selectedQueryStatus" class="form-select">
+                <option value="">-- Select Query Status--</option>
+                @foreach (var fuelType in (List<SelectListItem>)ViewBag.FuelTypes)
+                {
+                    <option value="@fuelType.Value"
+                            selected="@(fuelType.Value == (Context.Request.Query["selectedQueryStatus"].ToString() ?? "") ? "selected" : null)">
+                        @fuelType.Text
+                    </option>
+                }
+            </select>
+
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
 
 <table class="table table-hover table-responsive">
     <thead>

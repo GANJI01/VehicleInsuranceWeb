@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using Claim = ABZVehicleInsuranceMVCAPP.Models.Claim;
 using NuGet.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
@@ -16,6 +17,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ClaimController
         public async Task<ActionResult> Index()
         {
+            ViewData["ActiveNav"] = "Claim";
+
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
@@ -40,6 +43,19 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             Claim claim = new Claim();
             ViewData["token"] = token;
+
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Started", Value = "S" },
+                new SelectListItem { Text = "Approved", Value = "A" },
+                new SelectListItem { Text = "Rejected", Value = "R" },
+                new SelectListItem { Text = "Terminated", Value = "T" }
+             };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
+
+            return View(claim);
             return View(claim);
         }
 
@@ -53,6 +69,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             {
                 await client.PostAsJsonAsync<Claim>("" + token, claim);
                 TempData["AlertMessage"] = "Created Successfully.....!";
+               
 
                 return RedirectToAction(nameof(Index));
             }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
@@ -11,8 +12,10 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/") };
         static string token;
         // GET: CustomerQueryController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string selectedQueryStatus)
         {
+            ViewData["ActiveNav"] = "CustomerQuery";
+
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
@@ -22,6 +25,17 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<CustomerQuery> customers = await client.GetFromJsonAsync<List<CustomerQuery>>("");
+            ViewBag.FuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Active", Value = "A" },
+                new SelectListItem { Text = "Responded", Value = "R" }
+            };
+
+            // Filter vehicles based on fuel type
+            if (!string.IsNullOrEmpty(selectedQueryStatus))
+            {
+                customers = customers.Where(v => v.Status == selectedQueryStatus).ToList();
+            }
             return View(customers);
         }
 
@@ -37,6 +51,14 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             CustomerQuery customerquery = new CustomerQuery();
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Active", Value = "A" },
+                new SelectListItem { Text = "Responded", Value = "R" }
+             };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
             return View(customerquery);
         }
 

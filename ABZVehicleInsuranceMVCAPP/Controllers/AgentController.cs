@@ -14,8 +14,10 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         static string token;
         // GET: AgentController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string searchBy,string searchValue)
         {
+            ViewData["ActiveNav"] = "Agent";
+
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
@@ -27,6 +29,31 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
 
             List<Agent> agents = await client.GetFromJsonAsync<List<Agent>>("");
+
+            if (string.IsNullOrEmpty(searchBy) || string.IsNullOrEmpty(searchValue))
+            {
+                return View(agents);
+            }
+
+            // Initialize search results
+            IEnumerable<Agent> searchResults = null;
+
+            // Search by AgentName
+            if (searchBy.ToLower() == "agentname")
+            {
+                searchResults = agents.Where(a => a.AgentName != null && a.AgentName.ToLower().Contains(searchValue.ToLower())).ToList();
+            }
+
+            if (searchResults != null && searchResults.Any())
+            {
+                return View(searchResults); // Return filtered results
+            }
+            else
+            {
+                TempData["InfoMessage"] = "No matching agents found.";
+                return View(agents); // Return all agents if no match is found
+            }
+        
             return View(agents);
         }
 

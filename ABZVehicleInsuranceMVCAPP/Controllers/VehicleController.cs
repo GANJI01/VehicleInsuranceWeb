@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
 using NuGet.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
@@ -13,7 +14,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         static string token;
         // GET: VehicleController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string selectedFuelType)
         {
             string userName = User.Identity.Name;
             string role = User.Claims.ToArray()[4].Value;
@@ -24,7 +25,23 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
+            ViewBag.FuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Petrol", Value = "P" },
+                new SelectListItem { Text = "Diesel", Value = "D" },
+                new SelectListItem { Text = "CNG", Value = "C" },
+                new SelectListItem { Text = "LPG", Value = "L" },
+                new SelectListItem { Text = "Electric", Value = "E" }
+            };
+
+            // Filter vehicles based on fuel type
+            if (!string.IsNullOrEmpty(selectedFuelType))
+            {
+                vehicles = vehicles.Where(v => v.FuelType == selectedFuelType).ToList();
+            }
+
             return View(vehicles);
+
         }
 
         // GET: VehicleController/Details/5
@@ -39,6 +56,19 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         {
             Vehicle vehicle = new Vehicle();
             ViewData["token"] = token;
+            List<SelectListItem> fuelTypes = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Petrol", Value = "P" },
+                new SelectListItem { Text = "Diesel", Value = "D" },
+                new SelectListItem { Text = "CNG", Value = "C" },
+                new SelectListItem { Text = "LPG", Value = "L" },
+                new SelectListItem { Text = "Electric", Value = "E" }
+             };
+
+            // Passing the fuelTypes list to the View using ViewBag
+            ViewBag.FuelTypes = fuelTypes;
+
+            return View(vehicle);
             return View(vehicle);
         }
 

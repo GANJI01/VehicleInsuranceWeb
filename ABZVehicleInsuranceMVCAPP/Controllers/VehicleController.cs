@@ -4,13 +4,15 @@ using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
 using NuGet.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class VehicleController : Controller
     {
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5083/api/Vehicle/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/VehicleSvc/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzvehiclewebapi-chanad.azurewebsites.net/api/Vehicle/") };
 
         static string token;
         // GET: VehicleController
@@ -20,8 +22,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            //token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+            //token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Vehicle> vehicles = await client.GetFromJsonAsync<List<Vehicle>>("");
@@ -52,6 +54,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: VehicleController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             Vehicle vehicle = new Vehicle();
@@ -75,6 +78,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Vehicle vehicle)
         {
             try
@@ -91,6 +95,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: VehicleController/Edit/5
         [Route("Vehicle/Edit/{regNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string regNo)
         {
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
@@ -101,6 +106,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Vehicle/Edit/{regNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string regNo, Vehicle vehicle)
         {
             try
@@ -117,6 +123,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: VehicleController/Delete/5
         [Route("Vehicle/Delete/{regNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string regNo)
         {
             Vehicle vehicle = await client.GetFromJsonAsync<Vehicle>("" + regNo);
@@ -128,6 +135,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Vehicle/Delete/{regNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string regNo, IFormCollection collection)
         {
             try

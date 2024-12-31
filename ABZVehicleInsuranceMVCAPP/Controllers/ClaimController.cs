@@ -5,13 +5,15 @@ using ABZVehicleInsuranceMVCAPP.Models;
 using Claim = ABZVehicleInsuranceMVCAPP.Models.Claim;
 using NuGet.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class ClaimController : Controller
     {
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5189/api/Claim/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/ClaimSvc/") };
+       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/") };
 
         static string token;
         // GET: ClaimController
@@ -23,8 +25,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            // token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+             token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
@@ -39,6 +41,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ClaimController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             Claim claim = new Claim();
@@ -62,6 +65,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ClaimController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
 
         public async Task<ActionResult> Create(Claim claim)
         {
@@ -79,6 +83,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             }
         }
         [Route("Claim/Edit/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         // GET: ClaimController/Edit/5
         public async Task<ActionResult> Edit(string claimNo)
         {
@@ -90,6 +95,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Edit/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string claimNo, Claim claim)
         {
             try
@@ -105,6 +111,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             }
         }
         [Route("Claim/Delete/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         // GET: ClaimController/Delete/5
         public async Task<ActionResult> Delete(string claimNo)
         {
@@ -116,6 +123,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Claim/Delete/{claimNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string claimNo, IFormCollection collection)
         {
             try

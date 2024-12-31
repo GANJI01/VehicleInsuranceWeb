@@ -3,14 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
 using NuGet.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class ProposalController : Controller
     {
         // GET: ProposalController
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5273/api/Proposal/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/ProposalSvc/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzproposalwebapi-chanad.azurewebsites.net/api/Proposal/") };
 
         static string token;
         public async Task<ActionResult> Index()
@@ -21,8 +23,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            //  token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+            //token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
 
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -38,6 +40,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: ProposalController/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             Proposal proposal = new Proposal();
@@ -48,6 +51,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: ProposalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Proposal proposal)
         {
             try
@@ -74,6 +78,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Proposal/Edit/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string proposalNo, Proposal proposal)
         {
             try
@@ -90,6 +95,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: ProposalController/Delete/5
         [Route("Proposal/Delete/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string proposalNo)
         {
             Proposal proposal = await client.GetFromJsonAsync<Proposal>("" + proposalNo);
@@ -100,6 +106,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Proposal/Delete/{proposalNo}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string proposalNo, IFormCollection collection)
         {
             try

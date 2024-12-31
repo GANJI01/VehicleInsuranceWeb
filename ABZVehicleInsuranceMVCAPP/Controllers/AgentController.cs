@@ -4,13 +4,15 @@ using ABZVehicleInsuranceMVCAPP.Controllers;
 using ABZVehicleInsuranceMVCAPP.Models;
 using System.Runtime.InteropServices;
 using NuGet.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class AgentController : Controller
     {
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5147/api/Agent/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzagentwebapi-chanad.azurewebsites.net/api/Agent/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/AgentSvc/") };
+      //  static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzagentwebapi-chanad.azurewebsites.net/api/Agent/") };
 
         static string token;
         // GET: AgentController
@@ -22,8 +24,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-           // token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+          //  token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
 
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -65,6 +67,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: AgentController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             Agent agent = new Agent();
@@ -75,6 +78,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: AgentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(Agent agent)
         {
             try
@@ -92,6 +96,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: AgentController/Edit/5
         [Route("Agent/Edit/{agentId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string agentId)
         {
             Agent agent = await client.GetFromJsonAsync<Agent>("" + agentId);
@@ -102,6 +107,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Agent/Edit/{agentId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string agentId, Agent agent)
         {
             try
@@ -119,6 +125,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: AgentController/Delete/5
         [Route("Agent/Delete/{agentId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string agentId)
         {
             Agent agent = await client.GetFromJsonAsync<Agent>("" + agentId);
@@ -129,6 +136,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Agent/Delete/{agentId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string agentId, IFormCollection collection)
         {
             try

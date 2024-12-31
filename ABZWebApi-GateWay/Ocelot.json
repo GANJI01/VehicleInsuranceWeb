@@ -1,0 +1,140 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Agent/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5147
+                }
+            ],
+            "UpstreamPathTemplate": "/AgentSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Customer/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5151
+                }
+            ],
+            "UpstreamPathTemplate": "/CustomerSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Product/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "UpstreamPathTemplate": "/productSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/ProductAddon/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "UpstreamPathTemplate": "/productAddonSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/PolicyAddon/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5007
+                }
+            ],
+            "UpstreamPathTemplate": "/policyAddonSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Vehicle/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5083
+                }
+            ],
+            "UpstreamPathTemplate": "/VehicleSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Proposal/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5273
+                }
+            ],
+            "UpstreamPathTemplate": "/ProposalSvc/{something}"
+        },
+
+        {
+            "DownstreamPathTemplate": "/api/Policy/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5007
+                }
+            ],
+            "UpstreamPathTemplate": "/PolicySvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Claim/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5189
+                }
+            ],
+            "UpstreamPathTemplate": "/ClaimSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/CustomerQuery/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5058
+                }
+            ],
+            "UpstreamPathTemplate": "/CustomerQuerySvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/QueryResponse/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5058
+                }
+            ],
+            "UpstreamPathTemplate": "/QueryResponseSvc/{something}"
+        },
+        {
+            "DownstreamPathTemplate": "/api/Auth/{something}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5018
+                }
+            ],
+            "UpstreamPathTemplate": "/AuthSvc/{something}"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:5172"
+    }
+}

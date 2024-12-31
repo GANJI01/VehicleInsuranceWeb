@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using Microsoft.AspNetCore.Routing.Matching;
 using NuGet.Common;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class PolicyAddonController : Controller
     {
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5007/api/PolicyAddon/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-chanad.azurewebsites.net/api/PolicyAddon/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/PolicyAddonSvc/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzpolicywebapi-chanad.azurewebsites.net/api/PolicyAddon/") };
         
         static string token;
         // GET: PolicyAddonController
@@ -21,8 +23,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-            // token = await client2.GetStringAsync("http://localhost:5018/api/Auth/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+           // token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
                                                   
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -38,6 +40,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: PolicyAddonController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             PolicyAddon policyAddon = new PolicyAddon();
@@ -49,6 +52,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: PolicyAddonController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(PolicyAddon policyAddon)
         {
             try
@@ -65,6 +69,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: PolicyAddonController/Edit/5
         [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo, string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}/");
@@ -75,6 +80,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("PolicyAddon/Edit/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string policyNo, string addonId, PolicyAddon policyAddon)
         {
             try
@@ -91,6 +97,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: PolicyAddonController/Delete/5
         [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string policyNo, string addonId)
         {
             PolicyAddon policyAddon = await client.GetFromJsonAsync<PolicyAddon>($"{policyNo}/{addonId}");
@@ -101,6 +108,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("PolicyAddon/Delete/{policyNo}/{addonId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string policyNo, string addonId, IFormCollection collection)
         {
             try

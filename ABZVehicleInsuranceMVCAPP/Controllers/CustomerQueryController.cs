@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using ABZVehicleInsuranceMVCAPP.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ABZVehicleInsuranceMVCAPP.Controllers
 {
+    [Authorize]
     public class CustomerQueryController : Controller
     {
-        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5058/api/CustomerQuery/") };
-        static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/") };
+        static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/CustomerQuerySvc/") };
+        //static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/") };
         static string token;
         // GET: CustomerQueryController
         public async Task<ActionResult> Index(string selectedQueryStatus)
@@ -20,8 +22,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-           // token = await client2.GetStringAsync("http://localhost:5058/api/CustomerQuery/" + userName + "/" + role + "/" + secretKey);
-            token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+           token = await client2.GetStringAsync("http://localhost:5172/CustomerQuerySvc/" + userName + "/" + role + "/" + secretKey);
+            //token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<CustomerQuery> customers = await client.GetFromJsonAsync<List<CustomerQuery>>("");
@@ -47,6 +49,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         }
 
         // GET: CustomerQueryController/Create
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create()
         {
             CustomerQuery customerquery = new CustomerQuery();
@@ -65,6 +68,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // POST: CustomerQueryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(CustomerQuery customerquery)
         {
             try
@@ -81,6 +85,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: CustomerQueryController/Edit/5
         [Route("CustomerQuery/Edit/{queryId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string queryId)
         {
             CustomerQuery customerquery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
@@ -91,6 +96,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Edit/{queryId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string queryId, CustomerQuery customerquery)
         {
             try
@@ -107,6 +113,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
         // GET: CustomerQueryController/Delete/5
         [Route("CustomerQuery/Delete/{queryId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string queryId)
         {
             CustomerQuery customerquery = await client.GetFromJsonAsync<CustomerQuery>("" + queryId);
@@ -117,6 +124,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("CustomerQuery/Delete/{queryId}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string queryId, IFormCollection collection)
         {
             try

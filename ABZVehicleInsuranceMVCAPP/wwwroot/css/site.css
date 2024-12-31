@@ -60,6 +60,22 @@ html, body {
 body {
     margin-bottom: 60px; /* Optional: Set bottom margin to create space for fixed footer or content */
 }
+.text {
+    text-align: center; /* Center text horizontally */
+    color: black; /* Set text color to black */
+    padding: 70px; /* Optional: Add padding */
+}
+
+    .text h1 {
+        font-size: 3rem;
+        color: black;
+        margin-bottom: 20px; /* Add space below h1 */
+    }
+    /* Optional: Style for the paragraph */
+    .text p {
+        font-size: 1.0rem; /* Adjust the font size */
+        color: black; /* Set paragraph text color to black */
+    }
 
 /*body, html {
     margin: 0;

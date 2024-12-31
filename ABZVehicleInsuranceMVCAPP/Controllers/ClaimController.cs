@@ -46,7 +46,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
 
             List<SelectListItem> fuelTypes = new List<SelectListItem>
             {
-                new SelectListItem { Text = "Started", Value = "S" },
+                new SelectListItem { Text = "Submitted", Value = "S" },
                 new SelectListItem { Text = "Approved", Value = "A" },
                 new SelectListItem { Text = "Rejected", Value = "R" },
                 new SelectListItem { Text = "Terminated", Value = "T" }

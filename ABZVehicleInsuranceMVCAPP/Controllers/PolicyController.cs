@@ -48,8 +48,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             {
                 new SelectListItem { Text = "Cash", Value = "C" },
                 new SelectListItem { Text = "Cheque", Value = "Q" },
-                new SelectListItem { Text = "Credit or Debit", Value = "U" },
-                new SelectListItem { Text = "Digital Payment", Value = "D" }
+                new SelectListItem { Text = "Upi", Value = "U" },
+                new SelectListItem { Text = "Debit Card", Value = "D" }
              };
 
             // Passing the fuelTypes list to the View using ViewBag

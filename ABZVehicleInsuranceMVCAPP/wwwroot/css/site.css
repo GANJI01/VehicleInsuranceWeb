@@ -48,6 +48,7 @@ html, body {
     margin-bottom: 0;
 }
 
+
 .nav-logo {
     height: 100px; /* Set the desired height for the logo */
     width: auto; /* Maintain aspect ratio */
@@ -73,3 +74,5 @@ body {
 .navbar {
     z-index: 1;
 }
+
+

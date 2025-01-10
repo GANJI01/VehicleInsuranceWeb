@@ -44,8 +44,8 @@ namespace ABZCustomerQueryWebApi.Controllers
                 await cqRepo.InsertCustomerQueryAsync(customerquery);
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                //  await client.PostAsJsonAsync("http://localhost:5058/api/CustomerQuery/", new { QueryID = customerQuery.QueryID });
-                await client.PostAsJsonAsync("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/", new { QueryID = customerquery.QueryID });
+                  await client.PostAsJsonAsync("http://localhost:5058/api/CustomerQuery/", new { QueryID = customerquery.QueryID });
+               // await client.PostAsJsonAsync("https://abzquerywebapi-chanad.azurewebsites.net/api/CustomerQuery/", new { QueryID = customerquery.QueryID });
                 return Created($"api/CustomerQuery/{customerquery.QueryID}", customerquery);
             }
             catch (Exception ex)

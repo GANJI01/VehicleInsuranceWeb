@@ -13,7 +13,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
     public class ClaimController : Controller
     {
         static HttpClient client = new HttpClient() { BaseAddress = new Uri("http://localhost:5172/ClaimSvc/") };
-       // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/") };
+        // static HttpClient client = new HttpClient() { BaseAddress = new Uri("https://abzclaimwebapi-chanad.azurewebsites.net/api/Claim/") };
 
         static string token;
         // GET: ClaimController
@@ -25,8 +25,8 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             string role = User.Claims.ToArray()[4].Value;
             string secretKey = "My name is Bond, James Bond the great";
             HttpClient client2 = new HttpClient();
-             token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
-           // token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
+            token = await client2.GetStringAsync("http://localhost:5172/AuthSvc/" + userName + "/" + role + "/" + secretKey);
+            // token = await client2.GetStringAsync("https://abzauthwebapi-chanad.azurewebsites.net/api/Auth/" + userName + "/" + role + "/" + secretKey);
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("");
@@ -36,7 +36,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
         // GET: ClaimController/Details/5
         public async Task<ActionResult> Details(string claimNo)
         {
-            Claim claims = await client.GetFromJsonAsync<Claim>(""  + claimNo);
+            Claim claims = await client.GetFromJsonAsync<Claim>("" + claimNo);
             return View(claims);
         }
 
@@ -73,7 +73,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
             {
                 await client.PostAsJsonAsync<Claim>("" + token, claim);
                 TempData["AlertMessage"] = "Created Successfully.....!";
-               
+
 
                 return RedirectToAction(nameof(Index));
             }
@@ -138,7 +138,7 @@ namespace ABZVehicleInsuranceMVCAPP.Controllers
                 return View();
             }
         }
-       
+
         public async Task<ActionResult> ByPolicy(string policyNo)
         {
             List<Claim> claims = await client.GetFromJsonAsync<List<Claim>>("ByPolicy/" + policyNo);

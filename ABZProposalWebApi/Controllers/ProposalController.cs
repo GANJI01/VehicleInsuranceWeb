@@ -72,8 +72,8 @@ namespace ABZProposalWebApi.Controllers
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                //await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal/", new { ProposalNo = proposal.ProposalNo });
-                await client.PostAsJsonAsync("http://abzpolicywebapi-chanad.azurewebsites.net/api/policy/Proposal/", new { ProposalNo = proposal.ProposalNo });
+                await client.PostAsJsonAsync("http://localhost:5007/api/Policy/Proposal/", new { ProposalNo = proposal.ProposalNo });
+                //await client.PostAsJsonAsync("http://abzpolicywebapi-chanad.azurewebsites.net/api/policy/Proposal/", new { ProposalNo = proposal.ProposalNo });
 
                 return Created($"api/Proposal/{proposal.ProposalNo}", proposal);
             }
